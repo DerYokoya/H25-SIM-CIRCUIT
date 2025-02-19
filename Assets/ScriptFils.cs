@@ -15,8 +15,6 @@ void Update()
     {
         Vector3 currentMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
 
-        Vector3 size = currentMousePos - startMousePos;
-
         // Set sizeDelta for UI elements (RectTransform)
         rectTransform.sizeDelta = new Vector2(Mathf.Abs(size.x), Mathf.Abs(size.y));
         rectTransform.position = new Vector3(startRectPos.x + Mathf.Min(currentMousePos.x, startMousePos.x),
