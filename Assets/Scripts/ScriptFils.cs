@@ -42,7 +42,7 @@ public class Drag3DRectangle : MonoBehaviour
                 transform.localScale = new Vector3(
                     tailleInitiale.x + deplacement.x,
                     tailleInitiale.y,
-                    tailleInitiale.z + deplacement.z
+                    tailleInitiale.z
                 );
             }
         }
