@@ -1,30 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public RectTransform rectTransform; // Reference to the RectTransform of the UI object
-
-void Update()
+public class Drag3DRectangle : MonoBehaviour
 {
-    if (Input.GetMouseButtonDown(0))
+    private Vector3 decalage;  // Distance souris-rectangle
+    private bool enEtirement = false;
+    private Vector3 pointDepart;  // Point de départ de l'étirement
+    private Vector3 tailleInitiale;  // Taille initiale du rectangle
+
+    void Update()
     {
-        startMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
-        startRectPos = rectTransform.position;
-        isDrawing = true;
-    }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray laser = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit laserTouche;
 
-    if (isDrawing && Input.GetMouseButton(0))
-    {
-        Vector3 currentMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
+            if (Physics.Raycast(laser, out laserTouche))
+            {
+                if (laserTouche.collider.gameObject == gameObject)
+                {
+                    decalage = gameObject.transform.position - laserTouche.point;
+                    pointDepart = laserTouche.point;
+                    tailleInitiale = transform.localScale;
+                    enEtirement = true;
+                }
+            }
+        }
 
-        // Set sizeDelta for UI elements (RectTransform)
-        rectTransform.sizeDelta = new Vector2(Mathf.Abs(size.x), Mathf.Abs(size.y));
-        rectTransform.position = new Vector3(startRectPos.x + Mathf.Min(currentMousePos.x, startMousePos.x),
-                                             startRectPos.y + Mathf.Min(currentMousePos.y, startMousePos.y),
-                                             startRectPos.z);
-    }
+        if (enEtirement && Input.GetMouseButton(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit laserTouche;
 
-    if (Input.GetMouseButtonUp(0))
-    {
-        isDrawing = false;
+            if (Physics.Raycast(ray, out laserTouche))
+            {
+                // Calculer le déplacement de la souris par rapport au point de départ
+                Vector3 deplacement = laserTouche.point - pointDepart;
 
+                // Ajuster la taille du rectangle en fonction du déplacement
+                transform.localScale = new Vector3(
+                    tailleInitiale.x + deplacement.x,
+                    tailleInitiale.y,
+                    tailleInitiale.z + deplacement.z
+                );
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            enEtirement = false;
+        }
     }
 }
