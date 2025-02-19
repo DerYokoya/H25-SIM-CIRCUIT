@@ -49,7 +49,7 @@ public class RectangleExtension : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             // Finish drawing the rectangle when the mouse is released
-            isDrawing = false;
+            isDrawing = true;
         }
     }
 }
