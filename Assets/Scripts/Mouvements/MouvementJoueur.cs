@@ -12,6 +12,9 @@ public class MouvementJoueur : MonoBehaviour
     private Rigidbody rb;
     private bool auSol;
 
+    Camera cam1;
+    Camera cam2;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,6 +22,8 @@ public class MouvementJoueur : MonoBehaviour
         rb.transform.Rotate(new Vector3(0 , 0 
 , 0.0f));
 
+
+        
 
     }
 
