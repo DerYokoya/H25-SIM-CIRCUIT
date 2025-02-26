@@ -227,7 +227,6 @@ GameObject:
   - component: {fileID: 953690017}
   - component: {fileID: 953690020}
   - component: {fileID: 953690019}
-  - component: {fileID: 953690018}
   m_Layer: 0
   m_Name: CameraJoueur
   m_TagString: Untagged
@@ -244,26 +243,12 @@ Transform:
   m_GameObject: {fileID: 953690016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.17, y: 0.45, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1382742441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &953690018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953690016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41bddba12a90c64fa3955525003b897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  human: {fileID: 0}
-  decalage: {x: 0, y: 2, z: -5}
 --- !u!81 &953690019
 AudioListener:
   m_ObjectHideFlags: 0
@@ -427,8 +412,8 @@ GameObject:
   - component: {fileID: 1382742440}
   - component: {fileID: 1382742439}
   - component: {fileID: 1382742438}
-  - component: {fileID: 1382742437}
   - component: {fileID: 1382742442}
+  - component: {fileID: 1382742443}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -436,20 +421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1382742437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382742436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1809c73e2e4294247a4596d170852a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vitesse: 5
-  forceSaut: 5
 --- !u!65 &1382742438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -530,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 1382742436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21000004, y: 5.1800003, z: -4.7}
+  m_LocalPosition: {x: 0.21000004, y: 3.83, z: -4.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -563,7 +534,21 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &1382742443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382742436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1809c73e2e4294247a4596d170852a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitesse: 0
+  forceSaut: 5
 --- !u!1 &1401220167
 GameObject:
   m_ObjectHideFlags: 0
