@@ -6,7 +6,7 @@ public class SupprimerObjet : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))  // 1 pour clic droit 
         {
-            // Raycast to check if the mouse is over this object
+            // Le raycast vérifie si la souris est sur cet objet
             Ray souris = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit elementTouche;
 
