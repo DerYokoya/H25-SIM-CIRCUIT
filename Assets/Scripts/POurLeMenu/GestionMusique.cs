@@ -38,7 +38,7 @@ public class GestionMusique : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= audioSource.clip.length + 120)
+        if (timer >= audioSource.clip.length + 20)
         {
             audioSource.clip = (AudioClip)musiques[(new System.Random()).Next(0,5)];
             audioSource.Play();
