@@ -1,31 +1,33 @@
 using UnityEngine;
+using static Cinemachine.CinemachineTargetGroup;
 
 public class CreerObjets : MonoBehaviour
 {
-    public GameObject fil; // On va rendre le code plus général après
-    private Vector3 apparition;
+    public GameObject fil;
+    public GameObject pile;
 
     void Start()
     {
         fil = Resources.Load<GameObject>("Prefabs/Fil");
-        if (fil == null)
-        {
-            Debug.LogError("Le prefab n'a pas chargé");
-            return;
-        }
-        else
-        {
-            Debug.Log("Le prefab a chargé");
-        }
+        pile = Resources.Load<GameObject>("Prefabs/Pile");
+
     }
 
     void Update()
     {
-        apparition = new Vector3(0.051f, 3.5f, -8.652f); // A changer
+        Vector3 positionSouris = Input.mousePosition;
+        positionSouris.z = 2; // Distance de la caméra (à ajuster)
+        Vector3 positionSourisMonde = Camera.main.ScreenToWorldPoint(positionSouris);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // S'il appuie sur la touche 1
         {
-            Instantiate(fil, apparition, Quaternion.identity);
+            Instantiate(fil, positionSourisMonde, Quaternion.identity);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Instantiate(pile, positionSourisMonde, Quaternion.identity);
+        }
+
     }
 }

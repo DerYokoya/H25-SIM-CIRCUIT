@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Interrupteur : ComposanteDuCircuit
+public class Interrupteur : Fil
 {
     public bool EstOuvert { get; private set; } = true;
 
