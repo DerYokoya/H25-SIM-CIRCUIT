@@ -21,15 +21,17 @@ public class SupprimerObjet : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            // Trouver tous les objets avec le script SupprimerObjet attaché
-            SupprimerObjet[] objets = FindObjectsOfType<SupprimerObjet>();
+            // Trouver tous les objets dans la scène qui ont la composante «SupprimerObjet»
+            SupprimerObjet[] objetsASupprimer = FindObjectsOfType<SupprimerObjet>();
 
-            // Détruire chaque objet trouvé
-            foreach (SupprimerObjet objet in objets)
+            foreach (SupprimerObjet objet in objetsASupprimer)
             {
-                Destroy(objet.gameObject);
+                // Vérifier si l'objet est dans la scène (comme ça les péfabs ne seront pas supprimés)
+                if (objet.gameObject.scene.IsValid())
+                {
+                    Destroy(objet.gameObject);
+                }
             }
         }
-
     }
 }

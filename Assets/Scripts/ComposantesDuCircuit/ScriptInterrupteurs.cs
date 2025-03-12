@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Interrupteur : Fil
 {
+
     public bool EstOuvert { get; private set; } = true;
     
     private float seuilDoubleClic = 0.3f; // Temps max entre deux clics pour que ça compte comme un double clic
     private float dernierMomentDeClic = 0f; // Moment où le dernier clic à eu lieu
+
+    private Renderer interrupteurRenderer;
+
+    void Start()
+    {
+        // Obtenir le composant Renderer de l'objet
+        interrupteurRenderer = GetComponent<Renderer>();
+    }
 
     void Update()
     {
@@ -34,12 +44,21 @@ public class Interrupteur : Fil
     public void OuvrirOuFermer()
     {
         EstOuvert = !EstOuvert;
-        fonctionne = EstOuvert;
+        fonctionne = !EstOuvert;
     }
 
     private void tournerInterrupteur()
     {
         float angleRotation = EstOuvert ? 45f : 0f; // Interrupteur ouvert? Vrai : 45 degrés. Faux : 0 degré.
         transform.rotation = Quaternion.Euler(0f, angleRotation, 0f);
+
+        if (EstOuvert)
+        {
+            interrupteurRenderer.material.color = Color.black;
+        }
+        else
+        {
+            interrupteurRenderer.material.color = Color.gray;
+        }
     }
 }
