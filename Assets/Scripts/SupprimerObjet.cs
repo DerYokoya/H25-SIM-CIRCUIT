@@ -4,7 +4,7 @@ public class SupprimerObjet : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))  // 1 pour clic droit 
+        if (Input.GetKeyDown(KeyCode.Q))  // 1 pour clic droit 
         {
             // Le raycast vérifie si la souris est sur cet objet
             Ray souris = Camera.main.ScreenPointToRay(Input.mousePosition);

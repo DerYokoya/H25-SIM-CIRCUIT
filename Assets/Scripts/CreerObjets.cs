@@ -1,33 +1,36 @@
 using UnityEngine;
-using static Cinemachine.CinemachineTargetGroup;
+using System.Collections.Generic;
 
 public class CreerObjets : MonoBehaviour
 {
-    public GameObject fil;
-    public GameObject pile;
+    public Dictionary<KeyCode, GameObject> objetsACreer = new Dictionary<KeyCode, GameObject>(); //Dictionaire keycode-composante
 
     void Start()
     {
-        fil = Resources.Load<GameObject>("Prefabs/Fil");
-        pile = Resources.Load<GameObject>("Prefabs/Pile");
+        // Charger les objets depuis les ressources
+        GameObject fil = Resources.Load<GameObject>("Prefabs/Fil");
+        GameObject pile = Resources.Load<GameObject>("Prefabs/Pile");
+        GameObject resistance = Resources.Load<GameObject>("Prefabs/Resistance");
 
+        // Associer les touches aux objets
+        objetsACreer.Add(KeyCode.Alpha1, fil);
+        objetsACreer.Add(KeyCode.Alpha2, pile);
+        objetsACreer.Add(KeyCode.Alpha3, resistance);
     }
 
     void Update()
     {
         Vector3 positionSouris = Input.mousePosition;
-        positionSouris.z = 2; // Distance de la caméra (à ajuster)
+        positionSouris.z = 2; // Distance de la caméra (peut être ajustée)
         Vector3 positionSourisMonde = Camera.main.ScreenToWorldPoint(positionSouris);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) // S'il appuie sur la touche 1
+        // Parcourir le dictionnaire pour vérifier si une touche a été pressée
+        foreach (var kvp in objetsACreer)
         {
-            Instantiate(fil, positionSourisMonde, Quaternion.identity);
+            if (Input.GetKeyDown(kvp.Key))
+            {
+                Instantiate(kvp.Value, positionSourisMonde, Quaternion.identity);
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Instantiate(pile, positionSourisMonde, Quaternion.identity);
-        }
-
     }
 }

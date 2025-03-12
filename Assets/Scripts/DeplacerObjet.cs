@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeplacerObjet : MonoBehaviour
 {
     Vector3 positionSouris;
-    float yConstant; // Positon de y fixe est initialisée, mais pas encore déclarée
+    float yConstant; // Positon de y fixe est initialisee, mais pas encore declaree
 
     private void Start()
     {
@@ -24,8 +24,19 @@ public class DeplacerObjet : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        Vector3 nouvellePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition - positionSouris);
-        nouvellePosition.y = yConstant; // Garder la position de y constante
+        Vector3 posSouris = Input.mousePosition;
+
+        Vector3 positionMonde = Camera.main.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, 
+            transform.position.z - Camera.main.transform.position.z));
+
+        float deltaY = posSouris.y - (positionSouris.y + GetPositionSouris().y);
+
+        float nouveauZ = transform.position.z + deltaY * 0.01f; // On peut ajuster la sensibilité en mettant une autre valeur que 0.01
+
+        Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, nouveauZ);
+
         transform.position = nouvellePosition;
+
+        positionSouris = posSouris - GetPositionSouris();
     }
 }
