@@ -18,5 +18,18 @@ public class SupprimerObjet : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Trouver tous les objets avec le script SupprimerObjet attaché
+            SupprimerObjet[] objets = FindObjectsOfType<SupprimerObjet>();
+
+            // Détruire chaque objet trouvé
+            foreach (SupprimerObjet objet in objets)
+            {
+                Destroy(objet.gameObject);
+            }
+        }
+
     }
 }
