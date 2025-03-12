@@ -33,7 +33,7 @@ public class CreerObjets : MonoBehaviour
         {
             if (Input.GetKeyDown(paire.Key))
             {
-                Instantiate(paire.Value, positionSourisMonde, Quaternion.identity);
+                Instantiate(paire.Value, new Vector3(positionSourisMonde.x, 23.191f, positionSourisMonde.z), Quaternion.identity);
             }
         }
     }
