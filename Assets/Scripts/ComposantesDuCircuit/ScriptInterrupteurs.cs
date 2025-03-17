@@ -5,25 +5,30 @@ using UnityEngine.UIElements;
 
 public class Interrupteur : Fil
 {
-
     public bool EstOuvert { get; private set; } = true;
     
     private float seuilDoubleClic = 0.3f; // Temps max entre deux clics pour que ça compte comme un double clic
     private float dernierMomentDeClic = 0f; // Moment où le dernier clic à eu lieu
 
     private Renderer interrupteurRenderer;
+    public Camera camera;
+
 
     void Start()
     {
         // Obtenir le composant Renderer de l'objet
         interrupteurRenderer = GetComponent<Renderer>();
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
+
     }
 
     void Update()
     {
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
+
         if (Input.GetMouseButtonDown(0))  // 0 pour clic gauche 
         {
-            Ray souris = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray souris = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit interrupteurTouche;
 
             if (Physics.Raycast(souris, out interrupteurTouche))

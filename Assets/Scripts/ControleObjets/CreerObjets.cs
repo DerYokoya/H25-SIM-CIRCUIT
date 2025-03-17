@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class CreerObjets : MonoBehaviour
 {
+    public Camera camera;
     public Dictionary<KeyCode, GameObject> objetsACreer = new Dictionary<KeyCode, GameObject>(); //Dictionaire keycode-composante
 
     void Start()
@@ -24,9 +25,11 @@ public class CreerObjets : MonoBehaviour
 
     void Update()
     {
+        camera = camera = GameObject.Find("Camera").GetComponent<Camera>();
+
         Vector3 positionSouris = Input.mousePosition;
-        positionSouris.z = 2; // Distance de la caméra (peut être ajustée)
-        Vector3 positionSourisMonde = Camera.main.ScreenToWorldPoint(positionSouris);
+        positionSouris.z = 3; // Distance de la caméra (peut être ajustée)
+        Vector3 positionSourisMonde = camera.ScreenToWorldPoint(positionSouris);
 
         // Parcourir le dictionnaire pour vérifier si une touche a été pressée
         foreach (var paire in objetsACreer)

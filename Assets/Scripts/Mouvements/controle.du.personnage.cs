@@ -12,11 +12,12 @@ public class CubeController : MonoBehaviour
     {
         // Lock and hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true; //Afficher la souris
     }
 
     void Update()
     {
+        Cursor.visible = true; //Afficher la souris
         // Camera Rotation (Mouse Look)
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class SupprimerObjet : MonoBehaviour
 {
+    public Camera camera;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))  // 1 pour clic droit 
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
+
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             // Le raycast vérifie si la souris est sur cet objet
-            Ray souris = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray souris = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit elementTouche;
 
             if (Physics.Raycast(souris, out elementTouche))
             {
-                if (elementTouche.collider.gameObject == gameObject)
+                if (elementTouche.collider.gameObject == gameObject && (Input.GetKeyDown(KeyCode.Q)))
                 {
                     Destroy(gameObject); //Détruire l'objet si la souris fait un clic droit dessus
                 }

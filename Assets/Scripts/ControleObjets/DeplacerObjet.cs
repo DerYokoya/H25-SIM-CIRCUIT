@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class DeplacerObjet : MonoBehaviour
 {
+    public Camera camera;
     Vector3 positionSouris;
     float yConstant; // Positon de y fixe est initialisee, mais pas encore declaree
 
     private void Start()
     {
         yConstant = transform.position.y; // Position de y sera fixe
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
     private Vector3 GetPositionSouris()
     {
-        return Camera.main.WorldToScreenPoint(transform.position);
+        return camera.WorldToScreenPoint(transform.position);
     }
 
     private void OnMouseDown()
@@ -26,17 +28,12 @@ public class DeplacerObjet : MonoBehaviour
     {
         Vector3 posSouris = Input.mousePosition;
 
-        Vector3 positionMonde = Camera.main.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, 
-            transform.position.z - Camera.main.transform.position.z));
+        float depth = GetPositionSouris().z;
 
-        float deltaY = posSouris.y - (positionSouris.y + GetPositionSouris().y);
+        Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, depth));
 
-        float nouveauZ = transform.position.z + deltaY * 0.01f; // On peut ajuster la sensibilité en mettant une autre valeur que 0.01
-
-        Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, nouveauZ);
+        Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, positionMonde.z);
 
         transform.position = nouvellePosition;
-
-        positionSouris = posSouris - GetPositionSouris();
     }
 }

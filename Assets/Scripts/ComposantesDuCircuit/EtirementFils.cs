@@ -9,12 +9,14 @@ public class EtirementRectangle : MonoBehaviour
     private Vector3 pointDepart;  // Point de départ de l'étirement
     private Vector3 tailleInitiale;
     private Vector3 positionInitiale;
+    public Camera camera;
 
     void Update()
     {
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
         if (Input.GetMouseButtonDown(0))
         {
-            Ray laser = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray laser = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit laserTouche;
 
             if (Physics.Raycast(laser, out laserTouche))
@@ -32,7 +34,7 @@ public class EtirementRectangle : MonoBehaviour
 
         if (enEtirement && Input.GetMouseButton(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit laserTouche;
 
             if (Physics.Raycast(ray, out laserTouche))
