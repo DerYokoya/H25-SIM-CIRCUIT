@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56910ce24e61e8a4198f3807d3531de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &-984682547602583606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  yConstant: 0

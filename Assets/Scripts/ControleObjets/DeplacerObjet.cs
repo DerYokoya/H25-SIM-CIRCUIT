@@ -6,7 +6,7 @@ public class DeplacerObjet : MonoBehaviour
 {
     public Camera camera;
     Vector3 positionSouris;
-    float yConstant; // Positon de y fixe est initialisee, mais pas encore declaree
+    public float yConstant; // Positon de y fixe est initialisee, mais pas encore declaree
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class DeplacerObjet : MonoBehaviour
         camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
-    private Vector3 GetPositionSouris()
+    public Vector3 GetPositionSouris()
     {
         return camera.WorldToScreenPoint(transform.position);
     }
@@ -24,7 +24,7 @@ public class DeplacerObjet : MonoBehaviour
         positionSouris = Input.mousePosition - GetPositionSouris();
     }
 
-    private void OnMouseDrag()
+    public void OnMouseDrag()
     {
         Vector3 posSouris = Input.mousePosition;
 

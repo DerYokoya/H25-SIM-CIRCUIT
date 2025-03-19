@@ -14,7 +14,7 @@ public class EtirementRectangle : MonoBehaviour
     void Update()
     {
         camera = GameObject.Find("Camera").GetComponent<Camera>();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray laser = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit laserTouche;
@@ -32,7 +32,7 @@ public class EtirementRectangle : MonoBehaviour
             }
         }
 
-        if (enEtirement && Input.GetMouseButton(0))
+        if (enEtirement && Input.GetMouseButton(1))
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit laserTouche;
@@ -77,7 +77,7 @@ public class EtirementRectangle : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             enEtirement = false;
         }
