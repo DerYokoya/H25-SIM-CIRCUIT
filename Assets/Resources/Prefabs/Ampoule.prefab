@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3289468598711465483}
   - component: {fileID: 273835561361917683}
   - component: {fileID: 7182367043959111639}
+  - component: {fileID: 6672029451762950605}
   m_Layer: 0
   m_Name: Ampoule
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56910ce24e61e8a4198f3807d3531de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &273835561361917683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &7182367043959111639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +147,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f583e94d88d6468187e6ea2401eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  doubleOuPas: 0
+  angleRotation: 0
+--- !u!114 &6672029451762950605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758369996531837073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.056114297, g: 0.9150943, b: 0.879645, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

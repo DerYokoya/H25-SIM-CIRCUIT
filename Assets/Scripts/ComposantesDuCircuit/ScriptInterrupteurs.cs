@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.VisualScripting.Member;
 
 public class Interrupteur : Fil
 {
-    public bool EstOuvert { get; private set; } = true;
+    public bool EstOuvert { get; private set; } = false;
     
-    private float seuilDoubleClic = 0.3f; // Temps max entre deux clics pour que ça compte comme un double clic
-    private float dernierMomentDeClic = 0f; // Moment où le dernier clic à eu lieu
 
     private Renderer interrupteurRenderer;
     public Camera camera;
@@ -21,30 +21,20 @@ public class Interrupteur : Fil
         camera = GameObject.Find("Camera").GetComponent<Camera>();
 
     }
-
-    void Update()
+    private void Update()
     {
-        camera = GameObject.Find("Camera").GetComponent<Camera>();
+        base.Update();
 
-        if (Input.GetMouseButtonDown(0))  // 0 pour clic gauche 
-        {
-            Ray souris = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit interrupteurTouche;
-
-            if (Physics.Raycast(souris, out interrupteurTouche))
-            {
-                if (interrupteurTouche.collider.gameObject == gameObject)
-                {
-                    if (Time.time - dernierMomentDeClic < seuilDoubleClic)
-                    {
-                        OuvrirOuFermer(); // Ouvrir ou fermer s'il y a un double-clic gauche dessus
-                        tournerInterrupteur();
-                    }
-                    dernierMomentDeClic = Time.time;
-                }
+        if (sourirEstDessu()) { 
+            if (Input.GetMouseButtonDown(1))
+            { 
+                OuvrirOuFermer();
+                tournerInterrupteur();
             }
         }
+        
     }
+
 
     public void OuvrirOuFermer()
     {
@@ -53,17 +43,15 @@ public class Interrupteur : Fil
     }
 
     private void tournerInterrupteur()
-    {
-        float angleRotation = EstOuvert ? 45f : 0f; // Interrupteur ouvert? Vrai : 45 degrés. Faux : 0 degré.
-        transform.rotation = Quaternion.Euler(0f, angleRotation, 0f);
+    { 
 
-        if (EstOuvert)
+            if (EstOuvert)
         {
-            interrupteurRenderer.material.color = Color.black;
+            interrupteurRenderer.material.color = Color.white;
         }
         else
         {
-            interrupteurRenderer.material.color = Color.gray;
+            interrupteurRenderer.material.color = Color.black;
         }
     }
 }
