@@ -70,8 +70,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: -6370837364387381328}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,9 +135,9 @@ Material:
     m_Floats:
     - _Cutoff: 0.3
     - _ShadowOffsetScale: 1
-    - _ShadowStrength: 0.8
+    - _ShadowStrength: 0.445
     - _SquashAmount: 1
-    - _TranslucencyViewDependency: 0.7
+    - _TranslucencyViewDependency: 0.465
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.40999997, a: 1}
@@ -371,8 +370,8 @@ MonoBehaviour:
   materialHash: 31d6cfe0d16ae931b73c59d7e0c089c0-583008256
   root:
     _uniqueID: 1
-    seed: 1234
-    _internalSeed: 2727
+    seed: 5483871
+    _internalSeed: 12119355
     m_Hash: 
     distributionFrequency: 1
     distributionMode: 0
@@ -467,8 +466,8 @@ MonoBehaviour:
     enableAmbientOcclusion: 1
     enableMaterialOptimize: 1
     aoDensity: 1
-    rootSpread: 5
-    groundOffset: 0
+    rootSpread: 6.84
+    groundOffset: 3.94
     rootMatrix:
       e00: 1
       e01: 0
@@ -492,7 +491,7 @@ MonoBehaviour:
   - spline:
       nodes: []
       tension: 0.5
-    seed: 3961
+    seed: 17603226
     animSeed: 0
     visible: 1
     triStart: 0
@@ -501,7 +500,7 @@ MonoBehaviour:
     vertEnd: 0
     capRange: 0
     breakOffset: 1
-    size: 5
+    size: 6.84
     scale: 1
     offset: 0
     baseAngle: 0
