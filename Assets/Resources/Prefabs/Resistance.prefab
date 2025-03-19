@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56910ce24e61e8a4198f3807d3531de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &273835561361917683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &1224539859266576264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cec4bbebb6f24d44861363cbb2b81df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  doubleOuPas: 0
+  angleRotation: 0
 --- !u!114 &4324040890052946990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 0.917406, b: 0.9716981, a: 1}
-  outlineWidth: 4
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 273835561361917683}
   - component: {fileID: 4292560869682914981}
   - component: {fileID: -6253195659990228149}
+  - component: {fileID: -2596314855213793563}
   m_Layer: 0
   m_Name: Interrupteur
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &4292560869682914981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56910ce24e61e8a4198f3807d3531de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &-6253195659990228149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b8463a0fae3b46aa6d4b8f8dd484b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  doubleOuPas: 0
+  angleRotation: 0
+  camera: {fileID: 0}
+--- !u!114 &-2596314855213793563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758369996531837073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.0764062, g: 0.9528302, b: 0.8681538, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
