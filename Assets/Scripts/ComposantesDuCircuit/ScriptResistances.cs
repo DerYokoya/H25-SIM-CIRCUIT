@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Resistance : ComposanteDuCircuit
@@ -9,6 +8,15 @@ public class Resistance : ComposanteDuCircuit
 
     private static readonly string[] Couleurs = //En mode lecture seule
         { "Noir", "Marron", "Rouge", "Orange", "Jaune", "Vert", "Bleu", "Violet", "Gris", "Blanc" };
+
+    public override void Augmentation() => AjusterIntensiteMax(3);
+
+    public override void Diminution() => AjusterIntensiteMax(-3);
+
+    public void AjusterIntensiteMax(int quantite)
+    {
+        ValeurResistance = Math.Clamp(ValeurResistance + quantite, 1, 100); // Minimum 1, maximum 100
+    }
 
     public double GetResistance()
     {
@@ -21,8 +29,13 @@ public class Resistance : ComposanteDuCircuit
       //DeterminerCouleurs(resistance);
     }
 
-  /*public string[] DeterminerCouleurs(double resistance) {
+    public override string TexteValeur()
+    {
+        return ValeurResistance + "'\u03A9'"; // '\u03A9' est le symbole des ohms
+    }
 
-    }*/
+    /*public string[] DeterminerCouleurs(double resistance) {
+
+      }*/
 
 }

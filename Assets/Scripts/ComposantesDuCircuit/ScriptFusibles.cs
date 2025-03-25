@@ -1,11 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Fusible : ComposanteDuCircuit
 {
     public double IntensiteMax { get; private set; }
     public double Intensite { get; set; }
+
+    public override void Augmentation() => AjusterIntensiteMax(3);
+
+    public override void Diminution() => AjusterIntensiteMax(-3);
+
+    private void AjusterIntensiteMax(int quantite)
+    {
+        IntensiteMax = Math.Clamp(IntensiteMax + quantite, 1, 20); // Minimum 1, maximum 20
+    }
 
     public double GetIntensiteCourantMax()
     {
@@ -23,5 +31,11 @@ public class Fusible : ComposanteDuCircuit
         {
             ChangerEtat();
         }
+    }
+
+    public override string TexteValeur()
+    {
+        return "Maximum : " + IntensiteMax + " A" +
+            "\n" + "Actuelle : " + Intensite + "A";
     }
 }

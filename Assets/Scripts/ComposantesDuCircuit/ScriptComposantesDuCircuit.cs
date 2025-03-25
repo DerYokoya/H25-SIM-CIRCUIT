@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class ComposanteDuCircuit : MonoBehaviour
@@ -28,7 +29,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
         doubleOuPas = false;
 
 
-        if (sourirEstDessu())
+        if (SourirEstDessu())
         {
             GetComponent<Outline>().enabled = true;
 
@@ -63,7 +64,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, angleRotation, 0f);
 
     }
-    public bool sourirEstDessu()
+    public bool SourirEstDessu()
     {
         Ray souris = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit interrupteurTouche;
@@ -77,4 +78,10 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
         }
         return false;
     }
+
+    public abstract void Augmentation(); // Augmenter une valeur (volts chez la pile, résistance chez la résistance, etc.)
+
+    public abstract void Diminution(); // Diminuer une valeur
+
+    public abstract string TexteValeur(); // Retourner un string qui va dire le nombre plus l'unité (3 ohms, 4 volts, etc.)
 }

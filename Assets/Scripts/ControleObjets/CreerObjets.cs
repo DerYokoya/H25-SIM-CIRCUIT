@@ -25,7 +25,7 @@ public class CreerObjets : MonoBehaviour
 
     void Update()
     {
-        camera = camera = GameObject.Find("Camera").GetComponent<Camera>();
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
 
         Vector3 positionSouris = Input.mousePosition;
         positionSouris.z = 3; // Distance de la caméra (peut être ajustée)

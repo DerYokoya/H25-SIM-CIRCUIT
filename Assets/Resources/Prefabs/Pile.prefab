@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4758369996531837073
+--- !u!1 &5573680252472600129
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,14 +8,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7377006329044872748}
-  - component: {fileID: 6883602194455830648}
-  - component: {fileID: 8216764312457083321}
-  - component: {fileID: 8917953394621554748}
-  - component: {fileID: 3289468598711465483}
-  - component: {fileID: -984682547602583606}
-  - component: {fileID: 273835561361917683}
-  - component: {fileID: 4134349172888452800}
+  - component: {fileID: 6637593711721539227}
+  - component: {fileID: 3916807947212647351}
+  - component: {fileID: 6692702532036151239}
+  - component: {fileID: 4433972141364097790}
+  - component: {fileID: 5422468703277710686}
+  - component: {fileID: 1795549350093170879}
+  - component: {fileID: 3215617018341606115}
+  - component: {fileID: 6866965107255324263}
+  - component: {fileID: 7578246532936221186}
   m_Layer: 0
   m_Name: Pile
   m_TagString: Untagged
@@ -23,13 +24,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7377006329044872748
+--- !u!4 &6637593711721539227
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9996737, z: -0, w: 0.025545204}
   m_LocalPosition: {x: 0.051, y: 3.36, z: -8.652}
@@ -38,21 +39,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 177.072, z: 0}
---- !u!33 &6883602194455830648
+--- !u!33 &3916807947212647351
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8216764312457083321
+--- !u!23 &6692702532036151239
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -88,13 +89,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8917953394621554748
+--- !u!65 &4433972141364097790
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,26 +110,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3289468598711465483
+--- !u!114 &5422468703277710686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56910ce24e61e8a4198f3807d3531de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
---- !u!114 &-984682547602583606
+--- !u!114 &1795549350093170879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  yConstant: 0
+--- !u!114 &3215617018341606115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573680252472600129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0.917406, b: 0.9716981, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6866965107255324263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b38c906633444a04e99464a0696dc648, type: 3}
@@ -137,38 +170,16 @@ MonoBehaviour:
   camera: {fileID: 0}
   doubleOuPas: 0
   angleRotation: 0
---- !u!114 &273835561361917683
+--- !u!114 &7578246532936221186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
+  m_GameObject: {fileID: 5573680252472600129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
+  m_Script: {fileID: 11500000, guid: fa55139266a339545b4b97e47ecae4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-<<<<<<< HEAD
-  yConstant: 0
-=======
---- !u!114 &4134349172888452800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4758369996531837073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0.1064436, g: 0.9811321, b: 0.9729856, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
->>>>>>> 352e6b2517313e830d7c0b0ecaeeea453444f435
