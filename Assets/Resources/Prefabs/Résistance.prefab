@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4324040890052946990}
   - component: {fileID: -7950732565748170863}
   m_Layer: 0
-  m_Name: Resistance
+  m_Name: "R\xE9sistance"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
