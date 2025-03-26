@@ -1,43 +1,126 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class AfficherChangeur : MonoBehaviour
 {
     public Camera camera;
     GameObject changeur;
+    GameObject changeurActuel; // Plus statique, chaque instance a son propre changeur
+
+    ComposanteDuCircuit composanteActuelle;
+    GameObject boutonPositif;
+    GameObject boutonNegatif;
 
     void Start()
     {
         camera = GameObject.Find("Camera").GetComponent<Camera>();
         changeur = Resources.Load<GameObject>("Prefabs/BlocInfos");
+
+        if (GetComponent<Collider>() == null)
+        {
+            Debug.LogError("Collider manquant pour l'objet: " + gameObject.name);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        Ray souris = camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit elementTouche;
+
+        // Mettre à jour le texte du changeur s'il existe et appartient à cet objet
+        if (changeurActuel != null)
         {
-            GameObject changeurExiste = GameObject.Find("BlocInfos(Clone)"); // Recherche si un bloc existe déja
-
-            // Le raycast vérifie si la souris est sur cet objet
-            Ray souris = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit elementTouche;
-
-            if (Physics.Raycast(souris, out elementTouche))
+            TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
+            if (composanteActuelle != null)
             {
-                if (elementTouche.collider.gameObject == gameObject)
+                texte.text = composanteActuelle.TexteValeur();
+            }
+        }
+
+        // Gestion des clics sur les boutons
+        if (Physics.Raycast(souris, out elementTouche))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Vérifier si le clic est sur nos boutons et que le changeur actuel appartient à cet objet
+                if (changeurActuel != null)
                 {
-
-                    if (changeurExiste != null) {
-                        Destroy(changeurExiste);
+                    if (boutonNegatif != null && elementTouche.collider.gameObject == boutonNegatif)
+                    {
+                        composanteActuelle?.Diminution();
+                        Debug.Log("Diminution appliquée.");
                     }
-                    // transform.position prend la position de l'objet auquel le script est attaché
-                    // on ajoute 15 unités en y à cet objet
-                    Vector3 positionDapparition = transform.position + new Vector3(0, 1f, 0);
 
-                    // créer le changeur
-                    Instantiate(changeur, positionDapparition, Quaternion.identity);
+                    if (boutonPositif != null && elementTouche.collider.gameObject == boutonPositif)
+                    {
+                        composanteActuelle?.Augmentation();
+                        Debug.Log("Augmentation appliquée.");
+                    }
+
+                    TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
+                    if (composanteActuelle != null)
+                    {
+                        texte.text = composanteActuelle.TexteValeur();
+                    }
                 }
             }
+        }
+
+        // Instantiation du changeur lorsqu'on appuie sur la touche I
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (Physics.Raycast(souris, out elementTouche))
+            {
+                Debug.Log("Raycast touche: " + elementTouche.collider.gameObject.name);
+
+                // Si le raycast touche le GameObject actuel
+                if (elementTouche.collider.gameObject == gameObject)
+                {
+                    // Détruire l'ancien changeur s'il existe pour cet objet
+                    if (changeurActuel != null)
+                    {
+                        Destroy(changeurActuel);
+                    }
+
+                    // Récupérer la composante du circuit
+                    composanteActuelle = GetComponent<ComposanteDuCircuit>();
+                    if (composanteActuelle == null)
+                    {
+                        Debug.LogError("ComposanteDuCircuit manquante sur l'objet: " + gameObject.name);
+                        return;
+                    }
+
+                    // Définir la position d'apparition du changeur
+                    Vector3 positionDapparition = transform.position + new Vector3(0, 1f, 0);
+
+                    // Créer et instancier un nouveau changeur
+                    changeurActuel = Instantiate(changeur, positionDapparition, Quaternion.identity);
+
+                    // Mettre à jour les références des boutons
+                    boutonPositif = changeurActuel.transform.Find("BoutonPositif")?.gameObject;
+                    boutonNegatif = changeurActuel.transform.Find("BoutonNegatif")?.gameObject;
+
+                    if (boutonPositif == null || boutonNegatif == null)
+                    {
+                        Debug.LogError("Boutons manquants dans le prefab BlocInfos");
+                    }
+
+                    // Mettre à jour le texte immédiatement
+                    TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
+                    texte.text = composanteActuelle.TexteValeur();
+
+                    Debug.Log("Changeur créé pour: " + gameObject.name);
+                }
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Détruire le changeur associé quand cet objet est détruit
+        if (changeurActuel != null)
+        {
+            Destroy(changeurActuel);
         }
     }
 }

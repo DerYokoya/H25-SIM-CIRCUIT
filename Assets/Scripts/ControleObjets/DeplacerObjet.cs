@@ -31,9 +31,9 @@ public class DeplacerObjet : MonoBehaviour
     {
         Vector3 posSouris = Input.mousePosition;
 
-        float depth = GetPositionSouris().z;
+        float profondeur = GetPositionSouris().z;
 
-        Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, depth));
+        Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, profondeur));
 
         Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, positionMonde.z);
 
