@@ -24,6 +24,13 @@ public class SupprimerObjet : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+
+            GameObject changeurExiste = GameObject.Find("BlocInfos(Clone)");
+            if (changeurExiste != null)
+            {
+                Destroy(changeurExiste.gameObject);
+            }
+
             // Trouver tous les objets dans la scène qui ont la composante «SupprimerObjet»
             SupprimerObjet[] objetsASupprimer = FindObjectsOfType<SupprimerObjet>();
 

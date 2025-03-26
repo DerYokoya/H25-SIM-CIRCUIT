@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4292560869682914981}
   - component: {fileID: -6253195659990228149}
   - component: {fileID: -2596314855213793563}
+  - component: {fileID: -2581364644191104874}
   m_Layer: 0
   m_Name: Interrupteur
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.051, y: 3.36, z: -8.652}
-  m_LocalScale: {x: 0.6, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1.8, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  yConstant: 0
 --- !u!114 &4292560869682914981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +152,6 @@ MonoBehaviour:
   camera: {fileID: 0}
   doubleOuPas: 0
   angleRotation: 0
-  camera: {fileID: 0}
 --- !u!114 &-2596314855213793563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +170,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-2581364644191104874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758369996531837073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa55139266a339545b4b97e47ecae4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}

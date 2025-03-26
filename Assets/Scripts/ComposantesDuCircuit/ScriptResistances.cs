@@ -31,7 +31,7 @@ public class Resistance : ComposanteDuCircuit
 
     public override string TexteValeur()
     {
-        return ValeurResistance + "'\u03A9'"; // '\u03A9' est le symbole des ohms
+        return ValeurResistance + "\u03A9"; // '\u03A9' est le symbole des ohms
     }
 
     /*public string[] DeterminerCouleurs(double resistance) {
