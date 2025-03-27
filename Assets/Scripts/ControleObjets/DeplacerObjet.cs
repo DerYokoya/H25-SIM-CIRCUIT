@@ -7,13 +7,11 @@ public class DeplacerObjet : MonoBehaviour
     public Camera camera;
     Vector3 positionSouris;
     public float yConstant; // Positon de y fixe est initialisee, mais pas encore declaree
-   
 
     private void Start()
     {
         yConstant = transform.position.y; // Position de y sera fixe
         camera = GameObject.Find("Camera").GetComponent<Camera>();
-        
     }
 
     public Vector3 GetPositionSouris()
@@ -21,9 +19,8 @@ public class DeplacerObjet : MonoBehaviour
         return camera.WorldToScreenPoint(transform.position);
     }
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
-
         positionSouris = Input.mousePosition - GetPositionSouris();
     }
 
