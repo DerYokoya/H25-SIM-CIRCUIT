@@ -12,9 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower;
     public float lookSpeed;
     public float lookXLimit;
-    public float defaultHeight;
-    public float crouchHeight;
-    public float crouchSpeed;
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
@@ -60,16 +57,8 @@ void Update()
             moveDirection.y += Physics.gravity.y * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.R) && canMove)
-        {
-            characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
-            runSpeed = crouchSpeed;
-
-        }
         else
         {
-            characterController.height = defaultHeight;
             walkSpeed = initWalkSpeed;
             runSpeed = initRunSpeed;
         }
