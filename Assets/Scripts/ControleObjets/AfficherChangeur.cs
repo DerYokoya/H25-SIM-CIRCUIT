@@ -35,6 +35,9 @@ public class AfficherChangeur : MonoBehaviour
             {
                 texte.text = composanteActuelle.TexteValeur();
             }
+
+            //Suivre la composante du circuit
+            changeurActuel.transform.position = transform.position + new Vector3(0, 1.25f, 0);
         }
 
         // Gestion des clics sur les boutons
