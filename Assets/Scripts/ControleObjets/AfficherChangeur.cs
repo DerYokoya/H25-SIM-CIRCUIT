@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AfficherChangeur : MonoBehaviour
 {
+    public Transform personnage;
     public Camera camera;
     GameObject changeur;
     GameObject changeurActuel; // Plus statique, chaque instance a son propre changeur
@@ -13,29 +14,37 @@ public class AfficherChangeur : MonoBehaviour
 
     void Start()
     {
-        camera = GameObject.Find("Camera").GetComponent<Camera>();
         changeur = Resources.Load<GameObject>("Prefabs/BlocInfos");
 
         if (GetComponent<Collider>() == null)
         {
             Debug.LogError("Collider manquant pour l'objet: " + gameObject.name);
         }
+
     }
 
     void Update()
     {
+        camera = GameObject.Find("Camera").GetComponent<Camera>();
+        personnage = GameObject.Find("Personnage").GetComponent<Transform>();
         Ray souris = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit elementTouche;
 
         // Mettre à jour le texte du changeur s'il existe et appartient à cet objet
         if (changeurActuel != null)
         {
+            Vector3 vecteurLien = personnage.position - changeurActuel.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(vecteurLien);
+            changeurActuel.transform.rotation = rotation  ;
+
+
             TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
             if (composanteActuelle != null)
             {
                 texte.text = composanteActuelle.TexteValeur();
             }
         }
+
 
         // Gestion des clics sur les boutons
         if (Physics.Raycast(souris, out elementTouche))
@@ -117,7 +126,7 @@ public class AfficherChangeur : MonoBehaviour
 
     void OnDestroy()
     {
-        // Détruire le changeur associé quand cet objet est détruit
+        // Détruire le changeur associé quand cet objet est détruit+
         if (changeurActuel != null)
         {
             Destroy(changeurActuel);

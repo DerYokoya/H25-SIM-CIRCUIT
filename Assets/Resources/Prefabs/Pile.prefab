@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa55139266a339545b4b97e47ecae4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personnage: {fileID: 0}
   camera: {fileID: 0}
 --- !u!1001 &451354632675372095
 PrefabInstance:
