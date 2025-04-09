@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7487434604365467450}
   - component: {fileID: 5549394384176852426}
   - component: {fileID: 8724203496269601500}
+  - component: {fileID: 119400771688166221}
   m_Layer: 0
   m_Name: Attache1
-  m_TagString: Untagged
+  m_TagString: Composante
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +106,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &119400771688166221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606329949094080844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapDistance: 1
+  autoSnap: 1
 --- !u!1 &4023342330532842373
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +132,10 @@ GameObject:
   - component: {fileID: 4225486606391798428}
   - component: {fileID: 7051775611880969690}
   - component: {fileID: 4063981104346945362}
+  - component: {fileID: 7368208120548612693}
   m_Layer: 0
   m_Name: Attache2
-  m_TagString: Untagged
+  m_TagString: Composante
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +226,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7368208120548612693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4023342330532842373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapDistance: 1
+  autoSnap: 1
 --- !u!1 &5573680252472600129
 GameObject:
   m_ObjectHideFlags: 0
