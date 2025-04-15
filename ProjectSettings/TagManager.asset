@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Terrain
   - Composante
+  - Attache
   layers:
   - Default
   - TransparentFX

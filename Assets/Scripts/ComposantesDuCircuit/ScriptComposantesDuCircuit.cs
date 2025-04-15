@@ -12,6 +12,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
     public Ray souris;
     public RaycastHit interrupteurTouche;
     public float angleRotation;
+
     public void Start()
     {
         GetComponent<Outline>().enabled = false;

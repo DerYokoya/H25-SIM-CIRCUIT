@@ -7,7 +7,7 @@ public class SupprimerObjet : MonoBehaviour
     {
         camera = GameObject.Find("Camera").GetComponent<Camera>();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             // Le raycast vérifie si la souris est sur cet objet
             Ray souris = camera.ScreenPointToRay(Input.mousePosition);

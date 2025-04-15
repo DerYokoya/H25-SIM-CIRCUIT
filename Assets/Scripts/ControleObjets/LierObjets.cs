@@ -1,70 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LierObjets : MonoBehaviour
+public class AttacheSnapping : MonoBehaviour
 {
-    public float snapDistance = 0.05f;
-    public bool autoSnap = true;
+    [Tooltip("Root of the object this Attache belongs to.")]
+    public Transform parentObject;
 
-    private Collider myCollider;
-    private Transform connectedObject;
-    private Vector3 snapOffset;
-    private bool isSnapped = false;
-    private Transform parentToMove;
-    private float longueurParent;
+    [Tooltip("Tag used for other Attache objects.")]
+    public string otherAttachTag = "Attache";
 
-    void Start()
+    private bool hasSnapped = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        myCollider = GetComponent<Collider>();
-        parentToMove = transform.parent; // Move the whole component (e.g., "Pile")
-        longueurParent = parentToMove.GetComponentInChildren<Renderer>().bounds.size.x;
-    }
+        // Prevent multiple snaps if only one is allowed
+        if (hasSnapped) return;
 
-    void Update()
-    {
-        if (!isSnapped && autoSnap)
-        {
-            TrySnapToNearestComposante();
-        }
+        // Check tag
+        if (!other.CompareTag(otherAttachTag)) return;
 
-        if (isSnapped && connectedObject != null)
-        {
-            parentToMove.position = connectedObject.position + snapOffset + new Vector3(longueurParent/2 , 0 , 0);
-        }
-    }
+        // Get the other attache's root
+        Transform otherAttach = other.transform;
+        Transform otherParent = otherAttach.root;
 
-    void TrySnapToNearestComposante()
-    {
-        GameObject[] candidates = GameObject.FindGameObjectsWithTag("Composante");
+        // --- SNAP LOGIC ---
+        // 1. Compute offset between this attache and its parent
+        Vector3 offset = parentObject.position - transform.position;
 
-        foreach (GameObject candidate in candidates)
-        {
-            if (candidate == gameObject) continue;
+        // 2. Snap parent to make this attache match the other attache
+        Vector3 targetPosition = otherAttach.position + offset;
+        parentObject.position = targetPosition;
 
-            Collider targetCol = candidate.GetComponent<Collider>();
-            if (targetCol == null) continue;
+        // Optional: Align rotation
+        // parentObject.rotation = otherAttach.rotation;
 
-            Vector3 myClosestPoint = myCollider.ClosestPoint(targetCol.transform.position);
-            Vector3 targetClosestPoint = targetCol.ClosestPoint(myClosestPoint);
-            Vector3 offset = targetClosestPoint - myClosestPoint;
-
-            // We check if they already overlap (distance very small)
-            if (offset.magnitude < snapDistance)
-            {
-                parentToMove.position += offset;
-                connectedObject = candidate.transform;
-                snapOffset = parentToMove.position - connectedObject.position;
-                isSnapped = true;
-                return; // break out after the first valid match
-            }
-        }
-    }
-
-
-    public void ResetSnap()
-    {
-        isSnapped = false;
-        connectedObject = null;
+        hasSnapped = true;
+        Debug.Log("cooler");
     }
 }

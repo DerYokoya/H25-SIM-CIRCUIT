@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 119400771688166221}
   m_Layer: 0
   m_Name: Attache1
-  m_TagString: Composante
+  m_TagString: Attache
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 606329949094080844}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.35}
-  m_LocalScale: {x: 1, y: 1, z: 0.33333334}
+  m_LocalPosition: {x: 0, y: 0, z: 0.55}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6637593711721539227}
@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapDistance: 1
-  autoSnap: 1
+  parentObject: {fileID: 6637593711721539227}
+  otherAttachTag: Attache
 --- !u!1 &4023342330532842373
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7368208120548612693}
   m_Layer: 0
   m_Name: Attache2
-  m_TagString: Composante
+  m_TagString: Attache
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,8 +149,8 @@ Transform:
   m_GameObject: {fileID: 4023342330532842373}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.35}
-  m_LocalScale: {x: 1, y: 1, z: 0.33333334}
+  m_LocalPosition: {x: 0, y: 0, z: -0.592}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6637593711721539227}
@@ -220,7 +220,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapDistance: 1
-  autoSnap: 1
+  parentObject: {fileID: 6637593711721539227}
+  otherAttachTag: Attache
 --- !u!1 &5573680252472600129
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  yConstant: 0
+  yConstant: 0.5
 --- !u!114 &3215617018341606115
 MonoBehaviour:
   m_ObjectHideFlags: 0
