@@ -15,7 +15,7 @@ public class SupprimerObjet : MonoBehaviour
 
             if (Physics.Raycast(souris, out elementTouche))
             {
-                if (elementTouche.collider.gameObject == gameObject && (Input.GetKeyDown(KeyCode.Q)))
+                if (elementTouche.collider.gameObject == gameObject && (Input.GetKeyDown(KeyCode.X)))
                 {
                     Destroy(gameObject); //Détruire l'objet si la souris fait un clic droit dessus
                 }
