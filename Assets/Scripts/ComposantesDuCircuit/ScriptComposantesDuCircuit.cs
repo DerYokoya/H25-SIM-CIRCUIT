@@ -6,8 +6,6 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
     public bool fonctionne { get; set; } = false; //Initialisé à faux
     public bool tournerOuPas { get; set; }
     public Camera camera;
-    private float seuilDoubleClic = 0.3f; // Temps max entre deux clics pour que ça compte comme un double clic
-    private float dernierMomentDeClic = 0f;
     public bool doubleOuPas = false;
     public Ray souris;
     public RaycastHit interrupteurTouche;
@@ -34,37 +32,19 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
         {
             GetComponent<Outline>().enabled = true;
 
-            if (Input.GetMouseButtonDown(0))  // 0 pour clic gauche 
-            {
-
-                doubleOuPas = true;
-                if (Time.time - dernierMomentDeClic < seuilDoubleClic)
-                {
-                    horizotalOuVertical(); // Ouvrir ou fermer s'il y a un double-clic gauche dessus
-                    Rotation();
-
-                }
-                dernierMomentDeClic = Time.time;
-            }
-           
-
         } else
             {
                 GetComponent<Outline>().enabled = false;
             }
 
     }
+    //a regler etait la a cause de la methode rotation à utiliser probablement pour interrupteir
     public void horizotalOuVertical()
     {
         tournerOuPas = !tournerOuPas;
         fonctionne = !tournerOuPas;
     }
-    public void Rotation()
-    {
-        float angleRotation = tournerOuPas ? 90f : 0f; // Interrupteur ouvert? Vrai : 45 degrés. Faux : 0 degré.
-        transform.rotation = Quaternion.Euler(0f, angleRotation, 0f);
 
-    }
     public bool SourirEstDessu()
     {
         Ray souris = camera.ScreenPointToRay(Input.mousePosition);

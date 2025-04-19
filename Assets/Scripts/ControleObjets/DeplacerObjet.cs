@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeplacerObjet : MonoBehaviour
@@ -22,6 +20,15 @@ public class DeplacerObjet : MonoBehaviour
     private void OnMouseDown()
     {
         positionSouris = Input.mousePosition - GetPositionSouris();
+
+    }
+
+    public void Rotation()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + 90f, 0f);
+        }
     }
 
     public void OnMouseDrag()
@@ -35,5 +42,6 @@ public class DeplacerObjet : MonoBehaviour
         Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, positionMonde.z);
 
         transform.position = nouvellePosition;
+        Rotation();
     }
 }
