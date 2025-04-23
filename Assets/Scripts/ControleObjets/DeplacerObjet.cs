@@ -26,21 +26,33 @@ public class DeplacerObjet : MonoBehaviour
     public void OnMouseDrag()
     {
         Vector3 posSouris = Input.mousePosition;
-
         float profondeur = GetPositionSouris().z;
-
         Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, profondeur));
 
+        GameObject sol = GameObject.FindGameObjectWithTag("Ground");
+        if (sol != null)
+        {
+            BoxCollider solCollider = sol.GetComponent<BoxCollider>();
+            if (solCollider != null)
+            {
+                Bounds limites = solCollider.bounds;
 
+                // Taille de l'objet qu'on d�place (pour �viter qu'il d�passe avec son bord)
+                Renderer rend = GetComponent<Renderer>();
+                Vector3 objetExtent = rend != null ? rend.bounds.extents : Vector3.zero;
 
-        Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, positionMonde.z);
+                // Clamp avec marges
+                float xLimit� = Mathf.Clamp(positionMonde.x, limites.min.x + objetExtent.x, limites.max.x - objetExtent.x);
+                float zLimit� = Mathf.Clamp(positionMonde.z, limites.min.z + objetExtent.z, limites.max.z - objetExtent.z);
 
-        transform.position = nouvellePosition;
+                Vector3 nouvellePosition = new Vector3(xLimit�, yConstant, zLimit�);
+                transform.position = nouvellePosition;
 
-       
-
-        Rotation();
+                Rotation();
+            }
+        }
     }
+
     public void Rotation()
     {
         if (Input.GetKeyDown(KeyCode.R))

@@ -9,7 +9,7 @@ public class Resistance : ComposanteDuCircuit
     public Renderer bandesRenderer;
     private double derniereResistance = -1; // Pour comparer pour savoir quand changer les couleurs des bandes
 
-    void Awake()
+    protected virtual void Awake()
     {
         bandesRenderer = transform.Find("Corps/BandesCouleur").GetComponent<Renderer>();
 
@@ -28,7 +28,7 @@ public class Resistance : ComposanteDuCircuit
         CouleursResistance.Argent = Resources.Load<Material>("Couleurs/couleurArgent");
         CouleursResistance.Erreur = Resources.Load<Material>("Couleurs/Transparent");
     }
-    void Update()
+    protected virtual void Update()
     {
         if (ValeurResistance != derniereResistance)
         {
