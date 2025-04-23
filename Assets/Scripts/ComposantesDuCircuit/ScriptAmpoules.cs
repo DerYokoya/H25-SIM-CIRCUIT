@@ -1,13 +1,20 @@
 using System;
-using UnityEngine;
 
 public class Ampoule : Resistance
-
 
 {
     public double Puissance { get; set; }
     public double Tension { get; set; }
     public double Luminosite { get; set; }
+
+
+    protected override void Awake()
+    {
+    }
+
+    protected override void Update()
+    {
+    }
 
     public void ChangementLuminosite()
     {
