@@ -23,14 +23,6 @@ public class DeplacerObjet : MonoBehaviour
 
     }
 
-    public void Rotation()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + 90f, 0f);
-        }
-    }
-
     public void OnMouseDrag()
     {
         Vector3 posSouris = Input.mousePosition;
@@ -43,5 +35,12 @@ public class DeplacerObjet : MonoBehaviour
 
         transform.position = nouvellePosition;
         Rotation();
+    }
+    public void Rotation()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + 90f, 0f);
+        }
     }
 }

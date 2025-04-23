@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttacheSnapping : MonoBehaviour
@@ -10,10 +11,8 @@ public class AttacheSnapping : MonoBehaviour
 
     private bool hasSnapped = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
-        // Prevent multiple snaps if only one is allowed
-        if (hasSnapped) return;
 
         // Check tag
         if (!other.CompareTag(otherAttachTag)) return;
@@ -35,5 +34,14 @@ public class AttacheSnapping : MonoBehaviour
 
         hasSnapped = true;
         Debug.Log("cooler");
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        hasSnapped = false;
+    }
+
+    public void Update()
+    {
+        
     }
 }
