@@ -35,17 +35,17 @@ public class DeplacerObjet : MonoBehaviour
             BoxCollider solCollider = sol.GetComponent<BoxCollider>();
             if (solCollider != null)
             {
-                Bounds bounds = solCollider.bounds;
+                Bounds limites = solCollider.bounds;
 
                 // Taille de l'objet qu'on déplace (pour éviter qu'il dépasse avec son bord)
                 Renderer rend = GetComponent<Renderer>();
                 Vector3 objetExtent = rend != null ? rend.bounds.extents : Vector3.zero;
 
                 // Clamp avec marges
-                float clampX = Mathf.Clamp(positionMonde.x, bounds.min.x + objetExtent.x, bounds.max.x - objetExtent.x);
-                float clampZ = Mathf.Clamp(positionMonde.z, bounds.min.z + objetExtent.z, bounds.max.z - objetExtent.z);
+                float xLimité = Mathf.Clamp(positionMonde.x, limites.min.x + objetExtent.x, limites.max.x - objetExtent.x);
+                float zLimité = Mathf.Clamp(positionMonde.z, limites.min.z + objetExtent.z, limites.max.z - objetExtent.z);
 
-                Vector3 nouvellePosition = new Vector3(clampX, yConstant, clampZ);
+                Vector3 nouvellePosition = new Vector3(xLimité, yConstant, zLimité);
                 transform.position = nouvellePosition;
 
                 Rotation();
