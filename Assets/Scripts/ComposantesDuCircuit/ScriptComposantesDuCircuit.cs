@@ -6,7 +6,6 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
     public bool fonctionne { get; set; } = false; //Initialisé à faux
     public bool tournerOuPas { get; set; }
     public Camera camera;
-    public bool doubleOuPas = false;
     public Ray souris;
     public RaycastHit interrupteurTouche;
     public float angleRotation;
@@ -25,7 +24,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
     public void Update()
     {
         camera = GameObject.Find("Camera").GetComponent<Camera>();
-        doubleOuPas = false;
+   
 
 
         if (SourirEstDessu())
@@ -39,11 +38,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
 
     }
     //a regler etait la a cause de la methode rotation à utiliser probablement pour interrupteir
-    public void horizotalOuVertical()
-    {
-        tournerOuPas = !tournerOuPas;
-        fonctionne = !tournerOuPas;
-    }
+   
 
     public bool SourirEstDessu()
     {

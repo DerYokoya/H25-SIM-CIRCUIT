@@ -31,9 +31,14 @@ public class DeplacerObjet : MonoBehaviour
 
         Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, profondeur));
 
+
+
         Vector3 nouvellePosition = new Vector3(positionMonde.x, yConstant, positionMonde.z);
 
         transform.position = nouvellePosition;
+
+       
+
         Rotation();
     }
     public void Rotation()
