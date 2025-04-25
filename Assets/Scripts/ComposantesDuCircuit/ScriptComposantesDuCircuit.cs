@@ -21,39 +21,7 @@ public abstract class ComposanteDuCircuit : MonoBehaviour
                                    donc nous changeront l'état. */
     }
 
-    public void Update()
-    {
-        camera = GameObject.Find("Camera").GetComponent<Camera>();
    
-
-
-        if (SourirEstDessu())
-        {
-            GetComponent<Outline>().enabled = true;
-
-        } else
-            {
-                GetComponent<Outline>().enabled = false;
-            }
-
-    }
-    //a regler etait la a cause de la methode rotation à utiliser probablement pour interrupteir
-   
-
-    public bool SourirEstDessu()
-    {
-        Ray souris = camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit interrupteurTouche;
-        if (Physics.Raycast(souris, out interrupteurTouche))
-        {
-            if (interrupteurTouche.collider.gameObject == gameObject)
-            {
-                return true;
-            }
-
-        }
-        return false;
-    }
 
     public abstract void Augmentation(); // Augmenter une valeur (volts chez la pile, résistance chez la résistance, etc.)
 

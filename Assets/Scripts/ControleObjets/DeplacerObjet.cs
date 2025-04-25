@@ -17,10 +17,14 @@ public class DeplacerObjet : MonoBehaviour
         return camera.WorldToScreenPoint(transform.position);
     }
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
     {
-        positionSouris = Input.mousePosition - GetPositionSouris();
+        GetComponent<Outline>().enabled = true;
+    }
 
+    private void OnMouseExit()
+    {
+        GetComponent<Outline>().enabled = false;
     }
 
     public void OnMouseDrag()
@@ -42,20 +46,26 @@ public class DeplacerObjet : MonoBehaviour
                 Vector3 objetExtent = rend != null ? rend.bounds.extents : Vector3.zero;
 
                 // Clamp avec marges
-                float xLimit� = Mathf.Clamp(positionMonde.x, limites.min.x + objetExtent.x, limites.max.x - objetExtent.x);
-                float zLimit� = Mathf.Clamp(positionMonde.z, limites.min.z + objetExtent.z, limites.max.z - objetExtent.z);
+                float xLimite = Mathf.Clamp(positionMonde.x, limites.min.x + objetExtent.x, limites.max.x - objetExtent.x);
+                float zLimite = Mathf.Clamp(positionMonde.z, limites.min.z + objetExtent.z, limites.max.z - objetExtent.z);
 
-                Vector3 nouvellePosition = new Vector3(xLimit�, yConstant, zLimit�);
+                Vector3 nouvellePosition = new Vector3(xLimite, yConstant, zLimite);
                 transform.position = nouvellePosition;
 
                 Rotation();
             }
         }
     }
+    private void OnMouseDown()
+    {
+        positionSouris = Input.mousePosition - GetPositionSouris();
+        GetComponent<Outline>().enabled = false;
+
+    }
 
     public void Rotation()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && transform.CompareTag("Composante"))
         {
             transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + 90f, 0f);
         }

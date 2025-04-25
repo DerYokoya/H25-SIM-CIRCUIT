@@ -13,20 +13,21 @@ public class Interrupteur : Fil
         interrupteurRenderer = GetComponent<Renderer>();
 
     }
+    /**
     private void Update()
-    {
-        base.Update();
+      {
+          base.Update();
 
-        if (SourirEstDessu()) { 
-            if (Input.GetMouseButtonDown(1))
-            { 
-                OuvrirOuFermer();
-                tournerInterrupteur();
-            }
-        }
-        
-    }
-
+          if (SourirEstDessu()) { 
+              if (Input.GetMouseButtonDown(1))
+              { 
+                  OuvrirOuFermer();
+                  tournerInterrupteur();
+              }
+          }
+          
+      }
+    */
 
     public void OuvrirOuFermer()
     {

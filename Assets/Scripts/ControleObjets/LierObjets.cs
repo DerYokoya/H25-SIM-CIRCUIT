@@ -9,11 +9,8 @@ public class AttacheSnapping : MonoBehaviour
     [Tooltip("Tag used for other Attache objects.")]
     public string otherAttachTag = "Attache";
 
-    private bool hasSnapped = false;
-
     public void OnTriggerStay(Collider other)
     {
-
         // Check tag
         if (!other.CompareTag(otherAttachTag)) return;
 
@@ -31,17 +28,6 @@ public class AttacheSnapping : MonoBehaviour
 
         // Optional: Align rotation
         // parentObject.rotation = otherAttach.rotation;
-
-        hasSnapped = true;
         Debug.Log("cooler");
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        hasSnapped = false;
-    }
-
-    public void Update()
-    {
-        
     }
 }
