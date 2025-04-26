@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pile : ComposanteDuCircuit
 {
-    public double Tension { get; private set; }
+    public double Tension { get; private set; } = 10;
     public double Capacite { get; private set; }
     public bool Surchauffee { get; private set; } = false;
 

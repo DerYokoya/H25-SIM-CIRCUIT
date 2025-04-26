@@ -69,7 +69,7 @@ public class AfficherChangeur : MonoBehaviour
                         Debug.Log("Augmentation appliquée.");
                     }
 
-                    TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
+                    TextMeshPro texte = changeurActuel.transform.Find("Texte")?.GetComponent<TextMeshPro>();
                     if (composanteActuelle != null)
                     {
                         texte.text = composanteActuelle.TexteValeur();
