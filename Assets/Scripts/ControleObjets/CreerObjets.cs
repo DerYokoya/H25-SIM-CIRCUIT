@@ -14,13 +14,15 @@ public class CreerObjets : MonoBehaviour
         GameObject resistance = Resources.Load<GameObject>("Prefabs/Resistance");
         GameObject ampoule = Resources.Load<GameObject>("Prefabs/Ampoule");
         GameObject interrupteur = Resources.Load<GameObject>("Prefabs/Interrupteur");
+        GameObject fusible = Resources.Load<GameObject>("Prefabs/Fusible");
 
         // Associer les touches aux objets
         objetsACreer.Add(KeyCode.Alpha1, fil);
         objetsACreer.Add(KeyCode.Alpha2, pile);
-        objetsACreer.Add(KeyCode.Alpha3, resistance);
-        objetsACreer.Add(KeyCode.Alpha4, ampoule);
+        objetsACreer.Add(KeyCode.Alpha3, ampoule);
+        objetsACreer.Add(KeyCode.Alpha4, resistance);
         objetsACreer.Add(KeyCode.Alpha5, interrupteur);
+        objetsACreer.Add(KeyCode.Alpha6, fusible);
     }
 
     void Update()
