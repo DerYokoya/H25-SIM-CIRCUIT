@@ -4,13 +4,17 @@ public class CylinderBetweenPoints : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
-    public float radius;
+
+    public float rayon;
     public Material cylinderMaterial;
 
     private GameObject cylinder;
 
+    private BoxCollider regionDeplacementComplet;
+
     void Start()
     {
+        regionDeplacementComplet = this.GetComponent<BoxCollider>();
         CreateCylinder();
     }
 
@@ -24,6 +28,7 @@ public class CylinderBetweenPoints : MonoBehaviour
         cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         cylinder.transform.SetParent(this.transform);
         cylinder.GetComponent<Renderer>().material = cylinderMaterial;
+        cylinder.AddComponent<Outline>();
         UpdateCylinder();
     }
 
@@ -38,7 +43,7 @@ public class CylinderBetweenPoints : MonoBehaviour
         float distance = direction.magnitude;
 
         // Cylinder height is distance between points
-        cylinder.transform.localScale = new Vector3(radius, distance / 2, radius);
+        cylinder.transform.localScale = new Vector3(rayon, distance / 2, rayon);
 
         // Rotate to point from A to B
         cylinder.transform.rotation = Quaternion.LookRotation(direction);
