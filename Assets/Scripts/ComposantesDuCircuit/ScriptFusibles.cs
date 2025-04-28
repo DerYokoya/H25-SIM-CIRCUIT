@@ -4,7 +4,6 @@ using UnityEngine;
 public class Fusible : ComposanteDuCircuit
 {
     public double IntensiteMax { get; private set; }
-    public double Intensite { get; set; }
 
     public override void Augmentation() => AjusterIntensiteMax(3);
 
@@ -25,9 +24,9 @@ public class Fusible : ComposanteDuCircuit
         IntensiteMax = intensiteMax;
     }
 
-    public void VerifierIntensite()
+    public void VerifierIntensite(float intensite)
     {
-        if (Intensite > IntensiteMax)
+        if (intensite > IntensiteMax)
         {
             ChangerEtat();
         }
@@ -35,7 +34,6 @@ public class Fusible : ComposanteDuCircuit
 
     public override string TexteValeur()
     {
-        return "Maximum : " + IntensiteMax + " A" +
-            "\n" + "Actuelle : " + Intensite + "A";
+        return "Maximum : " + IntensiteMax + " A";
     }
 }

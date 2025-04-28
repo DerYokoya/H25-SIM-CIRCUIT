@@ -45,7 +45,7 @@ public class AfficherChangeur : MonoBehaviour
             }
 
             //Suivre la composante du circuit
-            changeurActuel.transform.position = transform.position + new Vector3(0, 1.25f, 0);
+            changeurActuel.transform.position = transform.position + new Vector3(0, composanteActuelle.GetComponent<BoxCollider>().size.y + 0.2f, 0);
         }
 
 
@@ -103,7 +103,7 @@ public class AfficherChangeur : MonoBehaviour
                     }
 
                     // Définir la position d'apparition du changeur
-                    Vector3 positionDapparition = transform.position + new Vector3(0, 1f, 0);
+                    Vector3 positionDapparition = transform.position + new Vector3(0, 0, 0);
 
                     // Créer et instancier un nouveau changeur
                     changeurActuel = Instantiate(changeur, positionDapparition, Quaternion.identity);
