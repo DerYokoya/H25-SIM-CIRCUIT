@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Resistance : ComposanteDuCircuit
 {
-    public double ValeurResistance { get; private set; } /*Si nous appelons ceci Resistance, il y aura une erreur
+    public double ValeurResistance { get; private set; } = 10; /*Si nous appelons ceci Resistance, il y aura une erreur
                                                             car la classe s'appele déja Resistance*/
 
     public Renderer bandesRenderer;
