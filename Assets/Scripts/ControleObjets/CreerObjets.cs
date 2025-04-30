@@ -6,8 +6,15 @@ public class CreerObjets : MonoBehaviour
     public Camera camera;
     public Dictionary<KeyCode, GameObject> objetsACreer = new Dictionary<KeyCode, GameObject>(); //Dictionaire keycode-composante
 
+    public AudioClip creationAudio; // À définir dans l'inspecteur directement
+    private AudioSource sourceAudio;
+
     void Start()
     {
+
+        sourceAudio = gameObject.AddComponent<AudioSource>();
+        sourceAudio.clip = creationAudio;
+
         // Charger les objets depuis les ressources
         GameObject fil = Resources.Load<GameObject>("Prefabs/Fil");
         GameObject pile = Resources.Load<GameObject>("Prefabs/Pile");
@@ -39,6 +46,7 @@ public class CreerObjets : MonoBehaviour
             if (Input.GetKeyDown(paire.Key))
             {
                 Instantiate(paire.Value, new Vector3(positionSourisMonde.x, 23.491f, positionSourisMonde.z), Quaternion.identity);
+                sourceAudio.Play(); // Jouer le son à la création de l'objet
             }
         }
     }

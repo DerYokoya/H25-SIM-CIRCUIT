@@ -3,6 +3,31 @@ using UnityEngine;
 public class SupprimerObjet : MonoBehaviour
 {
     public Camera camera;
+
+    private static AudioSource sourceAudio;
+    private static AudioClip suppressionAudio;
+
+    void Start()
+    {
+        if (suppressionAudio == null)
+        {
+            suppressionAudio = Resources.Load<AudioClip>("Sons/EffetsSonores/EffetSuppression");
+            if (suppressionAudio == null)
+                Debug.LogWarning("Le son de suppression est introuvable.");
+        }
+
+        if (camera == null)
+        {
+            camera = GameObject.Find("Camera").GetComponent<Camera>();
+        }
+
+        if (sourceAudio == null)
+        {
+            sourceAudio = camera.GetComponent<AudioSource>();
+            if (sourceAudio == null)
+                sourceAudio = camera.gameObject.AddComponent<AudioSource>();
+        }
+    }
     void Update()
     {
         camera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -17,6 +42,7 @@ public class SupprimerObjet : MonoBehaviour
             {
                 if (elementTouche.collider.gameObject == gameObject && (Input.GetKeyDown(KeyCode.X)))
                 {
+                    sourceAudio.PlayOneShot(suppressionAudio);
                     Destroy(gameObject); //Détruire l'objet si la souris fait un clic droit dessus
                 }
             }
@@ -24,6 +50,7 @@ public class SupprimerObjet : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+            sourceAudio.PlayOneShot(suppressionAudio);
 
             GameObject changeurExiste = GameObject.Find("BlocInfos(Clone)");
             if (changeurExiste != null)
