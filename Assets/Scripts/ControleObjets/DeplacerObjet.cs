@@ -12,6 +12,12 @@ public class DeplacerObjet : MonoBehaviour
         camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
+
+    private void Update()
+    {
+        OnMouseDown();
+    }
+
     public Vector3 GetPositionSouris()
     {
         return camera.WorldToScreenPoint(transform.position);
