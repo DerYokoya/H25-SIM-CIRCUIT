@@ -12,6 +12,9 @@ public class AfficherChangeur : MonoBehaviour
     GameObject boutonPositif;
     GameObject boutonNegatif;
 
+    private float delaiEntreModifications = 0.2f; // seconds between changes
+    private float prochainTempsAutorise = 0f;
+
     void Start()
     {
         changeur = Resources.Load<GameObject>("Prefabs/BlocInfos");
@@ -52,21 +55,22 @@ public class AfficherChangeur : MonoBehaviour
         // Gestion des clics sur les boutons
         if (Physics.Raycast(souris, out elementTouche))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0) && Time.time >= prochainTempsAutorise)
             {
-                // Vérifier si le clic est sur nos boutons et que le changeur actuel appartient à cet objet
                 if (changeurActuel != null)
                 {
                     if (boutonNegatif != null && elementTouche.collider.gameObject == boutonNegatif)
                     {
                         composanteActuelle?.Diminution();
                         Debug.Log("Diminution appliquée.");
+                        prochainTempsAutorise = Time.time + delaiEntreModifications;
                     }
 
                     if (boutonPositif != null && elementTouche.collider.gameObject == boutonPositif)
                     {
                         composanteActuelle?.Augmentation();
                         Debug.Log("Augmentation appliquée.");
+                        prochainTempsAutorise = Time.time + delaiEntreModifications;
                     }
 
                     TextMeshPro texte = changeurActuel.transform.Find("Texte")?.GetComponent<TextMeshPro>();
@@ -76,6 +80,7 @@ public class AfficherChangeur : MonoBehaviour
                     }
                 }
             }
+
         }
 
         // Instantiation du changeur lorsqu'on appuie sur la touche I
