@@ -28,6 +28,25 @@ public class AttacheSnapping : MonoBehaviour
 
         // Optional: Align rotation
         // parentObject.rotation = otherAttach.rotation;
-        Debug.Log("cooler");
+        //Debug.Log("cooler");
+
+        ComposanteDuCircuit composanteA = parentObject.GetComponent<ComposanteDuCircuit>();
+        ComposanteDuCircuit composanteB = otherParent.GetComponent<ComposanteDuCircuit>();
+
+        if (composanteA != null && composanteB != null)
+        {
+            composanteA.connecte = true;
+            composanteB.connecte = true;
+
+            composanteA.Connecter(composanteB); // Ajoute dans les voisins
+            //Debug.Log($"Connecté {composanteA.name} avec {composanteB.name}");
+
+            // Recalculer le circuit circuit
+            ResoudreCircuit gestionnaire = FindObjectOfType<ResoudreCircuit>();
+            if (gestionnaire != null)
+                gestionnaire.ForcerRecalcul();
+
+        }
+
     }
 }
