@@ -40,12 +40,6 @@ public class AttacheSnapping : MonoBehaviour
 
             composanteA.Connecter(composanteB); // Ajoute dans les voisins
             //Debug.Log($"Connecté {composanteA.name} avec {composanteB.name}");
-
-            // Recalculer le circuit circuit
-            ResoudreCircuit gestionnaire = FindObjectOfType<ResoudreCircuit>();
-            if (gestionnaire != null)
-                gestionnaire.ForcerRecalcul();
-
         }
 
     }
