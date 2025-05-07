@@ -38,7 +38,7 @@ public class AfficherChangeur : MonoBehaviour
         {
             Vector3 vecteurLien = personnage.position - changeurActuel.transform.position;
             Quaternion rotation = Quaternion.LookRotation(vecteurLien);
-            changeurActuel.transform.rotation = rotation  ;
+            changeurActuel.transform.rotation = rotation;
 
 
             TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
@@ -93,10 +93,12 @@ public class AfficherChangeur : MonoBehaviour
                 // Si le raycast touche le GameObject actuel
                 if (elementTouche.collider.gameObject == gameObject)
                 {
-                    // Détruire l'ancien changeur s'il existe pour cet objet
+                    // Détruire l'ancien changeur s'il existe déjà (toggle off)
                     if (changeurActuel != null)
                     {
                         Destroy(changeurActuel);
+                        changeurActuel = null; // important pour éviter de croire qu'il est toujours là
+                        return;
                     }
 
                     // Récupérer la composante du circuit
@@ -128,7 +130,10 @@ public class AfficherChangeur : MonoBehaviour
 
                     Debug.Log("Changeur créé pour: " + gameObject.name);
                 }
+
             }
+
+
         }
     }
 
