@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4228954361996036528}
   - component: {fileID: 93829122659049841}
   - component: {fileID: 6370202064534978237}
+  - component: {fileID: 7197238683542714169}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -182,6 +183,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
+--- !u!114 &7197238683542714169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972039106450971848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 2055362965882556992}
+  ConnectedPoints: []
 --- !u!1 &4675582518526707205
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +348,9 @@ MonoBehaviour:
   voisins: []
   camera: {fileID: 0}
   angleRotation: 0
+  componentType: Fil
+  PointA: {fileID: 7197238683542714169}
+  PointB: {fileID: 1534458652286868898}
 --- !u!114 &1693509471754096745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +404,7 @@ GameObject:
   - component: {fileID: 508471101249839237}
   - component: {fileID: 7486161862911522452}
   - component: {fileID: 6377501323969308712}
+  - component: {fileID: 1534458652286868898}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -552,3 +571,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
+--- !u!114 &1534458652286868898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545980980812453349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 2055362965882556992}
+  ConnectedPoints: []

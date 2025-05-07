@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8861778342100471239}
   - component: {fileID: 8121358416021884348}
   - component: {fileID: 8640602501481923758}
+  - component: {fileID: 946290615953669943}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -167,6 +168,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &946290615953669943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155767592996553328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 1665213260974416736}
+  ConnectedPoints: []
 --- !u!1 &7000240350840370004
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +197,7 @@ GameObject:
   - component: {fileID: 7669976930594440444}
   - component: {fileID: 679666100577364763}
   - component: {fileID: 7583417211704328187}
+  - component: {fileID: 4622167227374034582}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -334,6 +350,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &4622167227374034582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000240350840370004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 1665213260974416736}
+  ConnectedPoints: []
 --- !u!1 &7645623049317175764
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,8 +534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cec4bbebb6f24d44861363cbb2b81df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voisins: []
   camera: {fileID: 0}
   angleRotation: 0
+  componentType: Resistance
+  PointA: {fileID: 4622167227374034582}
+  PointB: {fileID: 946290615953669943}
   bandesRenderer: {fileID: 0}
 --- !u!114 &-7675464875897805024
 MonoBehaviour:

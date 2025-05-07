@@ -13,6 +13,12 @@ using UnityEngine;
     public RaycastHit interrupteurTouche;
     public float angleRotation;
 
+    public string componentType;
+
+    public Attache PointA;    // Premier point d'attache
+    public Attache PointB;    // Deuxième point d'attache
+
+
     public void Connecter(ComposanteDuCircuit autre)
     {
         if (!voisins.Contains(autre))

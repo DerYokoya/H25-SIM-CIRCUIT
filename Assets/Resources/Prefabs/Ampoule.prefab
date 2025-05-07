@@ -158,8 +158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f583e94d88d6468187e6ea2401eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voisins: []
   camera: {fileID: 0}
   angleRotation: 0
+  componentType: Ampoule
+  PointA: {fileID: 4666851922866700349}
+  PointB: {fileID: 8454207616972963489}
   bandesRenderer: {fileID: 0}
 --- !u!114 &-6748946480998600456
 MonoBehaviour:
@@ -203,6 +207,7 @@ GameObject:
   - component: {fileID: 9221468779085454219}
   - component: {fileID: 2128422402831920086}
   - component: {fileID: 5552761022437945035}
+  - component: {fileID: 8454207616972963489}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -355,6 +360,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8454207616972963489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182980673965146377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: -8371958757688025257}
+  ConnectedPoints: []
 --- !u!1 &4508287138835401915
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +389,7 @@ GameObject:
   - component: {fileID: 3422609122346417319}
   - component: {fileID: 6547272319232948067}
   - component: {fileID: 1450382870328546903}
+  - component: {fileID: 4666851922866700349}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -522,6 +542,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &4666851922866700349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508287138835401915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: -8371958757688025257}
+  ConnectedPoints: []
 --- !u!1 &4871212297850235789
 GameObject:
   m_ObjectHideFlags: 0

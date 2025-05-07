@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6348649465242122831}
   - component: {fileID: 7460365346897176980}
   - component: {fileID: 1377362133518460734}
+  - component: {fileID: 5044798301791428700}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -167,6 +168,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &5044798301791428700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728804446039311024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 4048085177111282538}
+  ConnectedPoints: []
 --- !u!1 &6758148433681775420
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +197,7 @@ GameObject:
   - component: {fileID: 900029477352807791}
   - component: {fileID: 3769744651285901018}
   - component: {fileID: 8191763182781141897}
+  - component: {fileID: 7039689081149822877}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -334,6 +350,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7039689081149822877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758148433681775420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentComponent: {fileID: 4048085177111282538}
+  ConnectedPoints: []
 --- !u!1 &8565695232313056680
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b8463a0fae3b46aa6d4b8f8dd484b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voisins: []
   camera: {fileID: 0}
   angleRotation: 0
+  componentType: Interrupteur
+  PointA: {fileID: 7039689081149822877}
+  PointB: {fileID: 5044798301791428700}
 --- !u!114 &3658939653096511772
 MonoBehaviour:
   m_ObjectHideFlags: 0
