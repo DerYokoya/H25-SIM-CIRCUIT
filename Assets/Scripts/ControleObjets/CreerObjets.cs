@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class CreerObjets : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class CreerObjets : MonoBehaviour
 
         sourceAudio = gameObject.AddComponent<AudioSource>();
         sourceAudio.clip = creationAudio;
-
+        
+        
         // Charger les objets depuis les ressources
         GameObject fil = Resources.Load<GameObject>("Prefabs/Fil");
         GameObject pile = Resources.Load<GameObject>("Prefabs/Pile");
@@ -43,8 +45,13 @@ public class CreerObjets : MonoBehaviour
         // Parcourir le dictionnaire pour vérifier si une touche a été pressée
         foreach (var paire in objetsACreer)
         {
+            
             if (Input.GetKeyDown(paire.Key))
             {
+                GameObject sol = GameObject.FindGameObjectWithTag("Ground");
+                BoxCollider solCollider = sol.GetComponent<BoxCollider>();
+                Bounds limites = solCollider.bounds;
+                if (positionSourisMonde.z < limites.max.z && positionSourisMonde.z > limites.min.z && positionSourisMonde.x > limites.min.x && positionSourisMonde.x < limites.max.x)
                 Instantiate(paire.Value, new Vector3(positionSourisMonde.x, 23.491f, positionSourisMonde.z), Quaternion.identity);
                 sourceAudio.Play(); // Jouer le son à la création de l'objet
             }
