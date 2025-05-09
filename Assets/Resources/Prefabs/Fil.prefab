@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4228954361996036528}
   - component: {fileID: 93829122659049841}
   - component: {fileID: 6370202064534978237}
-  - component: {fileID: 7197238683542714169}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -183,20 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
---- !u!114 &7197238683542714169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3972039106450971848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentComponent: {fileID: 2055362965882556992}
-  ConnectedPoints: []
 --- !u!1 &4675582518526707205
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,11 +193,11 @@ GameObject:
   - component: {fileID: 9150354796988182544}
   - component: {fileID: 6012982555040492547}
   - component: {fileID: 797212107764641906}
+  - component: {fileID: 2055362965882556992}
+  - component: {fileID: 1693509471754096745}
   - component: {fileID: 864934767936703556}
   - component: {fileID: 3232828924910615321}
   - component: {fileID: 7061987258414085462}
-  - component: {fileID: 2055362965882556992}
-  - component: {fileID: 1693509471754096745}
   - component: {fileID: 3307432103135085665}
   m_Layer: 0
   m_Name: Fil
@@ -288,6 +273,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2055362965882556992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675582518526707205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146ab02f34b272d4aa2274873aa960c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1693509471754096745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675582518526707205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f28d70746d2ab44bf20492de839e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 6815422682331683841}
+  pointB: {fileID: 2698043737055849525}
+  rayon: 0.6
+  cylinderMaterial: {fileID: 2100000, guid: 0e65851f87d13104cbf00bd6fdfccad6, type: 2}
 --- !u!114 &864934767936703556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,40 +346,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &2055362965882556992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4675582518526707205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146ab02f34b272d4aa2274873aa960c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  voisins: []
-  camera: {fileID: 0}
-  angleRotation: 0
-  componentType: Fil
-  PointA: {fileID: 7197238683542714169}
-  PointB: {fileID: 1534458652286868898}
---- !u!114 &1693509471754096745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4675582518526707205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f28d70746d2ab44bf20492de839e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 6815422682331683841}
-  pointB: {fileID: 2698043737055849525}
-  rayon: 0.6
-  cylinderMaterial: {fileID: 2100000, guid: 0e65851f87d13104cbf00bd6fdfccad6, type: 2}
 --- !u!65 &3307432103135085665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -404,7 +383,6 @@ GameObject:
   - component: {fileID: 508471101249839237}
   - component: {fileID: 7486161862911522452}
   - component: {fileID: 6377501323969308712}
-  - component: {fileID: 1534458652286868898}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -571,17 +549,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
---- !u!114 &1534458652286868898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6545980980812453349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentComponent: {fileID: 2055362965882556992}
-  ConnectedPoints: []

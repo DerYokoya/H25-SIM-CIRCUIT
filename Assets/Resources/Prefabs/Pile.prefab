@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6642845864790099933}
   - component: {fileID: 3592042781659241381}
   - component: {fileID: 4810569052282698765}
-  - component: {fileID: 2105877286956048708}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -168,20 +167,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &2105877286956048708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606329949094080844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentComponent: {fileID: 6866965107255324263}
-  ConnectedPoints: []
 --- !u!1 &4023342330532842373
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +182,6 @@ GameObject:
   - component: {fileID: 3968662332923697136}
   - component: {fileID: 7051549393025633733}
   - component: {fileID: 7614501933389640414}
-  - component: {fileID: 8427035038500637988}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -350,20 +334,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &8427035038500637988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4023342330532842373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac54c4e50d4408d4693d6268844b79b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentComponent: {fileID: 6866965107255324263}
-  ConnectedPoints: []
 --- !u!1 &5573680252472600129
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,10 +346,10 @@ GameObject:
   - component: {fileID: 3916807947212647351}
   - component: {fileID: 6692702532036151239}
   - component: {fileID: 4433972141364097790}
+  - component: {fileID: 6866965107255324263}
   - component: {fileID: 5422468703277710686}
   - component: {fileID: 1795549350093170879}
   - component: {fileID: 3215617018341606115}
-  - component: {fileID: 6866965107255324263}
   - component: {fileID: 7578246532936221186}
   m_Layer: 0
   m_Name: Pile
@@ -477,6 +447,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6866965107255324263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573680252472600129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38c906633444a04e99464a0696dc648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5422468703277710686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,24 +504,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6866965107255324263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573680252472600129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38c906633444a04e99464a0696dc648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  voisins: []
-  camera: {fileID: 0}
-  angleRotation: 0
-  componentType: Pile
-  PointA: {fileID: 2105877286956048708}
-  PointB: {fileID: 8427035038500637988}
 --- !u!114 &7578246532936221186
 MonoBehaviour:
   m_ObjectHideFlags: 0

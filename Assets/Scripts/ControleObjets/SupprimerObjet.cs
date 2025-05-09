@@ -40,10 +40,18 @@ public class SupprimerObjet : MonoBehaviour
 
             if (Physics.Raycast(souris, out elementTouche))
             {
-                if (elementTouche.collider.gameObject == gameObject && (Input.GetKeyDown(KeyCode.X)))
+                if (elementTouche.collider.gameObject == gameObject)
                 {
                     sourceAudio.PlayOneShot(suppressionAudio);
-                    Destroy(gameObject); //Détruire l'objet si la souris fait un clic droit dessus
+
+                    // Retirer du graphe si c'est un composant
+                    ComposanteDuCircuit composant = GetComponent<ComposanteDuCircuit>();
+                    if (composant != null && GrapheManager.Instance != null)
+                    {
+                        GrapheManager.Instance.Graphe.SupprimerComposant(composant);
+                    }
+
+                    Destroy(gameObject);
                 }
             }
         }
@@ -66,6 +74,12 @@ public class SupprimerObjet : MonoBehaviour
                 // Vérifier si l'objet est dans la scène (comme ça les péfabs ne seront pas supprimés)
                 if (objet.gameObject.scene.IsValid())
                 {
+                    ComposanteDuCircuit composant = objet.GetComponent<ComposanteDuCircuit>();
+                    if (composant != null && GrapheManager.Instance != null)
+                    {
+                        GrapheManager.Instance.Graphe.SupprimerComposant(composant);
+                    }
+
                     Destroy(objet.gameObject);
                 }
             }
