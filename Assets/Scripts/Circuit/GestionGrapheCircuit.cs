@@ -1,5 +1,6 @@
+ï»¿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class GrapheManager : MonoBehaviour
 {
@@ -24,14 +25,14 @@ public class GrapheManager : MonoBehaviour
         graphe.AjouterLien(a, b);
     }
 
-    // Pour debug ou récupération
+    // Pour debug ou rÃ©cupÃ©ration
     public List<ComposanteDuCircuit> ObtenirVoisins(ComposanteDuCircuit c)
     {
         return graphe.ObtenirVoisins(c);
     }
     public void AfficherGraphe()
     {
-        Debug.Log("===== GRAPHE CIRCUIT =====");
+        Debug.Log("/// ===== GRAPHE CIRCUIT =====");
 
         var dejaAffiches = new HashSet<string>();
 
@@ -42,7 +43,7 @@ public class GrapheManager : MonoBehaviour
             {
                 string lien = $"{nomA} <--> {voisin.name}";
 
-                // Éviter les doublons (A <--> B affiché deux fois)
+                // Ã‰viter les doublons (A <--> B affichÃ© deux fois)
                 string cle1 = $"{nomA}-{voisin.name}";
                 string cle2 = $"{voisin.name}-{nomA}";
                 if (!dejaAffiches.Contains(cle1) && !dejaAffiches.Contains(cle2))
@@ -54,13 +55,33 @@ public class GrapheManager : MonoBehaviour
             }
         }
 
-        Debug.Log("==========================");
+        Debug.Log("/// ==========================");
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
             GrapheManager.Instance.AfficherGraphe();
+
+            var composants = Graphe.ObtenirTousLesComposants().ToList();
+
+            var pileBase = composants.Find(c => c.name == "Pile1");
+
+            if (pileBase != null)
+            {
+                foreach (var cible in composants)
+                {
+                    if (cible == pileBase) continue; // ignorer soi-mÃªme
+
+                    var deltaV = Graphe.CalculerDeltaV(pileBase, cible);
+                    if (deltaV.HasValue)
+                        Debug.Log($"/// Î”V entre {pileBase.name} et {cible.name} = {deltaV.Value} V");
+                    else
+                        Debug.Log($"/// Pas de chemin entre {pileBase.name} et {cible.name}");
+                }
+            }
         }
+
+
     }
 }
