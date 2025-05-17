@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d0bcc9d9d36584fbbb56dc03368a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabEffetBrulure: {fileID: 3812332447956261438, guid: d7b042e338c0f9049bb1cf6832ea2633, type: 3}
+  visuelFusible: {fileID: 0}
 --- !u!114 &8803503875539625316
 MonoBehaviour:
   m_ObjectHideFlags: 0
