@@ -62,14 +62,12 @@ public class AfficherChangeur : MonoBehaviour
                     if (boutonNegatif != null && elementTouche.collider.gameObject == boutonNegatif)
                     {
                         composanteActuelle?.Diminution();
-                        Debug.Log("Diminution appliquée.");
                         prochainTempsAutorise = Time.time + delaiEntreModifications;
                     }
 
                     if (boutonPositif != null && elementTouche.collider.gameObject == boutonPositif)
                     {
                         composanteActuelle?.Augmentation();
-                        Debug.Log("Augmentation appliquée.");
                         prochainTempsAutorise = Time.time + delaiEntreModifications;
                     }
 
@@ -88,7 +86,6 @@ public class AfficherChangeur : MonoBehaviour
         {
             if (Physics.Raycast(souris, out elementTouche))
             {
-                Debug.Log("Raycast touche: " + elementTouche.collider.gameObject.name);
 
                 // Si le raycast touche le GameObject actuel
                 if (elementTouche.collider.gameObject == gameObject)
@@ -105,7 +102,6 @@ public class AfficherChangeur : MonoBehaviour
                     composanteActuelle = GetComponent<ComposanteDuCircuit>();
                     if (composanteActuelle == null)
                     {
-                        Debug.LogError("ComposanteDuCircuit manquante sur l'objet: " + gameObject.name);
                         return;
                     }
 
@@ -119,16 +115,9 @@ public class AfficherChangeur : MonoBehaviour
                     boutonPositif = changeurActuel.transform.Find("BoutonPositif")?.gameObject;
                     boutonNegatif = changeurActuel.transform.Find("BoutonNegatif")?.gameObject;
 
-                    if (boutonPositif == null || boutonNegatif == null)
-                    {
-                        Debug.LogError("Boutons manquants dans le prefab BlocInfos");
-                    }
-
                     // Mettre à jour le texte immédiatement
                     TextMeshPro texte = changeurActuel.GetComponentInChildren<TextMeshPro>();
                     texte.text = composanteActuelle.TexteValeur();
-
-                    Debug.Log("Changeur créé pour: " + gameObject.name);
                 }
 
             }
