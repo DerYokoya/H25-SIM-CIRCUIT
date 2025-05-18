@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Resistance : ComposanteDuCircuit
 {
-    public double ValeurResistance { get; private set; } = 10; /*Si nous appelons ceci Resistance, il y aura une erreur
+    public float ValeurResistance = 10f; /*Si nous appelons ceci Resistance, il y aura une erreur
                                                             car la classe s'appele déja Resistance*/
 
     public Renderer bandesRenderer;
@@ -63,12 +63,12 @@ public class Resistance : ComposanteDuCircuit
         ValeurResistance = Math.Clamp(ValeurResistance + quantite, 1, 100); // Minimum 1, maximum 100
     }
 
-    public double GetResistance()
+    public float GetResistance()
     {
         return ValeurResistance;
     }
 
-    public void SetResistance(double resistance)
+    public void SetResistance(float resistance)
     {
         ValeurResistance = resistance;
     }

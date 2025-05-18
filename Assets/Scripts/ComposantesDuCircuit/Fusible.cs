@@ -11,7 +11,7 @@ public class Fusible : ComposanteDuCircuit
     private GameObject effetInstancie;
     private bool estBrule = false;
 
-    public double IntensiteMax { get; private set; }
+    public float IntensiteMax = 4f;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class Fusible : ComposanteDuCircuit
 
     public double GetIntensiteCourantMax() => IntensiteMax;
 
-    public void SetIntensiteCourantMax(double intensiteMax)
+    public void SetIntensiteCourantMax(float intensiteMax)
     {
         IntensiteMax = intensiteMax;
     }

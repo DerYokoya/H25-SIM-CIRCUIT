@@ -2,14 +2,7 @@ using UnityEngine;
 
     public abstract class ComposanteDuCircuit : MonoBehaviour
 {
-    public bool fonctionne { get; set; } = false; //Initialisé à faux
-    /*public bool connecte { get; set; } = false;
-    public bool tournerOuPas { get; set; }
-    public List<ComposanteDuCircuit> voisins = new(); // Connexions logiques
-    public Camera camera;
-    public Ray souris;
-    public RaycastHit interrupteurTouche;
-    public float angleRotation;*/
+    public bool fonctionne { get; set; } = false;
 
     public void Start()
     {
