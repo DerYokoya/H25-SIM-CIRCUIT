@@ -12,7 +12,7 @@ public class TournerLevierInterrupteur : MonoBehaviour
     private void tournerInterrupteur()
     {
 
-        if (interrupteur.getEstOuvert())
+        if (!interrupteur.getEstOuvert())
         {
             // Change position et rotation du levier (valeurs d’exemple)
             transform.localPosition = new Vector3(0, 0, 0);

@@ -158,7 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f583e94d88d6468187e6ea2401eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurResistance: 10
   bandesRenderer: {fileID: 0}
+  lumiere: {fileID: 7488916185761352228}
 --- !u!114 &-6748946480998600456
 MonoBehaviour:
   m_ObjectHideFlags: 0
