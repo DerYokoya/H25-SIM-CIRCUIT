@@ -5991,10 +5991,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Travail remis \xE0 Raouf Babari et \xE0 Abdoulaye Tine.\n              
-    \nD\xE9velopp\xE9 dans le cadre du cours 420-204-RE PROJET D'INT\xC9GRATION EN
-    SCIENCES INFORMATIQUES ET MATH\xC9MATIQUES , au Coll\xE8ge de Bois-de-Boulogne.\n\nFait
-    par Mohamed Taha Tnani, Yacine Benkrama, Rami Shoueib et Dory Jean Vilaire Saint-Surin."
+  m_Text: "Travail remis \xE0 Raouf Babari.\n               \nD\xE9velopp\xE9 dans
+    le cadre du cours 420-204-RE PROJET D'INT\xC9GRATION EN SCIENCES INFORMATIQUES
+    ET MATH\xC9MATIQUES , au Coll\xE8ge de Bois-de-Boulogne.\n\nFait par Mohamed
+    Taha Tnani, Yacine Benkrama, Rami Shoueib et Dory Jean Vilaire Saint-Surin."
 --- !u!222 &1639285284
 CanvasRenderer:
   m_ObjectHideFlags: 0
