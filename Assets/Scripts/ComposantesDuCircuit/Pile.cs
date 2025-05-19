@@ -6,15 +6,6 @@ public class Pile : ComposanteDuCircuit
     public float Tension = 10;
     public bool Surchauffee = false;
 
-    public float GetTension()
-    {
-        return Tension;
-    }
-
-    public void SetTension(float tension)
-    {
-        Tension = tension;
-    }
 
     public bool EstSurchauffee()
     {

@@ -7,7 +7,7 @@ public class Interrupteur : Fil
     public void OuvrirOuFermer()
     {
         estOuvert = !estOuvert;
-        fonctionne = !estOuvert;
+        Debug.Log(estOuvert);
 
     }
     public bool getEstOuvert()
