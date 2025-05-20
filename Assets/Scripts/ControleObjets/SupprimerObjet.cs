@@ -46,19 +46,15 @@ public class SupprimerObjet : MonoBehaviour
 
                     // Retirer du graphe si c'est un composant
                     ComposanteDuCircuit composant = GetComponent<ComposanteDuCircuit>();
-                    if (composant != null && GrapheManager.Instance != null)
-                    {
-                        GrapheManager.Instance.Graphe.SupprimerComposant(composant);
-                    }
 
                     Destroy(gameObject);
+                    sourceAudio.PlayOneShot(suppressionAudio);
                 }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            sourceAudio.PlayOneShot(suppressionAudio);
 
             GameObject changeurExiste = GameObject.Find("BlocInfos(Clone)");
             if (changeurExiste != null)
@@ -74,13 +70,8 @@ public class SupprimerObjet : MonoBehaviour
                 // Vérifier si l'objet est dans la scène (comme ça les péfabs ne seront pas supprimés)
                 if (objet.gameObject.scene.IsValid())
                 {
-                    ComposanteDuCircuit composant = objet.GetComponent<ComposanteDuCircuit>();
-                    if (composant != null && GrapheManager.Instance != null)
-                    {
-                        GrapheManager.Instance.Graphe.SupprimerComposant(composant);
-                    }
-
                     Destroy(objet.gameObject);
+                    sourceAudio.PlayOneShot(suppressionAudio);
                 }
             }
         }
