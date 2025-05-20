@@ -11,22 +11,25 @@ public class Resistance : ComposanteDuCircuit
 
     protected virtual void Awake()
     {
-        bandesRenderer = transform.Find("Corps/BandesCouleur").GetComponent<Renderer>();
+        if (!(this is Ampoule))
+        {
+            bandesRenderer = transform.Find("Corps/BandesCouleur").GetComponent<Renderer>();
 
-        CouleursResistance.Noir = Resources.Load<Material>("Couleurs/couleurNoire");
-        CouleursResistance.Brun = Resources.Load<Material>("Couleurs/couleurBrune");
-        CouleursResistance.Rouge = Resources.Load<Material>("Couleurs/couleurRouge");
-        CouleursResistance.Orange = Resources.Load<Material>("Couleurs/couleurOrange");
-        CouleursResistance.Jaune = Resources.Load<Material>("Couleurs/couleurJaune");
-        CouleursResistance.Vert = Resources.Load<Material>("Couleurs/couleurVerte");
-        CouleursResistance.Bleu = Resources.Load<Material>("Couleurs/couleurBleue");
-        CouleursResistance.Mauve = Resources.Load<Material>("Couleurs/couleurMauve");
-        CouleursResistance.Gris = Resources.Load<Material>("Couleurs/couleurGrise");
-        CouleursResistance.Blanc = Resources.Load<Material>("Couleurs/couleurBlanche");
+            CouleursResistance.Noir = Resources.Load<Material>("Couleurs/couleurNoire");
+            CouleursResistance.Brun = Resources.Load<Material>("Couleurs/couleurBrune");
+            CouleursResistance.Rouge = Resources.Load<Material>("Couleurs/couleurRouge");
+            CouleursResistance.Orange = Resources.Load<Material>("Couleurs/couleurOrange");
+            CouleursResistance.Jaune = Resources.Load<Material>("Couleurs/couleurJaune");
+            CouleursResistance.Vert = Resources.Load<Material>("Couleurs/couleurVerte");
+            CouleursResistance.Bleu = Resources.Load<Material>("Couleurs/couleurBleue");
+            CouleursResistance.Mauve = Resources.Load<Material>("Couleurs/couleurMauve");
+            CouleursResistance.Gris = Resources.Load<Material>("Couleurs/couleurGrise");
+            CouleursResistance.Blanc = Resources.Load<Material>("Couleurs/couleurBlanche");
 
-        CouleursResistance.Or = Resources.Load<Material>("Couleurs/couleurOr");
-        CouleursResistance.Argent = Resources.Load<Material>("Couleurs/couleurArgent");
-        CouleursResistance.Erreur = Resources.Load<Material>("Couleurs/Transparent");
+            CouleursResistance.Or = Resources.Load<Material>("Couleurs/couleurOr");
+            CouleursResistance.Argent = Resources.Load<Material>("Couleurs/couleurArgent");
+            CouleursResistance.Erreur = Resources.Load<Material>("Couleurs/Transparent");
+        }
     }
     protected virtual void Update()
     {
