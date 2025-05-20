@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pile : ComposanteDuCircuit
 {
-    public float Tension = 10;
+    public float Tension = 9;
     public bool Surchauffee = false;
 
     public ParticleSystem effetSurchauffe; // Le feu
@@ -60,7 +60,6 @@ public class Pile : ComposanteDuCircuit
         }
         else
         {
-            Debug.Log("Refroidissement détecté");
 
             // Arrêter la boucle du son qui joue
             aJoueSonSurchauffe = false;
@@ -77,9 +76,9 @@ public class Pile : ComposanteDuCircuit
         }
     }
 
-    public override void Augmentation() => AjusterTension(10);
+    public override void Augmentation() => AjusterTension(5);
 
-    public override void Diminution() => AjusterTension(-10);
+    public override void Diminution() => AjusterTension(-5);
 
     private void AjusterTension(int quantite)
     {

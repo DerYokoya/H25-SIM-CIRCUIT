@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3035110777571401309}
   - component: {fileID: 2108912941816473095}
   - component: {fileID: 8121358416021884348}
-  - component: {fileID: 8861778342100471239}
   - component: {fileID: 8640602501481923758}
+  - component: {fileID: 4424166570511654053}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -135,20 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8861778342100471239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155767592996553328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 3036662805596404780}
-  otherAttachTag: Attache
 --- !u!114 &8640602501481923758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +153,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &4424166570511654053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155767592996553328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9404d476e202a04590d8a3f9881482d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  composantParent: {fileID: 1665213260974416736}
+  otherAttachTag: Attache
 --- !u!1 &7000240350840370004
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +180,8 @@ GameObject:
   - component: {fileID: 4182729844922807200}
   - component: {fileID: 4911255293745331911}
   - component: {fileID: 679666100577364763}
-  - component: {fileID: 7669976930594440444}
   - component: {fileID: 7583417211704328187}
+  - component: {fileID: 5544946244690944909}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -302,20 +302,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7669976930594440444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7000240350840370004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 3036662805596404780}
-  otherAttachTag: Attache
 --- !u!114 &7583417211704328187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +320,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &5544946244690944909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000240350840370004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9404d476e202a04590d8a3f9881482d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  composantParent: {fileID: 1665213260974416736}
+  otherAttachTag: Attache
 --- !u!1 &7645623049317175764
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cec4bbebb6f24d44861363cbb2b81df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurResistance: 10
   bandesRenderer: {fileID: 0}
 --- !u!114 &7923756273332796943
 MonoBehaviour:
@@ -499,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 1, g: 0.9284844, b: 0, a: 1}
   outlineWidth: 10
   precomputeOutline: 0

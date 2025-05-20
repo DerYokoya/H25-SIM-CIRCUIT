@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3311720195276177554}
   - component: {fileID: 6771233130374441474}
   - component: {fileID: 1303851224633626374}
-  - component: {fileID: 246932833327938438}
   - component: {fileID: 4228954361996036528}
   - component: {fileID: 93829122659049841}
   - component: {fileID: 6370202064534978237}
+  - component: {fileID: 1809624625651080814}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -109,20 +109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &246932833327938438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3972039106450971848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 9150354796988182544}
-  otherAttachTag: Attache
 --- !u!54 &4228954361996036528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,6 +168,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
+--- !u!114 &1809624625651080814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972039106450971848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9404d476e202a04590d8a3f9881482d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  composantParent: {fileID: 2055362965882556992}
+  otherAttachTag: Attache
 --- !u!1 &4675582518526707205
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,10 +379,10 @@ GameObject:
   - component: {fileID: 208441097042182294}
   - component: {fileID: 7464174788933387375}
   - component: {fileID: 6183361046030193219}
-  - component: {fileID: 2821846698013435878}
   - component: {fileID: 508471101249839237}
   - component: {fileID: 7486161862911522452}
   - component: {fileID: 6377501323969308712}
+  - component: {fileID: 5395586416055429927}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -476,20 +476,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2821846698013435878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6545980980812453349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38071fa837276d549a52f4482463f5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 9150354796988182544}
-  otherAttachTag: Attache
 --- !u!54 &508471101249839237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,3 +535,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   yConstant: 0
+--- !u!114 &5395586416055429927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545980980812453349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9404d476e202a04590d8a3f9881482d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  composantParent: {fileID: 2055362965882556992}
+  otherAttachTag: Attache

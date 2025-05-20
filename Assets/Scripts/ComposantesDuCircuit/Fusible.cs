@@ -39,20 +39,19 @@ public class Fusible : ComposanteDuCircuit
 
     public override void Diminution() => AjusterIntensiteMax(-3);
 
-    /* Juste pour débugger
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             BrulerFusible();
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             ReparerFusible();
         }
     }
-    */
 
     private void AjusterIntensiteMax(int quantite)
     {
