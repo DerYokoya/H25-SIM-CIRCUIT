@@ -1,14 +1,80 @@
-using System;
+﻿using System;
+using UnityEngine;
 
 public class Pile : ComposanteDuCircuit
 {
     public float Tension = 10;
     public bool Surchauffee = false;
 
+    public ParticleSystem effetSurchauffe; // Le feu
+    private bool aJoueSonSurchauffe = false;
 
+    public AudioSource sourceAudio;        // Source audio à laquelle on joue le son
+    public AudioClip sonSurchauffe;
+
+    public void Start()
+    {
+        sourceAudio = gameObject.AddComponent<AudioSource>();
+
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Surchauffee = true;
+            Debug.Log("Pile surchauffée !");
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Surchauffee = false;
+            Debug.Log("Pile non surchauffée !");
+        }
+
+
+        PileSurchauffee();
+
+    }
     public bool EstSurchauffee()
     {
         return Surchauffee;
+    }
+
+    public void PileSurchauffee()
+    {
+        if (Surchauffee)
+        {
+            // Rejouer si le son est terminé
+            if (sourceAudio != null && sonSurchauffe != null)
+            {
+                if (!sourceAudio.isPlaying)
+                {
+                    sourceAudio.PlayOneShot(sonSurchauffe);
+                    aJoueSonSurchauffe = true;
+                }
+            }
+
+            if (effetSurchauffe != null && !effetSurchauffe.isPlaying)
+                effetSurchauffe.Play();
+        }
+        else
+        {
+            Debug.Log("Refroidissement détecté");
+
+            // Arrêter la boucle du son qui joue
+            aJoueSonSurchauffe = false;
+
+            if (sourceAudio != null && sourceAudio.isPlaying)
+            {
+                sourceAudio.Stop();
+            }
+
+            if (effetSurchauffe != null) { 
+                effetSurchauffe.Clear();
+            }
+
+        }
     }
 
     public override void Augmentation() => AjusterTension(10);

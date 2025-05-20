@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class Fusible : ComposanteDuCircuit
 {
-    public GameObject prefabFusible; // Le prefab du fusible intact
     public GameObject groupeFusible;
 
 
@@ -25,7 +24,6 @@ public class Fusible : ComposanteDuCircuit
 
     private void Start()
     {
-        prefabFusible = GetComponent<GameObject>();
 
         couleurNormale = Resources.Load<Material>("Couleurs/couleurGrisePale");
         couleurBrule = Resources.Load<Material>("Couleurs/couleurGrise");
