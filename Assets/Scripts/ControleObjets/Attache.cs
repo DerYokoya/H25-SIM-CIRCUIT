@@ -6,13 +6,6 @@ public class Attache : MonoBehaviour
 
     public string otherAttachTag = "Attache";
 
-
-    void Start()
-    {
-        // Initialisation de la couleur pour le debug
-        GetComponent<Renderer>().material.color = Random.ColorHSV();
-    }
-
     public void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag(otherAttachTag)) return;
