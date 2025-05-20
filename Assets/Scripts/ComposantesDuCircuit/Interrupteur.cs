@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Interrupteur : Fil
+public class Interrupteur : Resistance
 {
     private bool estOuvert = false;
 

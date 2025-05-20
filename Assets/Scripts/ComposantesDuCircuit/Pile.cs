@@ -12,7 +12,13 @@ public class Pile : ComposanteDuCircuit
     public AudioSource sourceAudio;        // Source audio à laquelle on joue le son
     public AudioClip sonSurchauffe;
 
-    public void Start()
+    public Attache attachePlus; // Assigné dans l'éditeur
+    public Attache attacheMinus; // Assigné dans l'éditeur
+
+    public bool IsPositiveNode(ConnectionNode node)
+        => attachePlus.currentConnectionNode == node;
+
+public void Start()
     {
         sourceAudio = gameObject.AddComponent<AudioSource>();
 
@@ -84,6 +90,8 @@ public class Pile : ComposanteDuCircuit
     {
         Tension = Math.Clamp(Tension + quantite, 1, 120); // Minimum 1, maximum 120
     }
+
+    public float GetVoltage() => Tension;
 
     public override string TexteValeur()
     {

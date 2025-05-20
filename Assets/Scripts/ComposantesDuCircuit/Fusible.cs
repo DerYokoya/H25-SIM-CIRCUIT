@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Fusible : ComposanteDuCircuit
+public class Fusible : Resistance
 {
     public GameObject groupeFusible;
 
@@ -33,6 +33,7 @@ public class Fusible : ComposanteDuCircuit
         // Valeur initiale si non définie ailleurs
         if (IntensiteMax <= 0)
             IntensiteMax = 10;
+        ValeurResistance = 0;
     }
 
     public override void Augmentation() => AjusterIntensiteMax(3);
@@ -94,6 +95,8 @@ public class Fusible : ComposanteDuCircuit
         fil1.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
         fil2.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
 
+        ValeurResistance = float.MaxValue;
+
         if (sourceAudio != null && sonClac != null)
             sourceAudio.PlayOneShot(sonClac);
     }
@@ -119,6 +122,8 @@ public class Fusible : ComposanteDuCircuit
 
         fil1.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
         fil2.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
+
+        ValeurResistance = 0;
 
     }
 
