@@ -1,21 +1,38 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UIElements;
 
 public class Fusible : ComposanteDuCircuit
 {
-    [Header("Effets visuels")]
-    public GameObject prefabEffetBrulure;   // Glisse le prefab de particules ici
-    public Renderer visuelFusible;          // Glisse le mesh renderer ici
+    public GameObject prefabFusible; // Le prefab du fusible intact
+    public GameObject groupeFusible;
 
-    private GameObject effetInstancie;
+
+    private Material couleurNormale;
+    private Material couleurBrule;
+
     private bool estBrule = false;
 
     public double IntensiteMax { get; private set; }
 
+    public GameObject fil1;                // Premi√®re moiti√© du fil
+    public GameObject fil2;                // Deuxi√®me moiti√© du fil
+
+    public AudioSource sourceAudio;        // Source audio √† laquelle on joue le son
+    public AudioClip sonClac;              // Le son du "clac"
+
+    public float deplacementFils = 0.09f;
+
     private void Start()
     {
-        // Valeur initiale si non dÈfinie ailleurs
+        prefabFusible = GetComponent<GameObject>();
+
+        couleurNormale = Resources.Load<Material>("Couleurs/couleurGrisePale");
+        couleurBrule = Resources.Load<Material>("Couleurs/couleurGrise");
+
+        sourceAudio = gameObject.AddComponent<AudioSource>();
+
+        // Valeur initiale si non d√©finie ailleurs
         if (IntensiteMax <= 0)
             IntensiteMax = 10;
     }
@@ -23,6 +40,21 @@ public class Fusible : ComposanteDuCircuit
     public override void Augmentation() => AjusterIntensiteMax(3);
 
     public override void Diminution() => AjusterIntensiteMax(-3);
+
+    /* Juste pour d√©bugger
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            BrulerFusible();
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ReparerFusible();
+        }
+    }
+    */
 
     private void AjusterIntensiteMax(int quantite)
     {
@@ -44,43 +76,56 @@ public class Fusible : ComposanteDuCircuit
         }
     }
 
-    private void BrulerFusible()
+    public void BrulerFusible()
     {
         if (estBrule) return;
         estBrule = true;
 
-        if (visuelFusible != null)
-            visuelFusible.material.color = Color.black;
-
-        if (prefabEffetBrulure != null)
+        foreach (Transform enfant in groupeFusible.transform)
         {
-            effetInstancie = Instantiate(prefabEffetBrulure, transform.position, transform.rotation, transform);
-            var ps = effetInstancie.GetComponent<ParticleSystem>();
-            if (ps != null)
+            if (enfant.name.Contains("Fil")) continue; // Ignore tout ce qui s'appelle "Fil1", "Fil2", etc.
+            if (enfant.name.Equals("mmGroup11")) continue; /* Ignore la pi√®ce centrale. Dans un code future, elle pourrait 
+            changer de couleur */
+
+            Renderer rend = enfant.GetComponent<Renderer>();
+            if (rend != null)
             {
-                // Modifier directement les propriÈtÈs du systËme de particules
-                var main = ps.main;
-
-                // DÈfinir l'espace de simulation en mode World pour Èviter les influences du parent
-                main.simulationSpace = ParticleSystemSimulationSpace.World;
-
-                // ContrÙler la direction d'Èmission
-                var shape = ps.shape;
-                shape.enabled = true;
-
-                // DÈfinir la direction souhaitÈe (par exemple, vers le haut)
-                // Remplacez Vector3.up par la direction dÈsirÈe
-                Vector3 direction = Vector3.up; // ou transform.up pour suivre l'orientation du fusible
-
-                // Appliquer la direction au shape module
-                shape.rotation = Quaternion.LookRotation(direction).eulerAngles;
-
-                ps.Play();
+                rend.material = couleurBrule;
             }
         }
 
-        this.enabled = false;
+        fil1.transform.position += new Vector3(0, deplacementFils, 0); // d√©placement vers le haut
+        fil2.transform.position += new Vector3(0, -deplacementFils, 0); // d√©placement vers le bas
+
+        if (sourceAudio != null && sonClac != null)
+            sourceAudio.PlayOneShot(sonClac);
     }
+
+
+    public void ReparerFusible()
+    {
+        if (!estBrule) return;
+        estBrule = false;
+
+        // Restaurer la couleur normale sur tous les enfants (sauf les fils)
+        foreach (Transform enfant in groupeFusible.transform)
+        {
+            if (enfant.name.Contains("Fil")) continue; // Ne pas toucher aux fils
+            if (enfant.name.Equals("mmGroup11")) continue; // Ignore la pi√®ce centrale
+
+            Renderer rend = enfant.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                rend.material = couleurNormale;
+            }
+        }
+
+        fil1.transform.position += new Vector3(0, -deplacementFils, 0); // d√©placement vers le bas
+        fil2.transform.position += new Vector3(0, deplacementFils, 0); // d√©placement vers le haut
+
+    }
+
+
     public override string TexteValeur()
     {
         return "Maximum : " + IntensiteMax + " A";
