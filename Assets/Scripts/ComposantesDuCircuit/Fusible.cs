@@ -13,7 +13,7 @@ public class Fusible : ComposanteDuCircuit
 
     private bool estBrule = false;
 
-    public double IntensiteMax { get; private set; }
+    public float IntensiteMax = 4f;
 
     public GameObject fil1;                // Première moitié du fil
     public GameObject fil2;                // Deuxième moitié du fil
@@ -63,7 +63,7 @@ public class Fusible : ComposanteDuCircuit
 
     public double GetIntensiteCourantMax() => IntensiteMax;
 
-    public void SetIntensiteCourantMax(double intensiteMax)
+    public void SetIntensiteCourantMax(float intensiteMax)
     {
         IntensiteMax = intensiteMax;
     }

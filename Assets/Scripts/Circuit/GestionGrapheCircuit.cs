@@ -54,7 +54,6 @@ public class GrapheManager : MonoBehaviour
                 }
             }
         }
-
         Debug.Log("/// ==========================");
     }
     void Update()
@@ -62,26 +61,6 @@ public class GrapheManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             GrapheManager.Instance.AfficherGraphe();
-
-            var composants = Graphe.ObtenirTousLesComposants().ToList();
-
-            var pileBase = composants.Find(c => c.name == "Pile1");
-
-            if (pileBase != null)
-            {
-                foreach (var cible in composants)
-                {
-                    if (cible == pileBase) continue; // ignorer soi-même
-
-                    var deltaV = Graphe.CalculerDeltaV(pileBase, cible);
-                    if (deltaV.HasValue)
-                        Debug.Log($"/// ΔV entre {pileBase.name} et {cible.name} = {deltaV.Value} V");
-                    else
-                        Debug.Log($"/// Pas de chemin entre {pileBase.name} et {cible.name}");
-                }
-            }
         }
-
-
     }
 }

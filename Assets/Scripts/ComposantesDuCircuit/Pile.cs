@@ -1,31 +1,10 @@
 using System;
-using UnityEngine;
 
 public class Pile : ComposanteDuCircuit
 {
-    public double Tension { get; private set; } = 10;
-    public double Capacite { get; private set; }
-    public bool Surchauffee { get; private set; } = false;
+    public float Tension = 10;
+    public bool Surchauffee = false;
 
-    public double GetTension()
-    {
-        return Tension;
-    }
-
-    public void SetTension(double tension)
-    {
-        Tension = tension;
-    }
-
-    public double GetCapacite()
-    {
-        return Capacite;
-    }
-
-    public void SetCapacite(double capacite)
-    {
-        Capacite = capacite;
-    }
 
     public bool EstSurchauffee()
     {
