@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Resistance : ComposanteDuCircuit
 {
-    public float ValeurResistance = 10f; /*Si nous appelons ceci Resistance, il y aura une erreur
-                                                            car la classe s'appele déja Resistance*/
+    public float valeurResistance = 10f; /*Si nous appelons ceci Resistance, il y aura une erreur
+                                                            car la classe s'appele dï¿½ja Resistance*/
 
     public bool asDesCouleur;
 
@@ -38,13 +38,13 @@ public class Resistance : ComposanteDuCircuit
         if (ValeurResistance != derniereResistance && asDesCouleur)
         {
             ModifierBandesCouleurs();
-            derniereResistance = ValeurResistance;
+            derniereResistance = valeurResistance;
         }
     }
 
     void ModifierBandesCouleurs()
     {
-        Material[] bandes = CouleursResistance.GetBandesCouleurs(ValeurResistance);
+        Material[] bandes = CouleursResistance.GetBandesCouleurs(valeurResistance);
         
         Material[] mats = bandesRenderer.materials;
 
@@ -65,21 +65,21 @@ public class Resistance : ComposanteDuCircuit
 
     public void AjusterIntensiteMax(int quantite)
     {
-        ValeurResistance = Math.Clamp(ValeurResistance + quantite, 1, 100); // Minimum 1, maximum 100
+        valeurResistance = Math.Clamp(valeurResistance + quantite, 1, 100); // Minimum 1, maximum 100
     }
 
     public float GetResistance()
     {
-        return ValeurResistance;
+        return valeurResistance;
     }
 
     public void SetResistance(float resistance)
     {
-        ValeurResistance = resistance;
+        valeurResistance = resistance;
     }
 
     public override string TexteValeur()
     {
-        return ValeurResistance + "\u03A9"; // '\u03A9' est le symbole des ohms
+        return valeurResistance + "\u03A9"; // '\u03A9' est le symbole des ohms
     }
 }

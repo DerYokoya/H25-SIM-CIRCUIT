@@ -20,7 +20,7 @@ public class TournerLevierInterrupteur : MonoBehaviour
 
         if (!interrupteur.getEstOuvert())
         {
-            // Change position et rotation du levier (valeurs d’exemple)
+            // Change position et rotation du levier (valeurs dï¿½exemple)
             transform.localPosition = new Vector3(0, 0, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             interrupteur.OuvrirOuFermer();
