@@ -20,7 +20,7 @@ public class Ampoule : Resistance
         lumens = Mathf.Clamp(lumens, 0f, 1600f);
 
 
-        lumiere.intensity = Mathf.Lerp(3, 5f, lumens / 800f);
-        lumiere.range = Mathf.Lerp(2, 50f, lumens / 800f); 
+        lumiere.intensity = Mathf.Abs(Current) > 0.001f ? Mathf.Lerp(3f, 5f, lumens / 800f) : 0f;
+        lumiere.range = Mathf.Lerp(2, 50f, lumens / 800f);
     }
 }
