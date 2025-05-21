@@ -6,12 +6,14 @@ public class Resistance : ComposanteDuCircuit
     public float ValeurResistance = 10f; /*Si nous appelons ceci Resistance, il y aura une erreur
                                                             car la classe s'appele déja Resistance*/
 
+    public bool asDesCouleur;
+
     public Renderer bandesRenderer;
     private double derniereResistance = -1; // Pour comparer pour savoir quand changer les couleurs des bandes
 
     protected virtual void Awake()
     {
-        if (!(this is Ampoule))
+        if (asDesCouleur)
         {
             bandesRenderer = transform.Find("Corps/BandesCouleur").GetComponent<Renderer>();
 
@@ -33,7 +35,7 @@ public class Resistance : ComposanteDuCircuit
     }
     protected virtual void Update()
     {
-        if (ValeurResistance != derniereResistance)
+        if (ValeurResistance != derniereResistance && asDesCouleur)
         {
             ModifierBandesCouleurs();
             derniereResistance = ValeurResistance;

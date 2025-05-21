@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValeurResistance: 10
+  asDesCouleur: 1
   bandesRenderer: {fileID: 0}
 --- !u!114 &7923756273332796943
 MonoBehaviour:
