@@ -89,23 +89,8 @@ public class GraphManager : MonoBehaviour
         return 0f;
     }
 
-    public void LogConnectionGraph()
-    {
-        Debug.Log("=== GRAPHE DE CONNEXION ===");
-        foreach (var node in nodes)
-        {
-            var sb = new StringBuilder();
-            sb.Append($"Node [{node.GetHashCode()}] contient {node.attaches.Count} attaches: ");
 
-            foreach (var attache in node.attaches)
-            {
-                sb.Append($"{attache.composantParent.gameObject.name}.{attache.gameObject.name}, ");
-            }
-
-            Debug.Log(sb.ToString());
-        }
-        Debug.Log("===========================");
-    }
+    // --------------------------       PARTIE ANALAYSE         --------------------------
 
     public void AnalyzeSeriesCircuit()
     {
@@ -117,17 +102,38 @@ public class GraphManager : MonoBehaviour
 
         foreach (Pile pile in piles)
         {
+            if (pile.attachePlus == null || pile.attacheMinus == null)
+                continue;
 
-            ConnectionNode currentNode = pile.attachePlus.currentConnectionNode;
+            ConnectionNode startNode = pile.attachePlus.currentConnectionNode;
+            ConnectionNode endNode = pile.attacheMinus.currentConnectionNode;
+
+            // Vérifier si les deux bornes sont connectées
+            if (startNode == null || endNode == null)
+            {
+                Debug.Log("Circuit ouvert - bornes non connectées");
+                ResetComponents(pile);
+                continue;
+            }
+
             List<ComposanteDuCircuit> components = new List<ComposanteDuCircuit>();
             HashSet<ConnectionNode> visitedNodes = new HashSet<ConnectionNode>();
-
-            // Nouvelle liste pour stocker les connexions entre nœuds
             List<(ConnectionNode from, ConnectionNode to, ComposanteDuCircuit comp)> nodeConnections = new List<(ConnectionNode from, ConnectionNode to, ComposanteDuCircuit comp)>();
+
+            ConnectionNode currentNode = startNode;
+            bool circuitFerme = false;
 
             while (currentNode != null && !visitedNodes.Contains(currentNode))
             {
                 visitedNodes.Add(currentNode);
+
+                // Vérifier si on a atteint la borne négative
+                if (currentNode == endNode)
+                {
+                    circuitFerme = true;
+                    break;
+                }
+
                 foreach (Attache attache in currentNode.attaches)
                 {
                     ComposanteDuCircuit comp = attache.composantParent;
@@ -136,34 +142,54 @@ public class GraphManager : MonoBehaviour
                     Attache otherAttache = GetOtherAttache(attache);
                     ConnectionNode nextNode = otherAttache.currentConnectionNode;
 
-                    // Enregistrement de la connexion
                     nodeConnections.Add((currentNode, nextNode, comp));
-
                     components.Add(comp);
                     currentNode = nextNode;
                     break;
                 }
             }
 
-            float totalVoltage = pile.Tension;
-            float totalResistance = components.OfType<Resistance>().Sum(r => r.valeurResistance);
-            float current = totalVoltage / totalResistance;
-
-            UpdateComponents(current, components, piles);
-
-            // Log des courants entre nœuds
-            foreach (var connection in nodeConnections)
+            if (circuitFerme)
             {
-                Debug.Log($"COURANT: {current:F2}A " +
-                          $"de [Node {connection.from.GetHashCode()}] " +
-                          $"à [Node {connection.to.GetHashCode()}] " +
-                          $"via {connection.comp.gameObject.name}");
+                float totalVoltage = pile.Tension;
+                float totalResistance = components.OfType<Resistance>().Sum(r => r.valeurResistance);
+                float current = totalVoltage / totalResistance;
+
+                UpdateComponents(current, components, piles);
+
+                foreach (var connection in nodeConnections)
+                {
+                    Debug.Log($"COURANT: {current:F2}A...");
+                }
+            }
+            else
+            {
+                Debug.Log("Circuit ouvert - pas de boucle complète");
+                ResetComponents(pile);
             }
         }
     }
 
+    private void ResetComponents(Pile pile)
+    {
+        // Réinitialiser tous les composants connectés
+        foreach (var node in nodes)
+        {
+            foreach (var attache in node.attaches)
+            {
+                if (attache.composantParent is Ampoule ampoule)
+                    ampoule.ChangementLuminosite(0f);
+                else if (attache.composantParent is Fusible fusible)
+                    fusible.ReparerFusible();
+                attache.composantParent.Current = 0f;
+            }
+        }
+        pile.setEstSurchauffee(false);
+        pile.Current = 0f;
+    }
 
-private Attache GetOtherAttache(Attache attache)
+
+    private Attache GetOtherAttache(Attache attache)
     {
         string suffix = attache.gameObject.name.Last().ToString();
         string otherSuffix = suffix == "1" ? "2" : "1";
