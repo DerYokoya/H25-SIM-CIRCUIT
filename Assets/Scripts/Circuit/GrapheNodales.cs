@@ -90,12 +90,92 @@ public class GraphManager : MonoBehaviour
         Debug.Log("===========================");
     }
 
+    public void AnalyzeSeriesCircuit()
+    {
+        List<Pile> piles = nodes.SelectMany(n => n.attaches)
+                                .Select(a => a.composantParent as Pile)
+                                .Where(p => p != null)
+                                .Distinct()
+                                .ToList();
+
+        foreach (Pile pile in piles)
+        {
+
+            ConnectionNode currentNode = pile.attachePlus.currentConnectionNode;
+            List<ComposanteDuCircuit> components = new List<ComposanteDuCircuit>();
+            HashSet<ConnectionNode> visitedNodes = new HashSet<ConnectionNode>();
+
+            // Nouvelle liste pour stocker les connexions entre nœuds
+            List<(ConnectionNode from, ConnectionNode to, ComposanteDuCircuit comp)> nodeConnections = new List<(ConnectionNode from, ConnectionNode to, ComposanteDuCircuit comp)>();
+
+            while (currentNode != null && !visitedNodes.Contains(currentNode))
+            {
+                visitedNodes.Add(currentNode);
+                foreach (Attache attache in currentNode.attaches)
+                {
+                    ComposanteDuCircuit comp = attache.composantParent;
+                    if (comp == null || comp == pile || components.Contains(comp)) continue;
+
+                    Attache otherAttache = GetOtherAttache(attache);
+                    ConnectionNode nextNode = otherAttache.currentConnectionNode;
+
+                    // Enregistrement de la connexion
+                    nodeConnections.Add((currentNode, nextNode, comp));
+
+                    components.Add(comp);
+                    currentNode = nextNode;
+                    break;
+                }
+            }
+
+            float totalVoltage = pile.Tension;
+            float totalResistance = components.OfType<Resistance>().Sum(r => r.valeurResistance);
+            float current = totalVoltage / totalResistance;
+
+            UpdateComponents(current, components, piles);
+
+            // Log des courants entre nœuds
+            foreach (var connection in nodeConnections)
+            {
+                Debug.Log($"COURANT: {current:F2}A " +
+                          $"de [Node {connection.from.GetHashCode()}] " +
+                          $"à [Node {connection.to.GetHashCode()}] " +
+                          $"via {connection.comp.gameObject.name}");
+            }
+        }
+    }
+    private Attache GetOtherAttache(Attache attache)
+    {
+        string suffix = attache.gameObject.name.Last().ToString();
+        string otherSuffix = suffix == "1" ? "2" : "1";
+        return attache.composantParent.GetComponentsInChildren<Attache>()
+                                      .First(a => a.gameObject.name.EndsWith(otherSuffix));
+    }
+
+    private void UpdateComponents(float courant, List<ComposanteDuCircuit> components, List<Pile> piles)
+    {
+        foreach (var comp in components)
+        {
+            if (comp is Ampoule ampoule)
+                ampoule.ChangementLuminosite(courant);
+            else if (comp is Fusible fusible)
+                fusible.Bruler(courant);
+        }
+
+        foreach (var pile in piles)
+        {
+            if (courant >= float.MaxValue)
+                pile.setEstSurchauffee(true);
+            else
+            {
+                pile.setEstSurchauffee(false);
+            }
+        }
+    }
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            LogConnectionGraph();
-        }
+        AnalyzeSeriesCircuit();
     }
 }
 

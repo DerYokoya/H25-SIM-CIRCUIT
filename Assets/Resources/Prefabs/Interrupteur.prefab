@@ -458,6 +458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b8463a0fae3b46aa6d4b8f8dd484b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurResistance: 10
+  asDesCouleur: 0
+  bandesRenderer: {fileID: 0}
+  asDesCouleur: 1
 --- !u!114 &3658939653096511772
 MonoBehaviour:
   m_ObjectHideFlags: 0

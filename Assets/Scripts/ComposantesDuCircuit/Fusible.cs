@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Fusible : Resistance
 {
@@ -33,26 +32,28 @@ public class Fusible : Resistance
         // Valeur initiale si non définie ailleurs
         if (IntensiteMax <= 0)
             IntensiteMax = 10;
-        ValeurResistance = 0;
+        valeurResistance = 0;
+    }
+
+    private void Awake() { } // Pour outrepasser le awake de la résistance
+
+    private void OnMouseOver()
+    {
+        // Vérification si le bouton droit de la souris est enfoncé
+        if (Input.GetMouseButtonDown(1)) // 1 correspond au bouton droit de la souris
+        {
+            if (estBrule)
+            {
+                ReparerFusible();
+
+            }
+        }
     }
 
     public override void Augmentation() => AjusterIntensiteMax(3);
 
     public override void Diminution() => AjusterIntensiteMax(-3);
 
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            BrulerFusible();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            ReparerFusible();
-        }
-    }
 
     private void AjusterIntensiteMax(int quantite)
     {
@@ -66,39 +67,34 @@ public class Fusible : Resistance
         IntensiteMax = intensiteMax;
     }
 
-    public void VerifierIntensite(float intensite)
+    public void Bruler(float courrant)
     {
-        if (intensite > IntensiteMax)
+        if (courrant>= IntensiteMax)
         {
-            BrulerFusible();
-        }
-    }
+            if (estBrule) return;
+            estBrule = true;
 
-    public void BrulerFusible()
-    {
-        if (estBrule) return;
-        estBrule = true;
-
-        foreach (Transform enfant in groupeFusible.transform)
-        {
-            if (enfant.name.Contains("Fil")) continue; // Ignore tout ce qui s'appelle "Fil1", "Fil2", etc.
-            if (enfant.name.Equals("mmGroup11")) continue; /* Ignore la pièce centrale. Dans un code future, elle pourrait 
+            foreach (Transform enfant in groupeFusible.transform)
+            {
+                if (enfant.name.Contains("Fil")) continue; // Ignore tout ce qui s'appelle "Fil1", "Fil2", etc.
+                if (enfant.name.Equals("mmGroup11")) continue; /* Ignore la pièce centrale. Dans un code future, elle pourrait 
             changer de couleur */
 
-            Renderer rend = enfant.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                rend.material = couleurBrule;
+                Renderer rend = enfant.GetComponent<Renderer>();
+                if (rend != null)
+                {
+                    rend.material = couleurBrule;
+                }
             }
+
+            fil1.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
+            fil2.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
+
+            valeurResistance = float.MaxValue;
+
+            if (sourceAudio != null && sonClac != null)
+                sourceAudio.PlayOneShot(sonClac);
         }
-
-        fil1.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
-        fil2.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
-
-        ValeurResistance = float.MaxValue;
-
-        if (sourceAudio != null && sonClac != null)
-            sourceAudio.PlayOneShot(sonClac);
     }
 
 
@@ -123,7 +119,7 @@ public class Fusible : Resistance
         fil1.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
         fil2.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
 
-        ValeurResistance = 0;
+        valeurResistance = 0;
 
     }
 

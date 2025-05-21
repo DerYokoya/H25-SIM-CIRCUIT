@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d0bcc9d9d36584fbbb56dc03368a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValeurResistance: 10
+  asDesCouleur: 0
+  bandesRenderer: {fileID: 0}
   groupeFusible: {fileID: 7255385909855186053}
   IntensiteMax: 4
   fil1: {fileID: 3354431993100447447}
@@ -356,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9404d476e202a04590d8a3f9881482d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  composantParent: {fileID: 0}
+  composantParent: {fileID: 8342170275179467905}
   otherAttachTag: Attache
 --- !u!1 &6858033524450076455
 GameObject:

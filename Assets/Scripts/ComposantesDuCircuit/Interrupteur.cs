@@ -4,6 +4,10 @@ public class Interrupteur : Resistance
 {
     private bool estOuvert = false;
 
+    private void Start()
+    {
+    }
+
     public void OuvrirOuFermer()
     {
         estOuvert = !estOuvert;

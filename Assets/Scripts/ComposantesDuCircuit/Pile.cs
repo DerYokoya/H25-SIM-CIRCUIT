@@ -4,7 +4,7 @@ using UnityEngine;
 public class Pile : ComposanteDuCircuit
 {
     public float Tension = 9;
-    public bool Surchauffee = false;
+    private bool Surchauffee = false;
 
     public ParticleSystem effetSurchauffe; // Le feu
     private bool aJoueSonSurchauffe = false;
@@ -24,28 +24,21 @@ public void Start()
 
     }
 
-    public void Update()
+public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Surchauffee = true;
-            Debug.Log("Pile surchauffée !");
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Surchauffee = false;
-            Debug.Log("Pile non surchauffée !");
-        }
-
-
         PileSurchauffee();
-
     }
+
     public bool EstSurchauffee()
     {
         return Surchauffee;
     }
+
+    public void setEstSurchauffee(bool surchauffe)
+    {
+        Surchauffee = surchauffe;
+    }
+
 
     public void PileSurchauffee()
     {
