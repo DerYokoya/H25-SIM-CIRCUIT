@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Fusible : Resistance
 {
@@ -33,7 +32,22 @@ public class Fusible : Resistance
         // Valeur initiale si non définie ailleurs
         if (IntensiteMax <= 0)
             IntensiteMax = 10;
-        ValeurResistance = 0;
+        valeurResistance = 0;
+    }
+
+    private void Awake() { } // Pour outrepasser le awake de la résistance
+
+    private void OnMouseOver()
+    {
+        // Vérification si le bouton droit de la souris est enfoncé
+        if (Input.GetMouseButtonDown(1)) // 1 correspond au bouton droit de la souris
+        {
+            if (estBrule)
+            {
+                ReparerFusible();
+
+            }
+        }
     }
 
     public override void Augmentation() => AjusterIntensiteMax(3);
@@ -95,7 +109,7 @@ public class Fusible : Resistance
         fil1.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
         fil2.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
 
-        ValeurResistance = float.MaxValue;
+        valeurResistance = float.MaxValue;
 
         if (sourceAudio != null && sonClac != null)
             sourceAudio.PlayOneShot(sonClac);
@@ -123,7 +137,7 @@ public class Fusible : Resistance
         fil1.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
         fil2.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
 
-        ValeurResistance = 0;
+        valeurResistance = 0;
 
     }
 

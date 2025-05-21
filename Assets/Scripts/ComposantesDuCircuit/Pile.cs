@@ -23,31 +23,33 @@ public void Start()
         sourceAudio = gameObject.AddComponent<AudioSource>();
 
     }
+    /* Pour débugger
 
-    public void Update()
+public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Surchauffee = true;
-            Debug.Log("Pile surchauffée !");
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Surchauffee = false;
-            Debug.Log("Pile non surchauffée !");
-        }
-
-
-        PileSurchauffee();
-
+    if (Input.GetKeyDown(KeyCode.L))
+    {
+        Surchauffee = true;
+        Debug.Log("Pile surchauffée !");
     }
+
+    if (Input.GetKeyDown(KeyCode.K))
+    {
+        Surchauffee = false;
+        Debug.Log("Pile non surchauffée !");
+    }
+
+
+    PileSurchauffee();
+
+ }
+    */
     public bool EstSurchauffee()
     {
         return Surchauffee;
     }
 
-    public void PileSurchauffee()
+    public void PileSurchauffeeMiseAJour()
     {
         if (Surchauffee)
         {
