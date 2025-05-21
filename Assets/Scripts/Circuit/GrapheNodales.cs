@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using UnityEditor.MemoryProfiler;
 
 public class GraphManager : MonoBehaviour
 {
@@ -70,6 +71,22 @@ public class GraphManager : MonoBehaviour
         }
 
         FullCleanup(); // Nettoyage final
+    }
+
+    public float GetCurrentForComponent(ComposanteDuCircuit component)
+    {
+        // Recherche dans toutes les connexions
+        foreach (var node in nodes)
+        {
+            foreach (var attache in node.attaches)
+            {
+                if (attache.composantParent == component)
+                {
+                    return component.Current; // Ajoutez une propriété Current à ComposanteDuCircuit
+                }
+            }
+        }
+        return 0f;
     }
 
     public void LogConnectionGraph()
@@ -144,7 +161,9 @@ public class GraphManager : MonoBehaviour
             }
         }
     }
-    private Attache GetOtherAttache(Attache attache)
+
+
+private Attache GetOtherAttache(Attache attache)
     {
         string suffix = attache.gameObject.name.Last().ToString();
         string otherSuffix = suffix == "1" ? "2" : "1";
@@ -160,6 +179,7 @@ public class GraphManager : MonoBehaviour
                 ampoule.ChangementLuminosite(courant);
             else if (comp is Fusible fusible)
                 fusible.Bruler(courant);
+            comp.Current = courant;
         }
 
         foreach (var pile in piles)
@@ -170,6 +190,7 @@ public class GraphManager : MonoBehaviour
             {
                 pile.setEstSurchauffee(false);
             }
+            pile.Current = courant;
         }
     }
 

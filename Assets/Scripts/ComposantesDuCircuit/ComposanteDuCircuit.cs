@@ -2,6 +2,7 @@ using UnityEngine;
 
     public abstract class ComposanteDuCircuit : MonoBehaviour
 {
+    public float Current { get; set; }
     public void Start()
     {
         GetComponent<Outline>().enabled = false;
