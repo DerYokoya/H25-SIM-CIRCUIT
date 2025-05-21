@@ -35,7 +35,7 @@ public class Resistance : ComposanteDuCircuit
     }
     protected virtual void Update()
     {
-        if (ValeurResistance != derniereResistance && asDesCouleur)
+        if (valeurResistance != derniereResistance && asDesCouleur)
         {
             ModifierBandesCouleurs();
             derniereResistance = valeurResistance;

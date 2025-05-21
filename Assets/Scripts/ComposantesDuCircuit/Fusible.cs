@@ -6,7 +6,6 @@ public class Fusible : Resistance
     public GameObject groupeFusible;
 
 
-
     private Material couleurNormale;
     private Material couleurBrule;
 
@@ -91,7 +90,7 @@ public class Fusible : Resistance
             fil1.transform.position += new Vector3(0, deplacementFils, 0); // déplacement vers le haut
             fil2.transform.position += new Vector3(0, -deplacementFils, 0); // déplacement vers le bas
 
-            ValeurResistance = float.MaxValue;
+            valeurResistance = float.MaxValue;
 
             if (sourceAudio != null && sonClac != null)
                 sourceAudio.PlayOneShot(sonClac);

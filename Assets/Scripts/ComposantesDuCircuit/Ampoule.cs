@@ -13,7 +13,7 @@ public class Ampoule : Resistance
     public void ChangementLuminosite(float courant)
     {
         float efficaciteLum = 15f; // en lumens/watt (incandescence typique)
-        float puissance = ValeurResistance * courant * courant; // P = R * I*I formule lumens
+        float puissance = valeurResistance * courant * courant; // P = R * I*I formule lumens
         float lumens = efficaciteLum * puissance;
 
 

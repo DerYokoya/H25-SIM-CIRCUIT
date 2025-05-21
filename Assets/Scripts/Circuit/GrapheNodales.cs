@@ -129,7 +129,7 @@ public class GraphManager : MonoBehaviour
             }
 
             float totalVoltage = pile.Tension;
-            float totalResistance = components.OfType<Resistance>().Sum(r => r.ValeurResistance);
+            float totalResistance = components.OfType<Resistance>().Sum(r => r.valeurResistance);
             float current = totalVoltage / totalResistance;
 
             UpdateComponents(current, components, piles);
@@ -175,11 +175,7 @@ public class GraphManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            //LogConnectionGraph();
-            AnalyzeSeriesCircuit();
-        }
+        AnalyzeSeriesCircuit();
     }
 }
 

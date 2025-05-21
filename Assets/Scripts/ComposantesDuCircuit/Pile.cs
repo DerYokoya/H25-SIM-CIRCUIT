@@ -23,7 +23,6 @@ public void Start()
         sourceAudio = gameObject.AddComponent<AudioSource>();
 
     }
-    /* Pour débugger
 
 public void Update()
     {
@@ -35,7 +34,13 @@ public void Update()
         return Surchauffee;
     }
 
-    public void PileSurchauffeeMiseAJour()
+    public void setEstSurchauffee(bool surchauffe)
+    {
+        Surchauffee = surchauffe;
+    }
+
+
+    public void PileSurchauffee()
     {
         if (Surchauffee)
         {

@@ -7,7 +7,7 @@ public class TournerLevierInterrupteur : MonoBehaviour
 
     private void Start()
     {
-        interrupteur.ValeurResistance = float.MaxValue;
+        interrupteur.valeurResistance = float.MaxValue;
     }
 
     void OnMouseDown()
@@ -24,14 +24,14 @@ public class TournerLevierInterrupteur : MonoBehaviour
             transform.localPosition = new Vector3(0, 0, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             interrupteur.OuvrirOuFermer();
-            interrupteur.ValeurResistance = 0;
+            interrupteur.valeurResistance = 0;
         }
         else
         {
             transform.localPosition = new Vector3(-21.8f, 51.95175f, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 180);
             interrupteur.OuvrirOuFermer();
-            interrupteur.ValeurResistance = float.MaxValue;
+            interrupteur.valeurResistance = float.MaxValue;
         }
     }
 }
