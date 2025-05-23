@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Composante
   - Attache
+  - Hitbox
   layers:
   - Default
   - TransparentFX
