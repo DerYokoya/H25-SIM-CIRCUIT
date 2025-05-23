@@ -15,7 +15,7 @@ public class DeplacerObjet : MonoBehaviour
 
     private void Update()
     {
-        OnMouseDown();
+        
     }
 
     public Vector3 GetPositionSouris()

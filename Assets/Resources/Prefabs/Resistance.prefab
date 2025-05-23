@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 679666100577364763}
   - component: {fileID: 7583417211704328187}
   - component: {fileID: 5544946244690944909}
+  - component: {fileID: 726095771422940484}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -334,6 +335,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   composantParent: {fileID: 1665213260974416736}
   otherAttachTag: Attache
+--- !u!114 &726095771422940484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000240350840370004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
 --- !u!1 &7645623049317175764
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +365,7 @@ GameObject:
   - component: {fileID: -3932001961938362163}
   - component: {fileID: 8428367673229755148}
   - component: {fileID: -7675464875897805024}
+  - component: {fileID: 2741528126880765866}
   m_Layer: 0
   m_Name: Resistance
   m_TagString: Composante
@@ -521,6 +536,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personnage: {fileID: 0}
   camera: {fileID: 0}
+--- !u!54 &2741528126880765866
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7645623049317175764}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3008075525083441234
 PrefabInstance:
   m_ObjectHideFlags: 0
