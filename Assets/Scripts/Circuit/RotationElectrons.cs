@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotationélectrons : MonoBehaviour
+public class RotationElectrons : MonoBehaviour
 {
     public Transform sphereTransform;     // Référence à la sphère
     public float sphereRadius = 0.1f;     // Rayon de la sphère (ex: 0.1 pour ton modèle)

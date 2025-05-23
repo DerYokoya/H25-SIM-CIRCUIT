@@ -15,6 +15,7 @@ public class Pile : ComposanteDuCircuit
     public Attache attachePlus; // Assigné dans l'éditeur
     public Attache attacheMinus; // Assigné dans l'éditeur
 
+    // Retourne true si le nœud passé correspond au nœud de connexion positif actuel
     public bool IsPositiveNode(ConnectionNode node)
         => attachePlus.currentConnectionNode == node;
 
@@ -81,7 +82,7 @@ public void Update()
 
     private void AjusterTension(int quantite)
     {
-        Tension = Math.Clamp(Tension + quantite, 1, 120); // Minimum 1, maximum 120
+        Tension = Math.Clamp(Tension + quantite, 1, 120); // Minimum 1V, maximum 120V
     }
 
     public float GetVoltage() => Tension;
