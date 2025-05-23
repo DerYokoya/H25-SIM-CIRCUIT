@@ -6,13 +6,13 @@ public class AfficherChangeur : MonoBehaviour
     public Transform personnage;
     public Camera camera;
     GameObject changeur;
-    GameObject changeurActuel; // Plus statique, chaque instance a son propre changeur
+    GameObject changeurActuel; // Chaque instance de composanteDuCircuit a son propre changeur
 
     ComposanteDuCircuit composanteActuelle;
     GameObject boutonPositif;
     GameObject boutonNegatif;
 
-    private float delaiEntreModifications = 0.2f; // seconds between changes
+    private float delaiEntreModifications = 0.2f; // Secondes entre deux modifications d'une valeur
     private float prochainTempsAutorise = 0f;
 
     void Start()
@@ -47,7 +47,7 @@ public class AfficherChangeur : MonoBehaviour
                 texte.text = composanteActuelle.TexteValeur();
             }
 
-            //Suivre la composante du circuit
+            // Suivre la composante du circuit
             changeurActuel.transform.position = transform.position + new Vector3(0, composanteActuelle.GetComponent<BoxCollider>().size.y + 0.2f, 0);
         }
 
@@ -90,11 +90,11 @@ public class AfficherChangeur : MonoBehaviour
                 // Si le raycast touche le GameObject actuel
                 if (elementTouche.collider.gameObject == gameObject)
                 {
-                    // Détruire l'ancien changeur s'il existe déjà (toggle off)
+                    // Détruire l'ancien changeur s'il existe déjà
                     if (changeurActuel != null)
                     {
                         Destroy(changeurActuel);
-                        changeurActuel = null; // important pour éviter de croire qu'il est toujours là
+                        changeurActuel = null; // Important pour éviter de croire qu'il est toujours là
                         return;
                     }
 
@@ -128,7 +128,7 @@ public class AfficherChangeur : MonoBehaviour
 
     void OnDestroy()
     {
-        // Détruire le changeur associé quand cet objet est détruit+
+        // Détruire le changeur associé quand cet objet est détruit
         if (changeurActuel != null)
         {
             Destroy(changeurActuel);

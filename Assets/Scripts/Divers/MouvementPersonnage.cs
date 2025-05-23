@@ -1,73 +1,76 @@
 using UnityEngine;
-
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class MouvementPersonnage : MonoBehaviour
 {
-    public Camera playerCamera;
-    public float walkSpeed;
-    public float runSpeed;
-    public float jumpPower;
-    public float lookSpeed;
-    public float lookXLimit;
-
-    private Vector3 moveDirection = Vector3.zero;
+    public Camera cameraJoueur;
+    public float vitesseMarche;
+    public float vitesseCourse;
+    public float puissanceSaut;
+    public float vitesseRegard;
+    public float limiteRegardX;
+    private Vector3 directionMouvement = Vector3.zero;
     private float rotationX = 0;
-    private CharacterController characterController;
-
-    private bool canMove = true;
-    private float initWalkSpeed;
-    private float initRunSpeed;
+    private CharacterController controleurPersonnage;
+    private bool peutBouger = true;
+    private float vitesseMarche_initiale;
+    private float vitesseCourse_initiale;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        controleurPersonnage = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        initWalkSpeed = walkSpeed;
-        initRunSpeed = runSpeed;
-
-
+        Cursor.visible = false; // Rendre le curseur de la souris invisible
+        vitesseMarche_initiale = vitesseMarche;
+        vitesseCourse_initiale = vitesseCourse;
     }
 
-void Update()
+    void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        Vector3 avant = transform.TransformDirection(Vector3.forward);
+        Vector3 droite = transform.TransformDirection(Vector3.right);
+        bool estEnCourse = Input.GetKey(KeyCode.LeftShift);
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        /* Calcul de la vitesse de déplacement avant/arrière :
+          - Si le joueur ne peut pas bouger : vitesse = 0
+          - Sinon : utilise vitesseCourse si «shift» est enfoncé ou vitesseMarche si «shift» n'est pas enfoncé
+          - Multiplie par l'«input» vertical ou horizontal (W/S) qui varie de -1 à 1 */
+        float vitesseActuelleX = peutBouger ? (estEnCourse ? vitesseCourse : vitesseMarche) * Input.GetAxis("Vertical") : 0;
+        float vitesseActuelleY = peutBouger ? (estEnCourse ? vitesseCourse : vitesseMarche) * Input.GetAxis("Horizontal") : 0;
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        float directionMouvementY = directionMouvement.y;
+        directionMouvement = (avant * vitesseActuelleX) + (droite * vitesseActuelleY);
+
+        // Saut du personnage
+        if (Input.GetButton("Jump") && peutBouger && controleurPersonnage.isGrounded)
         {
-            moveDirection.y = jumpPower;
+            directionMouvement.y = puissanceSaut;
         }
         else
         {
-            moveDirection.y = movementDirectionY;
+            directionMouvement.y = directionMouvementY;
         }
 
-        if (!characterController.isGrounded)
+        // Application de la gravité
+        if (!controleurPersonnage.isGrounded)
         {
-            moveDirection.y += Physics.gravity.y * Time.deltaTime;
+            directionMouvement.y += Physics.gravity.y * Time.deltaTime;
         }
-
         else
         {
-            walkSpeed = initWalkSpeed;
-            runSpeed = initRunSpeed;
+            vitesseMarche = vitesseMarche_initiale;
+            vitesseCourse = vitesseCourse_initiale;
         }
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        // Déplacement du personnage
+        controleurPersonnage.Move(directionMouvement * Time.deltaTime);
 
-        if (canMove)
+        // Gestion de la caméra et rotation
+        if (peutBouger)
         {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            rotationX += -Input.GetAxis("Mouse Y") * vitesseRegard;
+            rotationX = Mathf.Clamp(rotationX, -limiteRegardX, limiteRegardX);
+            cameraJoueur.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * vitesseRegard, 0);
         }
     }
 }

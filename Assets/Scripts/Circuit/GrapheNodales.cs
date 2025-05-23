@@ -82,7 +82,7 @@ public class GraphManager : MonoBehaviour
             {
                 if (attache.composantParent == component)
                 {
-                    return component.Current; // Ajoutez une propriété Current à ComposanteDuCircuit
+                    return component.courant; // Ajoutez une propriété courant à ComposanteDuCircuit
                 }
             }
         }
@@ -181,11 +181,11 @@ public class GraphManager : MonoBehaviour
                     ampoule.ChangementLuminosite(0f);
                 else if (attache.composantParent is Fusible fusible)
                     fusible.ReparerFusible();
-                attache.composantParent.Current = 0f;
+                attache.composantParent.courant = 0f;
             }
         }
         pile.setEstSurchauffee(false);
-        pile.Current = 0f;
+        pile.courant = 0f;
     }
 
 
@@ -205,7 +205,7 @@ public class GraphManager : MonoBehaviour
                 ampoule.ChangementLuminosite(courant);
             else if (comp is Fusible fusible)
                 fusible.Bruler(courant);
-            comp.Current = courant;
+            comp.courant = courant;
         }
 
         foreach (var pile in piles)
@@ -216,7 +216,7 @@ public class GraphManager : MonoBehaviour
             {
                 pile.setEstSurchauffee(false);
             }
-            pile.Current = courant;
+            pile.courant = courant;
         }
     }
 
