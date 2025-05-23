@@ -48,8 +48,8 @@ public class CreerObjets : MonoBehaviour
                     );
 
                     // Donne un nom unique
-                    string baseName = paire.Value.name.Replace("(Clone)", "").Trim();
-                    nouvelObjet.name = TrouverNomDisponible(baseName);
+                    string nomBase = paire.Value.name.Replace("(Clone)", "").Trim();
+                    nouvelObjet.name = TrouverNomDisponible(nomBase);
 
                     sourceAudio.Play();
                 }
@@ -57,15 +57,15 @@ public class CreerObjets : MonoBehaviour
         }
     }
 
-    private string TrouverNomDisponible(string baseName)
+    private string TrouverNomDisponible(string nomBase)
     {
         int index = 1;
-        string nomTest = baseName + index;
+        string nomTest = nomBase + index;
 
         while (GameObject.Find(nomTest) != null)
         {
             index++;
-            nomTest = baseName + index;
+            nomTest = nomBase + index;
         }
 
         return nomTest;

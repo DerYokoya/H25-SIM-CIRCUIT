@@ -23,12 +23,12 @@ public class DeplacerObjet : MonoBehaviour
         return camera.WorldToScreenPoint(transform.position);
     }
 
-    private void OnMouseEnter()
+    private void OnMouseEnter() // Si la souris est sur l'objet, mettre les contours de l'objet en surbrillance
     {
         GetComponent<Outline>().enabled = true;
     }
 
-    private void OnMouseExit()
+    private void OnMouseExit() // Si la souris n'est pas sur l'objet, ne pas mettre les contours de l'objet en surbrillance
     {
         GetComponent<Outline>().enabled = false;
     }
@@ -47,11 +47,11 @@ public class DeplacerObjet : MonoBehaviour
             {
                 Bounds limites = solCollider.bounds;
 
-                // Taille de l'objet qu'on d�place (pour �viter qu'il d�passe avec son bord)
+                // Taille de l'objet qu'on déplace (pour éviter qu'il dépasse avec son bord)
                 Renderer rend = GetComponent<Renderer>();
                 Vector3 objetExtent = rend != null ? rend.bounds.extents : Vector3.zero;
 
-                // Clamp avec marges
+                // Empêcher l'objet de dépasser la plateforme (en incluant les marges de l'objet)
                 float xLimite = Mathf.Clamp(positionMonde.x, limites.min.x + objetExtent.x, limites.max.x - objetExtent.x);
                 float zLimite = Mathf.Clamp(positionMonde.z, limites.min.z + objetExtent.z, limites.max.z - objetExtent.z);
 

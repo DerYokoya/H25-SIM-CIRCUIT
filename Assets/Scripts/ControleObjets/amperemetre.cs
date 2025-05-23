@@ -3,40 +3,40 @@ using UnityEngine;
 using System.Globalization;
 using UnityEditor;
 
-public class ToggleGun : MonoBehaviour
+public class Amperemetre : MonoBehaviour
 {
-    public GameObject gunObject;
-    public TextMeshPro info;
-    public Camera playerCamera;
-    public float maxDetectionDistance = 5f;
+    public GameObject outil; // Outil qui va afficher le nombre d'ampères
+    public TextMeshPro nombreAmperes;
+    public Camera cameraJoueur;
+    public float distanceDetectionMax = 5f;
 
     void Update()
     {
-        // Toggle avec la touche 7
+        // Activer/Désactiver l'outil avec la touche 7
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            gunObject.SetActive(!gunObject.activeSelf);
+            outil.SetActive(!outil.activeSelf);
         }
 
         // Détection du survol
-        if (gunObject.activeSelf)
+        if (outil.activeSelf)
         {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Ray rayon = cameraJoueur.ScreenPointToRay(Input.mousePosition);
+            RaycastHit impact;
 
-            if (Physics.Raycast(ray, out hit, maxDetectionDistance))
+            if (Physics.Raycast(rayon, out impact, distanceDetectionMax))
             {
-                ComposanteDuCircuit component = hit.collider.GetComponentInParent<ComposanteDuCircuit>();
-                if (component != null)
+                ComposanteDuCircuit composante = impact.collider.GetComponentInParent<ComposanteDuCircuit>();
+                if (composante != null)
                 {
-                    float current = GraphManager.Instance.GetCurrentForComponent(component); //global pour forcer a utiliser point au lieu de virgule 0.0001 au lieu de 0,001
-                    // Utiliser CultureInfo.InvariantCulture pour forcer le point décimal
-                    info.text = string.Format(CultureInfo.InvariantCulture, "{0:F3} A", current);
+                    float courant = GraphManager.Instance.GetCurrentForComponent(composante);
+                    // Utiliser CultureInfo.InvariantCulture pour forcer le point décimal (0.0001 au lieu de 0,001)
+                    nombreAmperes.text = string.Format(CultureInfo.InvariantCulture, "{0:F3} A", courant);
                     return;
                 }
             }
 
-            info.text = "0.000 A"; // Aucun composant détecté
+            nombreAmperes.text = "0.000 A"; // Aucune composante détectée
         }
     }
 }

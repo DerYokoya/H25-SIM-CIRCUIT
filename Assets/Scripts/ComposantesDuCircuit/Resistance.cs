@@ -4,7 +4,7 @@ using UnityEngine;
 public class Resistance : ComposanteDuCircuit
 {
     public float valeurResistance = 10f; /*Si nous appelons ceci Resistance, il y aura une erreur
-                                                            car la classe s'appele d�ja Resistance*/
+                                                            car la classe s'appele déja Résistance*/
 
     public bool asDesCouleur;
 
@@ -35,10 +35,11 @@ public class Resistance : ComposanteDuCircuit
     }
     protected virtual void Update()
     {
+        // Si la valeur de résistance a changé et que l'objet a des bandes de couleur, on les met à jour
         if (valeurResistance != derniereResistance && asDesCouleur)
         {
             ModifierBandesCouleurs();
-            derniereResistance = valeurResistance;
+            derniereResistance = valeurResistance; // Enregistre la nouvelle valeur comme référence
         }
     }
 

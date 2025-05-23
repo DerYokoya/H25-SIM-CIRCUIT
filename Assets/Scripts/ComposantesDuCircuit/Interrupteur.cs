@@ -8,7 +8,7 @@ public class Interrupteur : Resistance
     {
     }
 
-    public void OuvrirOuFermer()
+    public void OuvrirOuFermer() // Quand l'utilisateur va appuyer sur le levier, cette méthode sera appelée pour l'ouvrir ou le fermer
     {
         estOuvert = !estOuvert;
         Debug.Log(estOuvert);

@@ -1515,10 +1515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d7991bebae59d49a92cc5ee4055901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunObject: {fileID: 352760878}
-  info: {fileID: 446424607}
-  playerCamera: {fileID: 569785728}
-  maxDetectionDistance: 5
+  outil: {fileID: 352760878}
+  nombreAmperes: {fileID: 446424607}
+  cameraJoueur: {fileID: 569785728}
+  distanceDetectionMax: 5
 --- !u!1 &1351502054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: " FIL                         :    1\n\n\n PILE                      :   
-    2\n\n\nAMPOULE            :    3\n\n\nRESISTANCE         :    4\n\n\nINTERRUPTEUR 
+    2\n\n\nAMPOULE            :    3\n\n\nR\xC9SISTANCE         :    4\n\n\nINTERRUPTEUR 
     :    5 \n\n\nFUSIBLE                 :    6\n\n\n"
 --- !u!222 &1351502057
 CanvasRenderer:
@@ -1691,7 +1691,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ( cliquer sur tab pour quiter )
+  m_Text: "( Appuyez sur \xABtab\xBB pour quitter )"
 --- !u!222 &1455471595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1770,9 +1770,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "EFFACET OBJET        :     X\n\n\nTOUT EFFACET         :     P\n\n\nSPRINT                      
-    :    SHIFT\n\n\nBLOCK INFO              :      I \n\n\nTOURNER OBJET     :    
-    R\n\n\nDEPLACER  OBJET   :  clique gauche\n\n"
+  m_Text: "EFFACER OBJET        :     X\n\n\nTOUT EFFACER         :     P\n\n\nSPRINTER                 
+    :    SHIFT\n\n\nBLOC INFO               :      I \n\n\nTOURNER OBJET     :    
+    R\n\n\nD\xC9PLACER  OBJET   :  clic gauche\n\n"
 --- !u!222 &1559509865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1816,12 +1816,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5eecc9a7f690248b00524c510da86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 569785728}
-  walkSpeed: 3
-  runSpeed: 25
-  jumpPower: 4
-  lookSpeed: 4
-  lookXLimit: 90
+  cameraJoueur: {fileID: 569785728}
+  vitesseMarche: 3
+  vitesseCourse: 25
+  puissanceSaut: 4
+  vitesseRegard: 4
+  limiteRegardX: 90
 --- !u!65 &1614568089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c2844b9a5c63d4fb88005842e38ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 569785728}
   creationAudio: {fileID: 8300000, guid: f6117b69311d26449ab5ddeac2d3ee12, type: 3}
 --- !u!1 &1622325807
 GameObject:

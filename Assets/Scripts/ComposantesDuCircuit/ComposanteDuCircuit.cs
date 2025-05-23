@@ -2,10 +2,10 @@ using UnityEngine;
 
     public abstract class ComposanteDuCircuit : MonoBehaviour
 {
-    public float Current { get; set; }
+    public float courant { get; set; }
     public void Start()
     {
-        GetComponent<Outline>().enabled = false;
+        GetComponent<Outline>().enabled = false; // Désactiver le contour de couleur autour de la composante
     }
 
     public abstract void Augmentation(); // Augmenter une valeur (volts chez la pile, résistance chez la résistance, etc.)
