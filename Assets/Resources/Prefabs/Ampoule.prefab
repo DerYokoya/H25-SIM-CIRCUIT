@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -8371958757688025257}
   - component: {fileID: -6748946480998600456}
   - component: {fileID: 7274713190713403289}
+  - component: {fileID: 5187248354160430261}
   m_Layer: 0
   m_Name: Ampoule
   m_TagString: Composante
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f583e94d88d6468187e6ea2401eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurResistance: 10
+  valeurResistance: 10
   asDesCouleur: 0
   bandesRenderer: {fileID: 0}
   lumiere: {fileID: 7488916185761352228}
@@ -189,6 +190,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+--- !u!114 &5187248354160430261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162932824385288183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &1182980673965146377
 GameObject:
   m_ObjectHideFlags: 0

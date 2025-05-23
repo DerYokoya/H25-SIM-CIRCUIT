@@ -33,12 +33,26 @@ public class PileDrag : MonoBehaviour
 
         if (Input.GetMouseButton(0) && attacheTiree != null)
         {
-            Vector3 targetPosition = GetMouseWorldPosition(attacheTiree.position.y) + offset;
-            Vector3 pivot = attacheTiree == transform.Find("Attache1") ? transform.Find("Attache2").position : transform.Find("Attache1").position;
+            Vector3 targetPosition = GetMouseWorldPosition(yConstant) + offset;
+            Transform otherAttache = attacheTiree.name == "Attache1" ? transform.Find("Attache2") : transform.Find("Attache1");
+            Vector3 pivot = otherAttache.position;
 
-            Vector3 direction = targetPosition - pivot;
-            transform.position = pivot + direction / 2f;
-            transform.forward = direction.normalized;
+            // Calcul de la nouvelle position et rotation
+            Vector3 newDirection = (targetPosition - pivot).normalized;
+            float length = Vector3.Distance(pivot, targetPosition);
+            
+            // Position au milieu entre le pivot et la target
+            transform.position = pivot + newDirection * (length / 2f);
+            
+            // Rotation correcte selon l'attache tirée
+            if (attacheTiree.name == "Attache1")
+            {
+                transform.forward = newDirection;
+            }
+            else
+            {
+                transform.forward = -newDirection;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
