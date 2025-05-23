@@ -5338,6 +5338,7 @@ GameObject:
   - component: {fileID: 6236939383108114349}
   - component: {fileID: 5095997831684300795}
   - component: {fileID: 3148071383840787762}
+  - component: {fileID: 6793402850830773564}
   m_Layer: 0
   m_Name: Pile
   m_TagString: Composante
@@ -5553,6 +5554,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!114 &6793402850830773564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573680252472600129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b1b9fb71cd4a344897eb927a2204ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &451354632675372095
 PrefabInstance:
   m_ObjectHideFlags: 0
