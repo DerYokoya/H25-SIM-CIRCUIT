@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class PileRigideDrag : MonoBehaviour
+public class MvtSerpent : MonoBehaviour
 {
-    public Transform attachePlus;    // Extrémité +
-    public Transform attacheMoins;   // Extrémité -
     public Camera cam;
-
-    private Transform attacheActive = null;
-    private Transform attacheFixe = null;
-    private float longueurInitiale;
+    private Transform attacheTiree = null;
+    private Vector3 offset;
+    private float yConstant;
 
     void Start()
     {
-        if (cam == null) cam = Camera.main;
-        longueurInitiale = Vector3.Distance(attachePlus.position, attacheMoins.position);
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
+        yConstant = transform.position.y;
     }
-    
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,36 +23,35 @@ public class PileRigideDrag : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.CompareTag("Attache"))
+                if (hit.collider.CompareTag("Attache"))
                 {
-                    attacheActive = hit.transform;
-                    attacheFixe = (attacheActive == attachePlus) ? attacheMoins : attachePlus;
+                    attacheTiree = hit.collider.transform;
+                    offset = attacheTiree.position - GetMouseWorldPosition(attacheTiree.position.y);
                 }
             }
         }
 
+        if (Input.GetMouseButton(0) && attacheTiree != null)
+        {
+            Vector3 targetPosition = GetMouseWorldPosition(attacheTiree.position.y) + offset;
+            Vector3 pivot = attacheTiree == transform.Find("Attache1") ? transform.Find("Attache2").position : transform.Find("Attache1").position;
+
+            Vector3 direction = targetPosition - pivot;
+            transform.position = pivot + direction / 2f;
+            transform.forward = direction.normalized;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
-            attacheActive = null;
-            attacheFixe = null;
+            attacheTiree = null;
         }
+    }
 
-        if (attacheActive != null && attacheFixe != null)
-        {
-            Plane plan = new Plane(Vector3.up, attacheFixe.position);
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (plan.Raycast(ray, out float distance))
-            {
-                Vector3 positionSouris = ray.GetPoint(distance);
-                Vector3 direction = (positionSouris - attacheFixe.position).normalized;
-
-                // Position du centre de la pile (entre les deux extrémités)
-                Vector3 centre = attacheFixe.position + direction * (longueurInitiale / 2f);
-                transform.position = centre;
-
-                // Aligner la rotation avec la direction
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
-        }
+    Vector3 GetMouseWorldPosition(float y)
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Plane plane = new Plane(Vector3.up, new Vector3(0, y, 0));
+        plane.Raycast(ray, out float distance);
+        return ray.GetPoint(distance);
     }
 }
