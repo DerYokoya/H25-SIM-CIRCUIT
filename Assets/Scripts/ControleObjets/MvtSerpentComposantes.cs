@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MvtSerpent : MonoBehaviour
+public class PileDrag : MonoBehaviour
 {
     public Camera cam;
     private Transform attacheTiree = null;
