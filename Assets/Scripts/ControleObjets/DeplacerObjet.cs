@@ -21,10 +21,8 @@ public class DeplacerObjet : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.collider.CompareTag("Hitbox") && hit.collider.transform.IsChildOf(transform))
-                {
+                if (hit.collider.CompareTag("Composante") && hit.collider.transform.IsChildOf(transform))
                     peutDeplacer = true;
-                }
             }
         }
 
