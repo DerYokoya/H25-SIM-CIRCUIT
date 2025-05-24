@@ -9,8 +9,7 @@ public class Pile : ComposanteDuCircuit
     public ParticleSystem effetSurchauffe; // Le feu
     private bool aJoueSonSurchauffe = false;
 
-    public AudioSource sourceAudio1;        // Source audio à laquelle on joue le son
-    public AudioSource sourceAudio2;
+    public AudioSource sourceAudio;        // Source audio à laquelle on joue le son
     public AudioClip sonSurchauffe;
     public AudioClip sonCourtCircuit;
 
@@ -23,8 +22,7 @@ public class Pile : ComposanteDuCircuit
 
 public void Start()
     {
-        sourceAudio1 = gameObject.AddComponent<AudioSource>();
-        sourceAudio2 = gameObject.AddComponent<AudioSource>();
+        sourceAudio = gameObject.AddComponent<AudioSource>();
 
     }
 
@@ -49,12 +47,12 @@ public void Update()
         if (Surchauffee)
         {
             // Rejouer si le son est terminé
-            if (sourceAudio1 != null && sonSurchauffe != null)
+            if (sourceAudio != null && sonSurchauffe != null)
             {
-                if (!sourceAudio1.isPlaying && !sourceAudio2.isPlaying)
+                if (!sourceAudio.isPlaying)
                 {
-                    sourceAudio1.PlayOneShot(sonSurchauffe);
-                    sourceAudio2.PlayOneShot(sonCourtCircuit);
+                    sourceAudio.PlayOneShot(sonSurchauffe);
+                    sourceAudio.PlayOneShot(sonCourtCircuit);
                     aJoueSonSurchauffe = true;
                 }
             }
@@ -68,10 +66,9 @@ public void Update()
             // Arrêter la boucle du son qui joue
             aJoueSonSurchauffe = false;
 
-            if (sourceAudio1 != null && sourceAudio1.isPlaying && sourceAudio2 != null && sourceAudio2.isPlaying)
+            if (sourceAudio != null && sourceAudio.isPlaying)
             {
-                sourceAudio1.Stop();
-                sourceAudio2.Stop();
+                sourceAudio.Stop();
             }
 
             if (effetSurchauffe != null) { 
