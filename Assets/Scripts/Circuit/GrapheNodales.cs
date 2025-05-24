@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using UnityEditor.MemoryProfiler;
 
-public class GraphManager : MonoBehaviour
+
+/**
+ * 
+ * Singleton principale qui gere le circuit du simulateur. Calcul le courant à chaque unité de temps update().
+ */
+public class GestionnaireGraphe : MonoBehaviour
 {
-    public static GraphManager Instance { get; private set; }
-
-    public List<ConnectionNode> nodes = new List<ConnectionNode>();
+    public static GestionnaireGraphe Instance { get; private set; }
+    public List<ConnectionNode> noeuds = new List<ConnectionNode>();
 
     void Awake()
     {
@@ -18,83 +20,77 @@ public class GraphManager : MonoBehaviour
             Instance = this;
     }
 
-    public void MergeNodes(ConnectionNode targetNode, ConnectionNode nodeToMerge)
+    /*
+     * Méthode pour fusionner des noeud
+     */
+public void fusionNoeuds(ConnectionNode noeudCible, ConnectionNode neoudAFusione)
     {
-        if (targetNode == nodeToMerge) return;
+        if (noeudCible == neoudAFusione) return;
 
-        foreach (Attache attache in nodeToMerge.attaches)
+        foreach (Attache attache in neoudAFusione.attaches)
         {
-            attache.currentConnectionNode = targetNode;
-            targetNode.attaches.Add(attache);
+            attache.NoeudActuelle = noeudCible;
+            noeudCible.attaches.Add(attache);
         }
 
-        nodes.Remove(nodeToMerge);
+        noeuds.Remove(neoudAFusione);
     }
 
-    public void FullCleanup()
+    /*
+     * Méthode qui supprime les liste des noeuds avec des réferences nulles ou corrumpues.
+     */
+    public void nettoyageComplet()
     {
         // Nettoie les nodes vides ou corrompues
-        nodes.RemoveAll(node =>
-            node == null ||
-            node.attaches == null ||
-            node.attaches.Count == 0 ||
-            node.attaches.All(a => a == null));
+        noeuds.RemoveAll(noeud =>
+            noeud == null ||
+            noeud.attaches == null ||
+            noeud.attaches.Count == 0 ||
+            noeud.attaches.All(a => a == null));
 
         // Nettoie les attaches null dans les nodes restantes
-        foreach (var node in nodes)
+        foreach (var noeud in noeuds)
         {
-            node.attaches.RemoveAll(a => a == null);
+            noeud.attaches.RemoveAll(a => a == null);
         }
     }
 
-    public void RemoveFromNode(Attache attache)
+    /*
+     * Méthode principale pour enlever un attache d'un noeud
+     */
+    public void supprimerDepuisNoeud(Attache attache)
     {
         if (attache == null) return;
 
-        FullCleanup(); // Nettoyage préventif
+        nettoyageComplet(); // Nettoyage préventif
 
-        ConnectionNode node = attache.currentConnectionNode;
-        if (node == null) return;
+        ConnectionNode noeud = attache.NoeudActuelle;
+        if (noeud == null) return;
 
-        node.attaches.Remove(attache);
-        attache.currentConnectionNode = null;
+        noeud.attaches.Remove(attache);
+        attache.NoeudActuelle = null;
 
         // Si le node devient trop petit
-        if (node.attaches.Count <= 1)
+        if (noeud.attaches.Count <= 1)
         {
-            if (node.attaches.Count == 1)
+            if (noeud.attaches.Count == 1)
             {
-                Attache remaining = node.attaches[0];
-                remaining.currentConnectionNode = null;
+                Attache remaining = noeud.attaches[0];
+                remaining.NoeudActuelle = null;
             }
-            nodes.Remove(node);
+            noeuds.Remove(noeud);
         }
 
-        FullCleanup(); // Nettoyage final
+        nettoyageComplet(); // Nettoyage final
     }
 
-    public float GetCurrentForComponent(ComposanteDuCircuit component)
-    {
-        // Recherche dans toutes les connexions
-        foreach (var node in nodes)
-        {
-            foreach (var attache in node.attaches)
-            {
-                if (attache.composantParent == component)
-                {
-                    return component.courant; // Ajoutez une propriété courant à ComposanteDuCircuit
-                }
-            }
-        }
-        return 0f;
-    }
-
-
-    // --------------------------       PARTIE ANALAYSE         --------------------------
-
+    /**
+     * Analyse rapide d'un circuit en série seulement. Trajectoire de la borne + à la borne - des piles.
+     * Algortihme DFS (Depth-First Search). Récupération des résistences et tensions totales et calculs du courant.
+     */
     public void AnalyzeSeriesCircuit()
     {
-        List<Pile> piles = nodes.SelectMany(n => n.attaches)
+        List<Pile> piles = noeuds.SelectMany(n => n.attaches)
                                 .Select(a => a.composantParent as Pile)
                                 .Where(p => p != null)
                                 .Distinct()
@@ -105,14 +101,14 @@ public class GraphManager : MonoBehaviour
             if (pile.attachePlus == null || pile.attacheMinus == null)
                 continue;
 
-            ConnectionNode startNode = pile.attachePlus.currentConnectionNode;
-            ConnectionNode endNode = pile.attacheMinus.currentConnectionNode;
+            ConnectionNode startNode = pile.attachePlus.NoeudActuelle;
+            ConnectionNode endNode = pile.attacheMinus.NoeudActuelle;
 
             // Vérifier si les deux bornes sont connectées
             if (startNode == null || endNode == null)
             {
                 Debug.Log("Circuit ouvert - bornes non connectées");
-                ResetComponents(pile);
+                reinitialiserComposantes(pile);
                 continue;
             }
 
@@ -140,7 +136,7 @@ public class GraphManager : MonoBehaviour
                     if (comp == null || comp == pile || components.Contains(comp)) continue;
 
                     Attache otherAttache = GetOtherAttache(attache);
-                    ConnectionNode nextNode = otherAttache.currentConnectionNode;
+                    ConnectionNode nextNode = otherAttache.NoeudActuelle;
 
                     nodeConnections.Add((currentNode, nextNode, comp));
                     components.Add(comp);
@@ -165,15 +161,18 @@ public class GraphManager : MonoBehaviour
             else
             {
                 Debug.Log("Circuit ouvert - pas de boucle complète");
-                ResetComponents(pile);
+                reinitialiserComposantes(pile);
             }
         }
     }
 
-    private void ResetComponents(Pile pile)
+    /**
+     * méthode utile pour ne pas activer les composantes tant que le circuit n'est pas fermé
+     */
+    private void reinitialiserComposantes(Pile pile)
     {
         // Réinitialiser tous les composants connectés
-        foreach (var node in nodes)
+        foreach (var node in noeuds)
         {
             foreach (var attache in node.attaches)
             {
@@ -186,7 +185,9 @@ public class GraphManager : MonoBehaviour
         pile.courant = 0f;
     }
 
-
+    /*
+     * Méthode pour avoir l'attache opposée d'un composant.
+     */
     private Attache GetOtherAttache(Attache attache)
     {
         string suffix = attache.gameObject.name.Last().ToString();
@@ -195,6 +196,9 @@ public class GraphManager : MonoBehaviour
                                       .First(a => a.gameObject.name.EndsWith(otherSuffix));
     }
 
+    /**
+     * Mettre à jour les composants, bruler les piles, allumer l'ampoule, peter un fusible.
+     */
     private void UpdateComponents(float courant, List<ComposanteDuCircuit> components, List<Pile> piles)
     {
         foreach (var comp in components)
@@ -223,8 +227,6 @@ public class GraphManager : MonoBehaviour
         AnalyzeSeriesCircuit();
     }
 }
-
-
 
 
 /*

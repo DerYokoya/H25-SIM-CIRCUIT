@@ -19,7 +19,7 @@ public class Pile : ComposanteDuCircuit
 
     // Retourne true si le nœud passé correspond au nœud de connexion positif actuel
     public bool IsPositiveNode(ConnectionNode node)
-        => attachePlus.currentConnectionNode == node;
+        => attachePlus.NoeudActuelle == node;
 
 public void Start()
     {

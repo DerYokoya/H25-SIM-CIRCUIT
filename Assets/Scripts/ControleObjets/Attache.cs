@@ -1,66 +1,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**
+ * Classe principale des attaches ou extrémités des composants du circuits.
+ */
+
 public class Attache : MonoBehaviour
 {
     public ComposanteDuCircuit composantParent;
     public string otherAttachTag = "Attache";
-    public ConnectionNode currentConnectionNode;
+    public ConnectionNode NoeudActuelle;
 
+    /**
+     * Gestion collision entrant
+     * 
+     */
     private void OnTriggerEnter(Collider other)
     {
+
+        // vérification que le Collider est aussi une attache.
         if (!other.CompareTag(otherAttachTag)) return;
 
         Attache otherAttache = other.GetComponent<Attache>();
         if (otherAttache == null) return;
 
-        // Prevent snapping with another attach of the same component
+        // Attache ne s'attache pas avec une attache de même parent
         if (otherAttache.composantParent == composantParent) return;
 
-        bool thisHasNode = currentConnectionNode != null;
-        bool otherHasNode = otherAttache.currentConnectionNode != null;
+        /* Gestion des noeuds pour le graphe avec 3 cas si l'attache exterieur
+         * cas 1 : si les deux attaches ne sont pas dans un noeud on creer un nouveau noeud
+         * cas 2 : si un des deux attaches sont dans un noeud existant l'attache singulier va rejoindre ce noeud
+         * cas 3 : si les deux attaches sojnt deja dans deux noeud différents, on fusione ces 2 noeud en un seule.
+         */
+        bool thisHasNode = NoeudActuelle != null;
+        bool otherHasNode = otherAttache.NoeudActuelle != null;
 
-        if (!thisHasNode && !otherHasNode)
+        if (!thisHasNode && !otherHasNode) // cas 1
         {
-            CreateNewConnectionNode(this, otherAttache);
+            creationNouveauNoeud(this, otherAttache);
         }
-        else if (thisHasNode && !otherHasNode)
+        else if (thisHasNode && !otherHasNode) // cas 2
         {
-            AddToExistingNode(otherAttache, currentConnectionNode);
+            ajoutNoeudExistant(otherAttache, NoeudActuelle);
         }
-        else if (!thisHasNode && otherHasNode)
+        else if (!thisHasNode && otherHasNode) // cas 2
         {
-            AddToExistingNode(this, otherAttache.currentConnectionNode);
+            ajoutNoeudExistant(this, otherAttache.NoeudActuelle);
         }
         else
         {
-            MergeExistingNodes(otherAttache);
+            fusionNoeudsExistants(otherAttache); //cas 3
         }
     }
 
-    private void CreateNewConnectionNode(Attache a, Attache b)
+
+    //méthode pour le cas 1 de la méthode OnTriggerEnter()
+    private void creationNouveauNoeud(Attache a, Attache b)
     {
         ConnectionNode newNode = new ConnectionNode();
         newNode.attaches.Add(a);
         newNode.attaches.Add(b);
-        a.currentConnectionNode = newNode;
-        b.currentConnectionNode = newNode;
-        GraphManager.Instance.nodes.Add(newNode);
+        a.NoeudActuelle = newNode;
+        b.NoeudActuelle = newNode;
+        GestionnaireGraphe.Instance.noeuds.Add(newNode);
     }
 
-    private void AddToExistingNode(Attache attache, ConnectionNode node)
+    //méthode pour le cas 2 de la méthode OnTriggerEnter()
+    private void ajoutNoeudExistant(Attache attache, ConnectionNode node)
     {
         node.attaches.Add(attache);
-        attache.currentConnectionNode = node;
+        attache.NoeudActuelle = node;
     }
 
-    private void MergeExistingNodes(Attache otherAttache)
+    //méthode pour le cas 1 de la méthode OnTriggerEnter()
+    private void fusionNoeudsExistants(Attache otherAttache)
     {
-        if (currentConnectionNode != otherAttache.currentConnectionNode)
+        if (NoeudActuelle != otherAttache.NoeudActuelle)
         {
-            GraphManager.Instance.MergeNodes(
-                currentConnectionNode,
-                otherAttache.currentConnectionNode
+            GestionnaireGraphe.Instance.fusionNoeuds(
+                NoeudActuelle,
+                otherAttache.NoeudActuelle
             );
         }
     }
@@ -70,25 +90,31 @@ public class Attache : MonoBehaviour
         CleanUpConnection();
     }
 
+    /*
+     * Que faire si on détruit le composant électrique avec la classe SupprimerObjet et la supression de ce composant des listes du graphes
+     */
     private void CleanUpConnection()
     {
-        if (currentConnectionNode != null)
+        if (NoeudActuelle != null)
         {
-            // Create a copy to avoid modifying the list during iteration
-            var attachedCopies = new List<Attache>(currentConnectionNode.attaches);
+            var attachedCopies = new List<Attache>(NoeudActuelle.attaches);
 
             foreach (var attache in attachedCopies)
             {
                 if (attache != this && attache != null)
                 {
-                    GraphManager.Instance.RemoveFromNode(attache);
+                    GestionnaireGraphe.Instance.supprimerDepuisNoeud(attache);
                 }
             }
 
-            GraphManager.Instance.RemoveFromNode(this);
+            GestionnaireGraphe.Instance.supprimerDepuisNoeud(this);
         }
     }
 
+
+    /*
+     * Que faire si on détache le point de connection et la déconnection du circuit au graphe
+     */
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(otherAttachTag)) return;
@@ -99,14 +125,17 @@ public class Attache : MonoBehaviour
         // Prevent snapping logic should also ignore same component
         if (otherAttache.composantParent == composantParent) return;
 
-        if (currentConnectionNode != null &&
-            currentConnectionNode == otherAttache.currentConnectionNode)
+        if (NoeudActuelle != null &&
+            NoeudActuelle == otherAttache.NoeudActuelle)
         {
-            GraphManager.Instance.RemoveFromNode(this);
-            GraphManager.Instance.RemoveFromNode(otherAttache);
+            GestionnaireGraphe.Instance.supprimerDepuisNoeud(this);
+            GestionnaireGraphe.Instance.supprimerDepuisNoeud(otherAttache);
         }
     }
 
+
+    /* L'attachement visuelle
+     */
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag(otherAttachTag)) return;

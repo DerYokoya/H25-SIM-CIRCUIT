@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using System.Globalization;
-using UnityEditor;
 
 public class Amperemetre : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class Amperemetre : MonoBehaviour
                 ComposanteDuCircuit composante = impact.collider.GetComponentInParent<ComposanteDuCircuit>();
                 if (composante != null)
                 {
-                    float courant = GraphManager.Instance.GetCurrentForComponent(composante);
+                    float courant = composante.courant;
                     // Utiliser CultureInfo.InvariantCulture pour forcer le point décimal (0.0001 au lieu de 0,001)
                     nombreAmperes.text = string.Format(CultureInfo.InvariantCulture, "{0:F3} A", courant);
                     return;

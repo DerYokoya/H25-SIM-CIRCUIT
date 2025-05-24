@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/**
+ * Classe non inclut dans la présentation en classe qui améliore le deplacement des composants du circuit. Memes approches que PHET.
+ * 
+ */
+
+
 public class DeplacerObjetSerpentin : MonoBehaviour
 {
     public Camera cam;
@@ -9,6 +15,11 @@ public class DeplacerObjetSerpentin : MonoBehaviour
     private bool estEnTrainDeplacer = false;
     private Bounds limitesSol;
 
+
+
+    /**
+     * Récupération de préalables, Camera, terrain, constantes ect.
+     */
     void Start()
     {
         if (cam == null) cam = Camera.main;
@@ -27,6 +38,12 @@ public class DeplacerObjetSerpentin : MonoBehaviour
         GestionDrag();
     }
 
+    /**
+     * 
+     * Gestion de la souris, utilisation brute des booléean Input.GetMouseButtonDown et ButtonUp,
+     * car elle sont meilleur que les méthode d'Unity OnMouseDown(), OnMouseDrag() et OnMouseUp().
+     * Ces trois fonction créer des bug de précisions lors du déplacmeent des composantes.
+     */
     void GestionDrag()
     {
         if (Input.GetMouseButtonDown(0) && !estEnTrainDeplacer)
@@ -42,6 +59,9 @@ public class DeplacerObjetSerpentin : MonoBehaviour
         }
     }
 
+    /**
+     * Détection et récupération de l'attache si on le selectione bien comme il faut.
+     */
     void detecterAttache()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -57,6 +77,10 @@ public class DeplacerObjetSerpentin : MonoBehaviour
         }
     }
 
+    /**
+     * Déplacement type serpent comme dans PHET.
+     * 
+     */
     void deplacerComposant()
     {
         Vector3 sourisMonde = GetMouseWorldPosition(yConstant);
@@ -89,6 +113,9 @@ public class DeplacerObjetSerpentin : MonoBehaviour
         }
     }
 
+    /**
+     * récuperation de la position que la souris vise à travers l'écran.
+     */
     Vector3 GetMouseWorldPosition(float y)
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -97,6 +124,10 @@ public class DeplacerObjetSerpentin : MonoBehaviour
         return ray.GetPoint(dist);
     }
 
+    /**
+     * Limites déplacement des composants pour pas dépasser la platine de prototypage, le terrain gris.
+     * 
+     */
     Vector3 AppliquerLimites(Vector3 pos)
     {
         Renderer rend = GetComponent<Renderer>();

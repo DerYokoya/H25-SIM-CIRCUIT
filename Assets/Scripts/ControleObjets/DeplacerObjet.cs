@@ -1,5 +1,9 @@
 using UnityEngine;
 
+
+/**
+ * Classe déplacement d'objets
+ */
 public class DeplacerObjet : MonoBehaviour
 {
     public Camera camera;
@@ -42,10 +46,12 @@ public class DeplacerObjet : MonoBehaviour
 
     void Deplacer()
     {
+        //déplacement
         Vector3 posSouris = Input.mousePosition;
         float profondeur = camera.WorldToScreenPoint(transform.position).z;
         Vector3 positionMonde = camera.ScreenToWorldPoint(new Vector3(posSouris.x, posSouris.y, profondeur));
 
+        //limitation de déplacment, ne pas déplacer les objet hors du terrain.
         GameObject sol = GameObject.FindGameObjectWithTag("Ground");
         if (sol != null)
         {
