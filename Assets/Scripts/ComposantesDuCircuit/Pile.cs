@@ -11,6 +11,7 @@ public class Pile : ComposanteDuCircuit
 
     public AudioSource sourceAudio;        // Source audio à laquelle on joue le son
     public AudioClip sonSurchauffe;
+    public AudioClip sonCourtCircuit;
 
     public Attache attachePlus; // Assigné dans l'éditeur
     public Attache attacheMinus; // Assigné dans l'éditeur
@@ -51,6 +52,7 @@ public void Update()
                 if (!sourceAudio.isPlaying)
                 {
                     sourceAudio.PlayOneShot(sonSurchauffe);
+                    sourceAudio.PlayOneShot(sonCourtCircuit);
                     aJoueSonSurchauffe = true;
                 }
             }

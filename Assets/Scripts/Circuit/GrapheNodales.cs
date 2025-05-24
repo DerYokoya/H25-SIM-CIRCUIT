@@ -179,8 +179,6 @@ public class GraphManager : MonoBehaviour
             {
                 if (attache.composantParent is Ampoule ampoule)
                     ampoule.ChangementLuminosite(0f);
-                else if (attache.composantParent is Fusible fusible)
-                    fusible.ReparerFusible();
                 attache.composantParent.courant = 0f;
             }
         }
@@ -226,6 +224,17 @@ public class GraphManager : MonoBehaviour
     }
 }
 
+
+
+
+/*
+ *  Classe plus ou moins type <<Wrapper>> des points de connection ou noeud du circuit. 
+ *  
+ *  Un noeud ou point de connection du circuit est une liste type attache (extremité des composantes du circuit) car un
+ *  noeud dans un circuit peut avoir plus de deux chemins possibles par exemple une pile qui va soit vers une Bracnhe A
+ *  ou vers une branche B. Cette liste sera utilie pour la détection de boucle.
+ * 
+ */
 public class ConnectionNode
 {
     public List<Attache> attaches = new List<Attache>();

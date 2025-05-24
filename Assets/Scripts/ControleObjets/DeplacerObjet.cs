@@ -21,7 +21,7 @@ public class DeplacerObjet : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.collider.CompareTag("Composante") && hit.collider.transform.IsChildOf(transform))
+                if ( hit.collider.CompareTag("Composante") && hit.collider.transform.IsChildOf(transform) || hit.collider.CompareTag("Attache"))
                     peutDeplacer = true;
             }
         }
@@ -30,6 +30,7 @@ public class DeplacerObjet : MonoBehaviour
         if (peutDeplacer && Input.GetMouseButton(0))
         {
             Deplacer();
+
         }
 
         // Quand on relâche la souris, on arrête de déplacer

@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class PileDrag : MonoBehaviour
+public class DeplacerObjetSerpentin : MonoBehaviour
 {
     public Camera cam;
     private Transform attacheTiree = null;
     private Vector3 offset;
     private float yConstant;
-    private bool estEnTrainDrag = false;
+    private bool estEnTrainDeplacer = false;
     private Bounds limitesSol;
     public float distanceMax = 5f;
 
@@ -32,12 +32,12 @@ public class PileDrag : MonoBehaviour
 
     void GestionDrag()
     {
-        if (Input.GetMouseButtonDown(0) && !estEnTrainDrag)
+        if (Input.GetMouseButtonDown(0) && !estEnTrainDeplacer)
         {
             DetecterAttache();
         }
 
-        if (estEnTrainDrag && Input.GetMouseButton(0) && attacheTiree != null)
+        if (estEnTrainDeplacer && Input.GetMouseButton(0) && attacheTiree != null)
         {
             DeplacerPile();
         }
@@ -45,7 +45,7 @@ public class PileDrag : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             attacheTiree = null;
-            estEnTrainDrag = false;
+            estEnTrainDeplacer = false;
         }
     }
 
@@ -58,7 +58,7 @@ public class PileDrag : MonoBehaviour
             {
                 attacheTiree = hit.collider.transform;
                 offset = attacheTiree.position - GetMouseWorldPosition(yConstant);
-                estEnTrainDrag = true;
+                estEnTrainDeplacer = true;
                 break;
             }
         }

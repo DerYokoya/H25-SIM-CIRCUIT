@@ -14,6 +14,9 @@ public class Attache : MonoBehaviour
         Attache otherAttache = other.GetComponent<Attache>();
         if (otherAttache == null) return;
 
+        // Prevent snapping with another attach of the same component
+        if (otherAttache.composantParent == composantParent) return;
+
         bool thisHasNode = currentConnectionNode != null;
         bool otherHasNode = otherAttache.currentConnectionNode != null;
 
@@ -71,7 +74,7 @@ public class Attache : MonoBehaviour
     {
         if (currentConnectionNode != null)
         {
-            // Crée une copie de la liste pour éviter les modifications pendant l'itération
+            // Create a copy to avoid modifying the list during iteration
             var attachedCopies = new List<Attache>(currentConnectionNode.attaches);
 
             foreach (var attache in attachedCopies)
@@ -93,8 +96,8 @@ public class Attache : MonoBehaviour
         Attache otherAttache = other.GetComponent<Attache>();
         if (otherAttache == null) return;
 
-        // Vérifie si l'autre attache existe toujours
-        if (otherAttache == null || this == null) return;
+        // Prevent snapping logic should also ignore same component
+        if (otherAttache.composantParent == composantParent) return;
 
         if (currentConnectionNode != null &&
             currentConnectionNode == otherAttache.currentConnectionNode)
@@ -104,12 +107,15 @@ public class Attache : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag(otherAttachTag)) return;
 
         Attache otherAttache = other.GetComponent<Attache>();
         if (otherAttache == null) return;
+
+        // Prevent staying logic for same component
+        if (otherAttache.composantParent == composantParent) return;
 
         Vector3 offset = composantParent.transform.position - transform.position;
         composantParent.transform.position = other.transform.position + offset;
