@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 
+
+/**
+ * petite classe qui gêre la musique calme du menu.
+ * 
+ */
 public class GestionMusique : MonoBehaviour
 {
     public AudioSource audioSource;
@@ -16,6 +18,11 @@ public class GestionMusique : MonoBehaviour
     private int index;
 
 
+
+    /**
+     * Initialisation. Création de la compilation des musiques plus premier choix aléatoire de la musique
+     * 
+     */
     void Start()
     {
         index = (new System.Random()).Next(0, 5);
@@ -34,6 +41,10 @@ public class GestionMusique : MonoBehaviour
 
     }
 
+    /*
+     * La liste de la musique joue en boucle. Intervalle de 20 secondes entre les morceaux. Choix aléatoire.
+     * 
+     */
     void Update()
     {
         timer += Time.deltaTime;
@@ -43,7 +54,6 @@ public class GestionMusique : MonoBehaviour
             audioSource.clip = (AudioClip)musiques[(new System.Random()).Next(0,5)];
             audioSource.Play();
             timer = 0;
-
         }
     }
 }

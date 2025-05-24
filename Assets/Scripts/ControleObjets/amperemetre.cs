@@ -12,7 +12,7 @@ public class Amperemetre : MonoBehaviour
 
     void Update()
     {
-        // Activer/Désactiver l'outil avec la touche 7
+        // Tenir/déséquiper l'outil avec la touche 7
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             outil.SetActive(!outil.activeSelf);

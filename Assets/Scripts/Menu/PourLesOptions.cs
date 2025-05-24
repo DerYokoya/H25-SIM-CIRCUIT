@@ -1,11 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Liste des methodes pour les boutons des options (Plein écran, synchronisation  verticale, volume ect.)
+ */
 public class Options : MonoBehaviour
 {
-
     public Toggle pleinEcran, SyncVerticale;
     // Start is called before the first frame update
+
+    /*
+     * Récupération des options actuelles.
+     */
     void Start()
     {
         pleinEcran.isOn = Screen.fullScreen;
@@ -19,11 +25,11 @@ public class Options : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+    /**
+     * Application des changements de l'utilisateur.
+     */
+
     public void AppliquerGraphisme()
     {
         Screen.fullScreen = pleinEcran.isOn;
