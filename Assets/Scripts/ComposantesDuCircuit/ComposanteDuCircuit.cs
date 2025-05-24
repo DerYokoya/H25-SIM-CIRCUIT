@@ -1,5 +1,11 @@
 using UnityEngine;
 
+
+
+/**
+ * En classe durant la présentation, vous aviez mentionné qu'une classe abstraite ne peut pas extend la classe MonoBehaviour mais non.
+ * 
+ */
     public abstract class ComposanteDuCircuit : MonoBehaviour
 {
     public float courant { get; set; }

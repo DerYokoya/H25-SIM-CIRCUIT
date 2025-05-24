@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f28d70746d2ab44bf20492de839e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 6815422682331683841}
-  pointB: {fileID: 2698043737055849525}
+  attacheA: {fileID: 6815422682331683841}
+  attacheB: {fileID: 2698043737055849525}
   rayon: 0.6
   cylinderMaterial: {fileID: 2100000, guid: 0e65851f87d13104cbf00bd6fdfccad6, type: 2}
 --- !u!114 &864934767936703556
