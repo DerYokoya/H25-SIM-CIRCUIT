@@ -5314,8 +5314,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tension: 9
   effetSurchauffe: {fileID: 5262211936224603498}
-  sourceAudio: {fileID: 0}
-  sonSurchauffe: {fileID: 8300000, guid: ce62317404ada32439edb2ee2e3f7db7, type: 3}
+  sourceAudio1: {fileID: 0}
+  sourceAudio2: {fileID: 0}
+  sonSurchauffe: {fileID: 8300000, guid: 0468fb087aee87a4492f2c0deab64ced, type: 3}
+  sonCourtCircuit: {fileID: 8300000, guid: ce62317404ada32439edb2ee2e3f7db7, type: 3}
   attachePlus: {fileID: 7014780196661053546}
   attacheMinus: {fileID: 1196010073473009110}
 --- !u!114 &5422468703277710686
