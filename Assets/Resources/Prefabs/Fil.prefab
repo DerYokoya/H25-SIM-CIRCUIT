@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1303851224633626374}
   - component: {fileID: 4228954361996036528}
   - component: {fileID: 93829122659049841}
-  - component: {fileID: 6370202064534978237}
   - component: {fileID: 1809624625651080814}
+  - component: {fileID: 5899635242345401353}
   m_Layer: 0
   m_Name: Attache1
   m_TagString: Attache
@@ -154,20 +154,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6370202064534978237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3972039106450971848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  yConstant: 0
 --- !u!114 &1809624625651080814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +168,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   composantParent: {fileID: 2055362965882556992}
   otherAttachTag: Attache
+--- !u!114 &5899635242345401353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972039106450971848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  distanceMax: 5
 --- !u!1 &4675582518526707205
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,8 +381,8 @@ GameObject:
   - component: {fileID: 6183361046030193219}
   - component: {fileID: 508471101249839237}
   - component: {fileID: 7486161862911522452}
-  - component: {fileID: 6377501323969308712}
   - component: {fileID: 5395586416055429927}
+  - component: {fileID: 2459906799489197290}
   m_Layer: 0
   m_Name: Attache2
   m_TagString: Attache
@@ -521,20 +521,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6377501323969308712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6545980980812453349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  yConstant: 0
 --- !u!114 &5395586416055429927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,3 +535,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   composantParent: {fileID: 2055362965882556992}
   otherAttachTag: Attache
+--- !u!114 &2459906799489197290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545980980812453349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  distanceMax: 5
