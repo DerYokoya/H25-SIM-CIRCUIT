@@ -4154,10 +4154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: c09ec57b25bc3204a97f6eff87e585a4, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 0
   weight: 1
-  priority: 0
+  priority: 11.85
 --- !u!114 &1149257693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5085,6 +5085,14 @@ PrefabInstance:
     - target: {fileID: 813842861666189617, guid: 2c0ad27f2296e0c4582548d3d4480a90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519852332664440494, guid: 2c0ad27f2296e0c4582548d3d4480a90, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519852332664440494, guid: 2c0ad27f2296e0c4582548d3d4480a90, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7884923945866007618, guid: 2c0ad27f2296e0c4582548d3d4480a90, type: 3}
       propertyPath: m_Name
