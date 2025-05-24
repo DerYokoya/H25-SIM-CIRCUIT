@@ -5315,7 +5315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38c906633444a04e99464a0696dc648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tension: 10
+  Tension: 0.0001
   effetSurchauffe: {fileID: 5262211936224603498}
   sourceAudio: {fileID: 0}
   sonSurchauffe: {fileID: 8300000, guid: 0468fb087aee87a4492f2c0deab64ced, type: 3}
@@ -5393,6 +5393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  distanceMax: 5
 --- !u!114 &5095997831684300795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,6 +5421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  distanceMax: 5
 --- !u!114 &6793402850830773564
 MonoBehaviour:
   m_ObjectHideFlags: 0

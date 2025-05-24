@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 864934767936703556}
   - component: {fileID: 7061987258414085462}
   - component: {fileID: 3307432103135085665}
-  - component: {fileID: 4924338922169916632}
+  - component: {fileID: 146734813358470871}
   m_Layer: 0
   m_Name: Fil
   m_TagString: Composante
@@ -353,7 +353,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4924338922169916632
+--- !u!114 &146734813358470871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4675582518526707205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32995ac2b934cf841b7253f250b4f22a, type: 3}
+  m_Script: {fileID: 11500000, guid: f94ce5e9a2269424da345cab704b8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}

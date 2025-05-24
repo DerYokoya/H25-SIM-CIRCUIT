@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 3658939653096511772}
   - component: {fileID: 7183876111907933000}
   - component: {fileID: 5513509985395050148}
+  - component: {fileID: 8244625082193999023}
   m_Layer: 0
   m_Name: Interrupteur
   m_TagString: Composante
@@ -458,10 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b8463a0fae3b46aa6d4b8f8dd484b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurResistance: 10
+  valeurResistance: 10
   asDesCouleur: 0
   bandesRenderer: {fileID: 0}
-  asDesCouleur: 1
 --- !u!114 &3658939653096511772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +507,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8244625082193999023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565695232313056680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  distanceMax: 5
 --- !u!1001 &4808732592778584754
 PrefabInstance:
   m_ObjectHideFlags: 0

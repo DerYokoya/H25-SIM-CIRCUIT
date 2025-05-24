@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3029467360165387891}
   - component: {fileID: 8594998830958223222}
   - component: {fileID: 7292884877818289135}
+  - component: {fileID: 167701178300960568}
   m_Layer: 0
   m_Name: Fusible
   m_TagString: Composante
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d0bcc9d9d36584fbbb56dc03368a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValeurResistance: 10
+  valeurResistance: 10
   asDesCouleur: 0
   bandesRenderer: {fileID: 0}
   groupeFusible: {fileID: 7255385909855186053}
@@ -194,6 +195,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personnage: {fileID: 0}
   camera: {fileID: 0}
+--- !u!114 &167701178300960568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774107732195922201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b28f3561f8fe94e9f98e2a05726dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  distanceMax: 5
 --- !u!1 &1291244458537683869
 GameObject:
   m_ObjectHideFlags: 0
