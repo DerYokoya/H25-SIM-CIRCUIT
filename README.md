@@ -96,6 +96,9 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
-## Author
+## Authors
 
+**Kiisteric** — [GitHub Profile](https://github.com/Kiisteric)
 **DerYokoya** — [GitHub Profile](https://github.com/DerYokoya)
+**1826** — [GitHub Profile](https://github.com/theArabeMonkey1826)
+**Taha863** — [GitHub Profile](https://github.com/taha863)
