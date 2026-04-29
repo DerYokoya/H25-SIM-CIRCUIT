@@ -88,7 +88,7 @@ Une fois le projet lancé dans l'éditeur Unity :
 
 - Charger la scène souhaitée depuis le dossier `Assets/`
 - Interagir avec les éléments du circuit tels qu'implémentés dans la simulation
-- Consulter les scripts individuels dans `Assets/` pour les détails sur le comportement de chaque composant
+- Consulter les scripts individuels dans `Assets/` pour les détails sur le comportement de chaque composante
 
 ---
 
