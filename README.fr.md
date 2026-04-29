@@ -21,7 +21,7 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
 
 ## À propos
 
-**H25-SIM-CIRCUIT** est un projet de simulation Unity axé sur le comportement interactif des circuits. Le projet utilise des shaders personnalisés (ShaderLab/HLSL) combinés à de la logique de jeu en C# pour créer une expérience de simulation de circuits visuellement riche et fonctionnelle. Il permet de construire, tester et analyser des circuits électriques dans un environnement virtuel, reproduisant le comportement de composants réels — c'est-à-dire que les composants réagissent aux changements de tension ou de résistance comme ils le feraient dans un laboratoire physique.
+**H25-SIM-CIRCUIT** est un projet de simulation Unity axé sur le comportement interactif des circuits. Le projet utilise des shaders personnalisés (ShaderLab/HLSL) combinés à de la logique de jeu en C# pour créer une expérience de simulation de circuits visuellement riche et fonctionnelle. Il permet de construire, tester et analyser des circuits électriques dans un environnement virtuel, reproduisant le comportement de composantes réelles, c'est-à-dire que les composantes réagissent aux changements de tension ou de résistance comme ils le feraient dans un laboratoire physique.
 
 ---
 
