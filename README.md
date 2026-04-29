@@ -102,3 +102,5 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 **DerYokoya** — [GitHub Profile](https://github.com/DerYokoya)<br>
 **1826** — [GitHub Profile](https://github.com/theArabeMonkey1826)<br>
 **Taha863** — [GitHub Profile](https://github.com/taha863)
+
+[English](README.md) | [Français](README.fr.md)
