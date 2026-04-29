@@ -1,3 +1,5 @@
+**English** | [Français](README.fr.md) 
+
 # H25-SIM-CIRCUIT
 
 A Unity-based circuit simulation project built with C#, ShaderLab, and HLSL.
