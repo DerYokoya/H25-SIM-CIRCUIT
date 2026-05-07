@@ -6,6 +6,57 @@ A Unity-based circuit simulation project built with C#, ShaderLab, and HLSL.
 
 ---
 
+## Images
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img width="250" alt="components" src="https://github.com/user-attachments/assets/8f2b82c8-2c6d-42c1-80a9-560455fcfec8" /><br />
+        <sub><b>All Components</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="circuit" src="https://github.com/user-attachments/assets/1b222124-cbfb-48a6-a5f7-91239883c285" /><br />
+        <sub><b>Basic Circuit</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="short_circuit" src="https://github.com/user-attachments/assets/e3c5b8af-a1f2-4b89-b677-31a28f51cebe" /><br />
+        <sub><b>Short Circuit</b></sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img width="250" alt="resistor" src="https://github.com/user-attachments/assets/b79a465f-2cd0-4012-a5ca-5f844a828728" /><br />
+        <sub><b>Resistor Color Bands</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="light_bulb" src="https://github.com/user-attachments/assets/100c1f25-fea5-4090-b7c8-146e3ff18c16" /><br />
+        <sub><b>Light Bulb</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="switch_on" src="https://github.com/user-attachments/assets/bddff83a-23eb-426b-821a-b5f0d8e4903b" /><br />
+        <sub><b>Switch On (Current Flows)</b></sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img width="250" alt="fuse" src="https://github.com/user-attachments/assets/5d1c7f9f-27d4-468b-9283-cc014542ab38" /><br />
+        <sub><b>Fuse</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="fuse_broken" src="https://github.com/user-attachments/assets/804c813c-ec8a-475b-9876-642e39a22e6f" /><br />
+        <sub><b>Broken Fuse</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="switch_off" src="https://github.com/user-attachments/assets/e0067497-efb6-467e-8a1c-3ba334bc6cd9" /><br />
+        <sub><b>Switch Off (No Current)</b></sub>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 📋 Table of Contents
 
 - [About](#about)
