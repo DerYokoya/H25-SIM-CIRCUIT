@@ -6,6 +6,57 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
 
 ---
 
+## Images
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img width="250" alt="Composantes" src="https://github.com/user-attachments/assets/8f2b82c8-2c6d-42c1-80a9-560455fcfec8" /><br />
+        <sub><b>Toutes les composantes</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="Circuit basique" src="https://github.com/user-attachments/assets/1b222124-cbfb-48a6-a5f7-91239883c285" /><br />
+        <sub><b>Circuit basique</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="Court-circuit" src="https://github.com/user-attachments/assets/e3c5b8af-a1f2-4b89-b677-31a28f51cebe" /><br />
+        <sub><b>Court-circuit</b></sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img width="250" alt="Resistances avec bandes de couleurs" src="https://github.com/user-attachments/assets/b79a465f-2cd0-4012-a5ca-5f844a828728" /><br />
+        <sub><b>Résistance avec bandes de couleurs</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="Ampoule" src="https://github.com/user-attachments/assets/100c1f25-fea5-4090-b7c8-146e3ff18c16" /><br />
+        <sub><b>Ampoule</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="Interrupteur (Le courant passe)" src="https://github.com/user-attachments/assets/bddff83a-23eb-426b-821a-b5f0d8e4903b" /><br />
+        <sub><b>Interrupteur (Le courant passe)</b></sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img width="250" alt="Fusible" src="https://github.com/user-attachments/assets/5d1c7f9f-27d4-468b-9283-cc014542ab38" /><br />
+        <sub><b>Fusible</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="fuse_broken" src="https://github.com/user-attachments/assets/804c813c-ec8a-475b-9876-642e39a22e6f" /><br />
+        <sub><b>Broken Fuse</b></sub>
+      </td>
+      <td align="center">
+        <img width="250" alt="Le courant ne passe pas" src="https://github.com/user-attachments/assets/e0067497-efb6-467e-8a1c-3ba334bc6cd9" /><br />
+        <sub><b>Interrupteur (Le courant passe)</b>b></sub>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 📋 Table des matières
 
 - [À propos](#à-propos)
