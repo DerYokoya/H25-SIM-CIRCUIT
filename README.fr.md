@@ -26,7 +26,7 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
     </tr>
     <tr>
       <td align="center">
-        <img width="250" alt="Resistances avec bandes de couleurs" src="https://github.com/user-attachments/assets/b79a465f-2cd0-4012-a5ca-5f844a828728" /><br />
+        <img width="250" alt="Résistance avec bandes de couleurs" src="https://github.com/user-attachments/assets/b79a465f-2cd0-4012-a5ca-5f844a828728" /><br />
         <sub><b>Résistance avec bandes de couleurs</b></sub>
       </td>
       <td align="center">
@@ -44,12 +44,12 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
         <sub><b>Fusible</b></sub>
       </td>
       <td align="center">
-        <img width="250" alt="fuse_broken" src="https://github.com/user-attachments/assets/804c813c-ec8a-475b-9876-642e39a22e6f" /><br />
-        <sub><b>Broken Fuse</b></sub>
+        <img width="250" alt="Fusible brisé" src="https://github.com/user-attachments/assets/804c813c-ec8a-475b-9876-642e39a22e6f" /><br />
+        <sub><b>Fusible brisé</b></sub>
       </td>
       <td align="center">
         <img width="250" alt="Le courant ne passe pas" src="https://github.com/user-attachments/assets/e0067497-efb6-467e-8a1c-3ba334bc6cd9" /><br />
-        <sub><b>Interrupteur (Le courant passe)</b>b></sub>
+        <sub><b>Interrupteur (Le courant passe)</b></sub>
       </td>
     </tr>
   </table>
