@@ -87,6 +87,48 @@ A Unity-based circuit simulation project built with C#, ShaderLab, and HLSL.
 
 ---
 
+## What This Demonstrates
+This project demonstrates the integration of real-time simulation logic with interactive visual rendering inside Unity. Through the use of C#, ShaderLab, and HLSL, the simulation models realistic electrical circuit behavior while providing immediate visual feedback to the user.
+
+Key concepts demonstrated include:
+* Real-time circuit simulation using programmable component behavior
+* Interactive electrical systems with switches, fuses, resistors, and light bulbs
+* Dynamic current flow visualization through custom shader effects
+* Fault detection and response, including short circuits and fuse failure
+* Modular component design allowing scalable circuit construction
+* Combination of gameplay programming and GPU-based rendering
+* Educational simulation techniques for understanding electrical engineering concepts in a virtual environment
+* The project highlights how Unity can be used beyond traditional game development to create technical simulations, learning tools, and interactive engineering experiences.
+
+---
+
+## Future Prospects
+* Add support for advanced electrical components such as capacitors, inductors, transistors, and integrated circuits
+* Introduce oscilloscopes
+* Add multiplayer or collaborative lab environments for educational use
+* Create guided tutorials and challenge scenarios for students and beginners
+* Export and import circuit configurations using external file formats
+* Optimize performance for larger and more complex circuit networks
+
+---
+
+## Transferable Skills
+
+Although this project focuses on circuit simulation, the technologies and design patterns used are applicable across many software and engineering domains.
+
+This project demonstrates experience with:
+
+* Object-oriented programming and modular software architecture using C#
+* Real-time systems development and event-driven interactions
+* GPU programming and shader development with ShaderLab and HLSL
+* Simulation design and state management for interactive environments
+* Debugging complex systems involving interconnected logic and visual feedback
+* User interaction design within technical software tools
+* Collaborative development workflows using Git and version control
+* Optimization techniques for rendering and runtime performance
+
+---
+
 ## Getting Started
 
 ### Prerequisites
