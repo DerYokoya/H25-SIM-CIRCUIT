@@ -64,6 +64,9 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
 - [Démarrage](#démarrage)
   - [Prérequis](#prérequis)
   - [Installation](#installation)
+- [Ce que ce projet démontre](#ce-que-ce-projet-démontre)
+- [Perspectives futures](#perspectives-futures)
+- [Compétences transférables](#compétences-transférables)
 - [Structure du projet](#structure-du-projet)
 - [Utilisation](#utilisation)
 - [Licence](#licence)
@@ -84,6 +87,51 @@ Un projet de simulation de circuits basé sur Unity, développé en C#, ShaderLa
 | **C#** (~75%) | Logique de simulation principale, scripts de jeu |
 | **ShaderLab** (~20%) | Shaders visuels personnalisés |
 | **HLSL** (~5%) | Programmation de shaders pour effets GPU |
+
+---
+
+## Ce que ce projet démontre
+
+Ce projet démontre l’intégration d’une logique de simulation en temps réel avec un rendu visuel interactif dans Unity. Grâce à l’utilisation de C#, ShaderLab et HLSL, la simulation reproduit le comportement réaliste de circuits électriques tout en fournissant un retour visuel immédiat à l’utilisateur.
+
+Les principaux concepts démontrés incluent :
+
+* Simulation de circuits en temps réel à l’aide de comportements de composants programmables
+* Systèmes électriques interactifs avec interrupteurs, fusibles, résistances et ampoules
+* Visualisation dynamique du flux de courant grâce à des effets de shaders personnalisés
+* Détection et gestion des défaillances, incluant les courts-circuits et les fusibles grillés
+* Conception modulaire des composants permettant la création de circuits évolutifs
+* Combinaison de programmation gameplay et de rendu basé sur le GPU
+* Techniques de simulation éducative pour comprendre les concepts de génie électrique dans un environnement virtuel
+* Le projet met en évidence comment Unity peut être utilisé au-delà du développement de jeux traditionnels pour créer des simulations techniques, des outils pédagogiques et des expériences interactives en ingénierie
+
+---
+
+## Perspectives futures
+
+* Ajouter la prise en charge de composants électriques avancés tels que les condensateurs, inductances, transistors et circuits intégrés
+* Introduire des oscilloscopes
+* Ajouter des environnements multijoueurs ou des laboratoires collaboratifs à des fins éducatives
+* Créer des tutoriels guidés et des scénarios de défis pour les étudiants et les débutants
+* Exporter et importer des configurations de circuits à l’aide de formats de fichiers externes
+* Optimiser les performances pour des réseaux de circuits plus grands et plus complexes
+
+---
+
+## Compétences transférables
+
+Bien que ce projet soit axé sur la simulation de circuits, les technologies et les modèles de conception utilisés sont applicables à de nombreux domaines du logiciel et de l’ingénierie.
+
+Ce projet démontre une expérience avec :
+
+* La programmation orientée objet et l’architecture logicielle modulaire en C#
+* Le développement de systèmes en temps réel et les interactions basées sur les événements
+* La programmation GPU et le développement de shaders avec ShaderLab et HLSL
+* La conception de simulations et la gestion d’état pour des environnements interactifs
+* Le débogage de systèmes complexes impliquant une logique interconnectée et des retours visuels
+* La conception d’interactions utilisateur dans des outils logiciels techniques
+* Les flux de travail collaboratifs avec Git et le contrôle de version
+* Les techniques d’optimisation pour le rendu et les performances d’exécution
 
 ---
 
